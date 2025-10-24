@@ -14,6 +14,7 @@ const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose();
+        handleClose();
       }
       // Trap focus with Tab
       if (event.key === 'Tab') {
@@ -48,7 +49,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        onClose();
+        handleClose();
       }
     };
 
@@ -69,7 +70,17 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       // Restore focus
       previouslyFocused.current?.focus();
     };
-  }, [onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleClose = () => {
+    // PAUSA y resetea el video siempre que se cierre
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    onClose();
+  };
 
   const videoType = `video/${video.videoUrl.split('.').pop()}`;
 
@@ -83,6 +94,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         {/* Video arriba, sin glass para la mejor experiencia */}
         <div className="aspect-video rounded-t-2xl overflow-hidden bg-black">
           <video
+            ref={videoRef}
             key={video.id}
             controls
             autoPlay
@@ -117,7 +129,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         </div>
         {/* Botón cerrar */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute -top-4 -right-4 md:-top-5 md:-right-5 h-10 w-10 md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-lg"
           aria-label="Close video player"
         >
