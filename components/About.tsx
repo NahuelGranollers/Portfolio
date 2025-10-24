@@ -14,7 +14,7 @@ const About: React.FC = () => {
   <div className="order-2 md:order-1">
     <div className="aspect-square bg-brand-surface-light rounded-2xl overflow-hidden shadow-2xl">
       <img 
-        src="/images/profile.jpg" 
+        src="public/images/profile.jpg" 
         alt="Nahuel Granollers" 
         className="w-full h-full object-cover"
       />
