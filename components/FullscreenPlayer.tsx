@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { Video } from '../types';
 
 interface FullscreenPlayerProps {
@@ -14,15 +14,15 @@ const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   useEffect(() => {
     previouslyFocused.current = document.activeElement as HTMLElement | null;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        handleClose();
+        onClose();
       }
       // Trap focus with Tab
       if (event.key === 'Tab') {
@@ -49,7 +49,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        handleClose();
+        onClose();
       }
     };
 
@@ -70,17 +70,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       // Restore focus
       previouslyFocused.current?.focus();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleClose = () => {
-    // PAUSA y resetea el video siempre que se cierre
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-    onClose();
-  };
+  }, [onClose]);
 
   const videoType = `video/${video.videoUrl.split('.').pop()}`;
 
@@ -94,7 +84,6 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         {/* Video arriba, sin glass para la mejor experiencia */}
         <div className="aspect-video rounded-t-2xl overflow-hidden bg-black">
           <video
-            ref={videoRef}
             key={video.id}
             controls
             autoPlay
@@ -108,9 +97,27 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         <div className="bg-brand-surface/70 backdrop-blur-2x1 border border-white/20 rounded-b-2xl p-6 md:p-8 flex flex-col gap-4 shadow-inner -mt-2">
           <h2 className="text-2xl font-extrabold mb-2 text-white">{video.title}</h2>
           {video.description && (
-            <p className="text-brand-text-secondary text-base mb-2 whitespace-pre-line">
-              {video.description}
-            </p>
+            <div className="mb-2">
+              <p
+                className={
+                  "text-brand-text-secondary text-base whitespace-pre-line mb-2 transition-all duration-300 " +
+                  (showFullDescription ? "" : "line-clamp-3")
+                }
+                style={
+                  !showFullDescription
+                    ? { overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }
+                    : {}
+                }
+              >
+                {video.description}
+              </p>
+              <button
+                className="text-brand-primary underline cursor-pointer text-sm"
+                onClick={() => setShowFullDescription((v) => !v)}
+              >
+                {showFullDescription ? "Ver menos" : "Ver más"}
+              </button>
+            </div>
           )}
           {video.role && (
             <p className="text-brand-primary text-sm font-medium mb-1">
@@ -129,7 +136,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         </div>
         {/* Botón cerrar */}
         <button
-          onClick={handleClose}
+          onClick={onClose}
           className="absolute -top-4 -right-4 md:-top-5 md:-right-5 h-10 w-10 md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-lg"
           aria-label="Close video player"
         >
