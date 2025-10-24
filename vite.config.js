@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 export default defineConfig({
-  base: '/', // Cambia "Portfolio" si tu repo se llama diferente (debe coincidir)
+  base: 'nahuelgranollers.com', // Cambia "Portfolio" si tu repo se llama diferente (debe coincidir)
   plugins: [
     react(),
     VitePWA({
