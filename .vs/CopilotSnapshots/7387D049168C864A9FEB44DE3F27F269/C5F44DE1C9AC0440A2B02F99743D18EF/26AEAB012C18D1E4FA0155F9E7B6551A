@@ -1,0 +1,35 @@
+﻿// Global shims to quiet TypeScript module resolution in this workspace
+
+declare module 'react' {
+ const Suspense: any;
+ const lazy: any;
+ const useState: any;
+ const useEffect: any;
+ const useRef: any;
+ type FC<P = {}> = any;
+ const React: any;
+ export default React;
+ export { Suspense, lazy, useState, useEffect, useRef, FC };
+}
+
+declare module 'react/jsx-runtime' {
+ const jsx: any;
+ const jsxs: any;
+ const Fragment: any;
+ export { jsx, jsxs, Fragment };
+}
+
+declare module './types' {
+ export type Video = any;
+}
+
+declare module './constants' {
+ export const VIDEOS: any[];
+ export const PERSONAL_INFO: any;
+ export const SERVICES: any[];
+}
+
+declare module './components/*' {
+ const comp: any;
+ export default comp;
+}

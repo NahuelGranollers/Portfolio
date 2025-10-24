@@ -1,0 +1,47 @@
+﻿import React from 'react';
+import type { PersonalInfo } from '../types';
+import { PERSONAL_INFO as RAW_PERSONAL } from '../constants';
+
+const PERSONAL_INFO = RAW_PERSONAL as unknown as PersonalInfo;
+
+const Footer: React.FC = () => {
+  return (
+    <footer className="mt-16 bg-brand-surface border border-brand-border rounded-2xl p-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-2xl font-extrabold text-brand-primary">{PERSONAL_INFO.name}</h3>
+            <p className="text-sm text-brand-text-secondary mt-1">{PERSONAL_INFO.title}</p>
+          </div>
+
+          <div className="ml-4">
+            {PERSONAL_INFO.social?.linkedin && (
+              <a
+                href={PERSONAL_INFO.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="inline-flex items-center justify-center w-9 h-9 bg-brand-primary text-white rounded-md hover:opacity-90 transition-opacity"
+              >
+                {/* Official LinkedIn glyph (white on brand-primary background) */}
+                <svg viewBox="00448512" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                  <path d="M100.28448H7.4V148.9h92.88zM53.79108.1C24.09108.1083.92054.2024.524.09 .353.79 .3s53.7924.253.7953.9c029.7-24.154-53.7954zM447.9448h-92.68V302.4c0-34.7-.7-79.3-48.3-79.3-48.30-55.737.7-55.776.7V448h-92.7V148.9h89V196h1.3c12.4-23.542.7-48.387.9-48.3940111.461.9111.4142.3V448z" />
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <hr className="my-6 border-t border-brand-border" />
+
+        <div className="text-center text-sm text-brand-text-secondary">
+          <p>© {new Date().getFullYear()} {PERSONAL_INFO.name}. Todos los derechos reservados.</p>
+          <p className="mt-2">Hecho con React + TypeScript + Vite</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

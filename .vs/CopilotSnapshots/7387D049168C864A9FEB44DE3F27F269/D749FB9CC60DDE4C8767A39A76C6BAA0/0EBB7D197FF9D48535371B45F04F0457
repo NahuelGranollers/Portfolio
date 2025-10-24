@@ -1,0 +1,41 @@
+﻿import React from 'react';
+import { PERSONAL_INFO } from '../constants';
+
+const Footer: React.FC = () => {
+ return (
+ <footer className="bg-brand-bg py-12 px-4 sm:px-6 lg:px-8 border-t border-brand-border">
+ <div className="max-w-6xl mx-auto">
+ <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+ <div className="text-center md:text-left">
+ <h3 className="text-2xl font-bold text-brand-primary mb-2">{PERSONAL_INFO.name}</h3>
+ <p className="text-brand-text-secondary">{PERSONAL_INFO.title}</p>
+ </div>
+
+ <div className="flex gap-4">
+ {PERSONAL_INFO.social?.linkedin && (
+ <a
+ href={PERSONAL_INFO.social.linkedin}
+ target="_blank"
+ rel="noopener noreferrer"
+ className="inline-flex items-center justify-center w-8 h-8 bg-[#2b2b2b] text-white rounded-sm hover:opacity-90 transition-opacity"
+ aria-label="LinkedIn"
+ title="LinkedIn"
+ >
+ <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <path d="M20.447,20.452h-3.554v-5.569c0-1.328-0.027-3.037-1.852-3.037c-1.853,0-2.136,1.445-2.136,2.939v5.667H9.351V9h3.414v1.561h0.046 c0.477-0.91,0.637-1.853,0.37-1.853c0.601,0,0.374,0.267,0.455,0.267v6.286H17.9v-6.287c0-4.201-0.323-7.853-4.64-7.853 c-2.913,0-3.764,1.605-4.373,2.724V9H5.337V0.632C4.193,0.233,3.017,0,1.771,0C0.792,0,0.229,0.774, 0.229,1.729v20.542C0.229,23.227,0.792,24,1.771,24h20.451c0.982,0,1.535-0.773,1.535-1.729V1.729C22.225,0.774,21.672,0,20.447,0 C20.447,0,20.447,20.452,20.447,20.452z" />
+ </svg>
+ </a>
+ )}
+ </div>
+ </div>
+
+ <div className="mt-8 pt-8 border-t border-brand-border text-center text-brand-text-secondary text-sm">
+ <p>© {new Date().getFullYear()} {PERSONAL_INFO.name}. Todos los derechos reservados.</p>
+ <p className="mt-2">Hecho con React + TypeScript + Vite</p>
+ </div>
+ </div>
+ </footer>
+ );
+};
+
+export default Footer;

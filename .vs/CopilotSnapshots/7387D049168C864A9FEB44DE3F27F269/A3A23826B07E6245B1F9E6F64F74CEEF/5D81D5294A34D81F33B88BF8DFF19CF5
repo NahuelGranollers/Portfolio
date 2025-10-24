@@ -1,0 +1,50 @@
+﻿import React from 'react';
+import type { PersonalInfo } from '../types';
+import { PERSONAL_INFO as RAW_PERSONAL } from '../constants';
+
+const PERSONAL_INFO = RAW_PERSONAL as unknown as PersonalInfo;
+
+const LinkedInIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M4.983.5C4.984.883.8662.496S04.8803.51.1212.514.982.124.983.5zM08h5v16H0zM88h4.8v2.16h.07c.67-1.272.3-2.64.73-2.65.205.973.795.978.21V24H19v-8.39c0-2.01-.04-4.6-2.8-4.6-2.80-3.222.18-3.224.44V24H8V8z" />
+  </svg>
+);
+
+const Footer: React.FC = () => {
+  return (
+    <footer className="mt-16 bg-brand-surface border border-brand-border rounded-2xl p-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-start justify-between">
+          <div>
+            <h3 className="text-2xl font-extrabold text-brand-primary">{PERSONAL_INFO.name}</h3>
+            <p className="text-sm text-brand-text-secondary mt-1">{PERSONAL_INFO.title}</p>
+          </div>
+
+          <div className="ml-4">
+            {PERSONAL_INFO.social?.linkedin && (
+              <a
+                href={PERSONAL_INFO.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                className="inline-flex items-center justify-center w-8 h-8 bg-[#2b2b2b] text-white rounded-sm hover:opacity-90 transition-opacity"
+              >
+                <LinkedInIcon className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+        </div>
+
+        <hr className="my-6 border-t border-brand-border" />
+
+        <div className="text-center text-sm text-brand-text-secondary">
+          <p>© {new Date().getFullYear()} {PERSONAL_INFO.name}. Todos los derechos reservados.</p>
+          <p className="mt-2">Hecho con React + TypeScript + Vite</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

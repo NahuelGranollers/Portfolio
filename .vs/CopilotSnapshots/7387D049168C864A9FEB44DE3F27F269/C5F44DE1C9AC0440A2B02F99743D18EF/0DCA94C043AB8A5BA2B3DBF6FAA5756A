@@ -1,0 +1,61 @@
+﻿import { useEffect, useRef, useState, type FC } from 'react';
+import type { Video } from '../types';
+import useInView from '../hooks/useInView';
+
+type Props = {
+ video: Video;
+ onSelect: (v: Video) => void;
+};
+
+const VideoCard: FC<Props> = ({ video, onSelect }) => {
+ const { ref, inView } = useInView<HTMLDivElement>({ threshold:0.3 });
+ const [prefetched, setPrefetched] = useState(false);
+ const prefetchLinkRef = useRef<HTMLLinkElement | null>(null);
+
+ useEffect(() => {
+ if (inView && !prefetched) {
+ const link = document.createElement('link');
+ link.rel = 'preload';
+ link.as = 'video';
+ link.href = video.videoUrl;
+ link.type = 'video/webm';
+ document.head.appendChild(link);
+ prefetchLinkRef.current = link;
+ setPrefetched(true);
+ }
+ }, [inView, prefetched, video.videoUrl]);
+
+ const handleMouseEnter = () => {
+ if (!prefetched) {
+ const link = document.createElement('link');
+ link.rel = 'preload';
+ link.as = 'video';
+ link.href = video.videoUrl;
+ link.type = 'video/webm';
+ document.head.appendChild(link);
+ prefetchLinkRef.current = link;
+ setPrefetched(true);
+ }
+ };
+
+ return (
+ <div ref={ref} className="video-card group" onMouseEnter={handleMouseEnter}>
+ <button onClick={() => onSelect(video)} className="video-thumbnail-wrapper w-full block text-left">
+ <img
+ src={video.thumbnailUrl}
+ alt={video.title}
+ loading="lazy"
+ className="w-full h-auto object-cover rounded-lg"
+ width={1280}
+ height={720}
+ />
+ <div className="mt-2">
+ <h3 className="text-lg font-semibold text-brand-text">{video.title}</h3>
+ <p className="text-sm text-brand-text-secondary">{video.year} · {video.role}</p>
+ </div>
+ </button>
+ </div>
+ );
+};
+
+export default VideoCard;

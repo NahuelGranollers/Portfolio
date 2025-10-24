@@ -1,0 +1,81 @@
+﻿import { useEffect, useRef, useState, type FC } from 'react';
+import type { Video } from '../types';
+import useInView from '../hooks/useInView';
+
+type Props = {
+ video: Video;
+ onSelect: (v: Video) => void;
+};
+
+const VideoCard: FC<Props> = ({ video, onSelect }) => {
+ const { ref, inView } = useInView<HTMLDivElement>({ threshold:0.3 });
+ const [prefetched, setPrefetched] = useState(false);
+ const prefetchLinkRef = useRef<HTMLLinkElement | null>(null);
+
+ useEffect(() => {
+ if (!video?.videoUrl) return;
+ if (inView && !prefetched) {
+ // guard to avoid creating duplicates
+ if (!prefetchLinkRef.current) {
+ const link = document.createElement('link');
+ link.rel = 'preload';
+ link.as = 'video';
+ link.href = video.videoUrl;
+ // try to infer type from extension
+ const ext = (video.videoUrl.split('.').pop() || '').toLowerCase();
+ link.type = ext ? `video/${ext}` : 'video/webm';
+ document.head.appendChild(link);
+ prefetchLinkRef.current = link;
+ setPrefetched(true);
+ }
+ }
+
+ return () => {
+ // cleanup on unmount
+ if (prefetchLinkRef.current) {
+ try {
+ prefetchLinkRef.current.remove();
+ } catch (e) {
+ // ignore
+ }
+ prefetchLinkRef.current = null;
+ }
+ };
+ }, [inView, prefetched, video?.videoUrl]);
+
+ const handleMouseEnter = () => {
+ if (!video?.videoUrl) return;
+ if (!prefetched && !prefetchLinkRef.current) {
+ const link = document.createElement('link');
+ link.rel = 'preload';
+ link.as = 'video';
+ link.href = video.videoUrl;
+ const ext = (video.videoUrl.split('.').pop() || '').toLowerCase();
+ link.type = ext ? `video/${ext}` : 'video/webm';
+ document.head.appendChild(link);
+ prefetchLinkRef.current = link;
+ setPrefetched(true);
+ }
+ };
+
+ return (
+ <div ref={ref} className="video-card group" onMouseEnter={handleMouseEnter}>
+ <button onClick={() => onSelect(video)} className="video-thumbnail-wrapper w-full block text-left">
+ <img
+ src={video.thumbnailUrl}
+ alt={video.title}
+ loading="lazy"
+ className="w-full h-auto object-cover rounded-lg"
+ width={1280}
+ height={720}
+ />
+ <div className="mt-2">
+ <h3 className="text-lg font-semibold text-brand-text">{video.title}</h3>
+ <p className="text-sm text-brand-text-secondary">{video.year} · {video.role}</p>
+ </div>
+ </button>
+ </div>
+ );
+};
+
+export default VideoCard;

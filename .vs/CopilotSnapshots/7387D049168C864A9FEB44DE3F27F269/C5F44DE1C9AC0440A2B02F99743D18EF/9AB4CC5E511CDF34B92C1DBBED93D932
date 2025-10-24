@@ -1,0 +1,18 @@
+﻿declare module './types' {
+ export type Video = any;
+ export type PersonalInfo = any;
+ export type Service = any;
+ export type ContactFormData = any;
+ export type VideoForDB = any;
+}
+
+declare module './constants' {
+ export const VIDEOS: any[];
+ export const PERSONAL_INFO: any;
+ export const SERVICES: any[];
+}
+
+declare module './components/*' {
+ const comp: any;
+ export default comp;
+}

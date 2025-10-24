@@ -1,0 +1,42 @@
+﻿import React from 'react';
+import { PERSONAL_INFO } from '../constants';
+
+const Footer: React.FC = () => {
+ return (
+ <footer className="bg-brand-bg py-12 px-4 sm:px-6 lg:px-8 border-t border-brand-border">
+ <div className="max-w-6xl mx-auto">
+ <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+ <div className="text-center md:text-left">
+ <h3 className="text-2xl font-bold text-brand-primary mb-2">{PERSONAL_INFO.name}</h3>
+ <p className="text-brand-text-secondary">{PERSONAL_INFO.title}</p>
+ </div>
+
+ <div className="flex gap-4">
+ {PERSONAL_INFO.social?.linkedin && (
+ <a
+ href={PERSONAL_INFO.social.linkedin}
+ target="_blank"
+ rel="noopener noreferrer"
+ className="inline-flex items-center justify-center w-8 h-8 bg-[#2b2b2b] text-white rounded-sm hover:opacity-90 transition-opacity"
+ aria-label="LinkedIn"
+ title="LinkedIn"
+ >
+ {/* Official LinkedIn glyph (white) */}
+ <svg className="w-4 h-4" viewBox="002424" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+ <path d="M190h-14C2.239002.23905v14c02.7622.239555h14c2.76205-2.2385-5V5c0-2.761-2.238-5-5-5zM719H4V9h3v10zM5.57.732C4.5337.7323.756.9483.755.983.755.0134.5334.235.54.23c0.96701.75.7831.751.7500.968-.7831.752-1.751.752zM2019h-3v-5.604c0-1.337-.025-3.059-1.865-3.059-1.8660-2.1521.459-2.1522.966V19h-3V9h2.881v1.366h.041c.401-.7591.379-1.5592.838-1.5593.03403.5941.9973.5944.594V19z" />
+ </svg>
+ </a>
+ )}
+ </div>
+ </div>
+
+ <div className="mt-8 pt-8 border-t border-brand-border text-center text-brand-text-secondary text-sm">
+ <p>© {new Date().getFullYear()} {PERSONAL_INFO.name}. Todos los derechos reservados.</p>
+ <p className="mt-2">Hecho con React + TypeScript + Vite</p>
+ </div>
+ </div>
+ </footer>
+ );
+};
+
+export default Footer;

@@ -1,0 +1,43 @@
+﻿{
+  "name": "nahuel-granollers-video-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "tailwind:build": "npx tailwindcss -i ./index.css -o ./dist/tailwind.css --minify",
+    "tailwind:watch": "npx tailwindcss -i ./index.css -o ./dist/tailwind.css --watch"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "path": "^0.12.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.0.0",
+    "rollup-plugin-visualizer": "^5.14.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.4.1"
+  },
+  "description": "hola",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NahuelGranollers/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NahuelGranollers/Portfolio/issues"
+  },
+  "homepage": "https://github.com/NahuelGranollers/Portfolio#readme"
+}

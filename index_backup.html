@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Nahuel Granollers - Director Audiovisual & Motion Designer Portfolio</title>
+    <meta name="description" content="Portfolio de Nahuel Granollers, director audiovisual y motion designer. Especializado en edición de video, motion graphics, fashion films y producción cinematográfica." />
+    <meta name="keywords" content="director audiovisual, motion designer, edición de video, fashion film, motion graphics, after effects, premiere pro, portfolio audiovisual" />
+    <meta name="author" content="Nahuel Granollers" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nahuel-granollers-portfolio.onrender.com/" />
+    <meta property="og:title" content="Nahuel Granollers - Director Audiovisual & Motion Designer" />
+    <meta property="og:description" content="Portfolio audiovisual con proyectos de edición, motion graphics y dirección cinematográfica" />
+    <meta property="og:image" content="https://nahuel-granollers-portfolio.onrender.com/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nahuel-granollers-portfolio.onrender.com/" />
+    <meta property="twitter:title" content="Nahuel Granollers - Director Audiovisual & Motion Designer" />
+    <meta property="twitter:description" content="Portfolio audiovisual con proyectos de edición, motion graphics y dirección cinematográfica" />
+    <meta property="twitter:image" content="https://nahuel-granollers-portfolio.onrender.com/og-image.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-bg': '#121212',
+              'brand-surface': '#1e1e1e',
+              'brand-surface-light': '#2a2a2a',
+              'brand-primary': '#bb86fc',
+              'brand-primary-dark': '#9965d4',
+              'brand-secondary': '#03dac6',
+              'brand-text': '#e0e0e0',
+              'brand-text-secondary': '#a0a0a0',
+              'brand-border': '#333333',
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.3s ease-in-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+              'scale-in': 'scaleIn 0.3s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              scaleIn: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+    
+    <!-- Import Maps -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "url": "https://aistudiocdn.com/url@^0.11.4",
+        "path": "https://aistudiocdn.com/path@^0.12.7",
+        "express": "https://aistudiocdn.com/express@^5.1.0"
+      }
+    }
+    </script>
+    
+    <!-- Google Fonts (opcional, para tipografías personalizadas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      }
+      
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: #1e1e1e;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: #bb86fc;
+        border-radius: 5px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: #9965d4;
+      }
+      
+      /* Loading animation */
+      .loading-spinner {
+        border: 3px solid rgba(187, 134, 252, 0.3);
+        border-top: 3px solid #bb86fc;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Video hover effect */
+      .video-thumbnail-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .video-thumbnail-wrapper::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to top, rgba(18, 18, 18, 0.8) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .video-thumbnail-wrapper:hover::after {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="bg-brand-bg text-brand-text antialiased">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

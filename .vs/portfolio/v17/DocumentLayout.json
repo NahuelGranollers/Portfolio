@@ -1,0 +1,321 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\Footer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\Footer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoCard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\VideoCard.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:App.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\BackgroundEffect.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\BackgroundEffect.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\hooks\\useInView.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hooks\\useInView.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\VideoGrid.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\FullscreenPlayer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\FullscreenPlayer.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\src\\global.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\global.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\global.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:global.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:types.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoThumbnail.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:components\\VideoThumbnail.tsx||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\postcss.config.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:postcss.config.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tailwind.config.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tailwind.config.cjs||{14D17961-FE51-464D-9111-C4AF11D7D99A}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "tailwind.config.cjs",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tailwind.config.cjs",
+              "RelativeDocumentMoniker": "tailwind.config.cjs",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tailwind.config.cjs",
+              "RelativeToolTip": "tailwind.config.cjs",
+              "ViewState": "AgIAABcAAAAAAAAAAABRwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-24T01:50:32.806Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "postcss.config.cjs",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\postcss.config.cjs",
+              "RelativeDocumentMoniker": "postcss.config.cjs",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\postcss.config.cjs",
+              "RelativeToolTip": "postcss.config.cjs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-24T01:50:16.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAACkAAAAAAAAAAABhwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-24T01:47:13.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\index.html",
+              "RelativeDocumentMoniker": "index.html",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\index.html",
+              "RelativeToolTip": "index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-10-24T01:37:26.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "VideoThumbnail.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoThumbnail.tsx",
+              "RelativeDocumentMoniker": "components\\VideoThumbnail.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoThumbnail.tsx",
+              "RelativeToolTip": "components\\VideoThumbnail.tsx",
+              "ViewState": "AgIAAIUAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:29:42.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Footer.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\Footer.tsx",
+              "RelativeDocumentMoniker": "components\\Footer.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\Footer.tsx",
+              "RelativeToolTip": "components\\Footer.tsx",
+              "ViewState": "AgIAABIAAAAAAAAAAAAIwCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:29:22.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "types.ts",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\types.ts",
+              "RelativeDocumentMoniker": "types.ts",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\types.ts",
+              "RelativeToolTip": "types.ts",
+              "ViewState": "AgIAAD8AAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:29:11.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "global.d.ts",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\global.d.ts",
+              "RelativeDocumentMoniker": "global.d.ts",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\global.d.ts",
+              "RelativeToolTip": "global.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:26:19.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "global.d.ts",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\src\\global.d.ts",
+              "RelativeDocumentMoniker": "src\\global.d.ts",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\src\\global.d.ts",
+              "RelativeToolTip": "src\\global.d.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:23:49.86Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "vite.config.ts",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\vite.config.ts",
+              "RelativeDocumentMoniker": "vite.config.ts",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\vite.config.ts",
+              "RelativeToolTip": "vite.config.ts",
+              "ViewState": "AgIAACwAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:12:00.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "tsconfig.json",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tsconfig.json",
+              "RelativeDocumentMoniker": "tsconfig.json",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\tsconfig.json",
+              "RelativeToolTip": "tsconfig.json",
+              "ViewState": "AgIAAB0AAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-24T01:09:12.379Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FullscreenPlayer.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\FullscreenPlayer.tsx",
+              "RelativeDocumentMoniker": "components\\FullscreenPlayer.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\FullscreenPlayer.tsx",
+              "RelativeToolTip": "components\\FullscreenPlayer.tsx",
+              "ViewState": "AgIAAIEAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:08:27.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "VideoGrid.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoGrid.tsx",
+              "RelativeDocumentMoniker": "components\\VideoGrid.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoGrid.tsx",
+              "RelativeToolTip": "components\\VideoGrid.tsx",
+              "ViewState": "AgIAAFUAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:07:59.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VideoCard.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoCard.tsx",
+              "RelativeDocumentMoniker": "components\\VideoCard.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\VideoCard.tsx",
+              "RelativeToolTip": "components\\VideoCard.tsx",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAALMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:07:40.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "useInView.ts",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\hooks\\useInView.ts",
+              "RelativeDocumentMoniker": "hooks\\useInView.ts",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\hooks\\useInView.ts",
+              "RelativeToolTip": "hooks\\useInView.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:07:31.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BackgroundEffect.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\BackgroundEffect.tsx",
+              "RelativeDocumentMoniker": "components\\BackgroundEffect.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\components\\BackgroundEffect.tsx",
+              "RelativeToolTip": "components\\BackgroundEffect.tsx",
+              "ViewState": "AgIAAFYAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:07:17.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.tsx",
+              "DocumentMoniker": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\App.tsx",
+              "RelativeDocumentMoniker": "App.tsx",
+              "ToolTip": "C:\\Users\\nahue\\Documents\\GitHub\\portfolio\\App.tsx",
+              "RelativeToolTip": "App.tsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-10-24T01:06:39.231Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

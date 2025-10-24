@@ -1,0 +1,5 @@
+{
+  "name": "Nahuel Granollers' Video Portfolio",
+  "description": "Un portafolio de videos interactivos para Nahuel Granollers. Las miniaturas se muestran inicialmente, los videos se reproducen al pasar el cursor y se pueden ver en pantalla completa haciendo clic.",
+  "requestFramePermissions": []
+}
