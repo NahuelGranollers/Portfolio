@@ -27,6 +27,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: main          # Rama de destino
+          branch: gh-pages          # Rama de destino
           folder: dist              # Carpeta a publicar
 
