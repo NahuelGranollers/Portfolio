@@ -38,6 +38,7 @@ export default defineConfig({
     host: '0.0.0.0',
     allowedHosts: [
       'nahuel-granollers-portfolio.onrender.com'
+	  'nahuelgranollers.com'
     ]
   },
   define: {
