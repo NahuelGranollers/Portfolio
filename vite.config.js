@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
 export default defineConfig({
-  base: 'nahuelgranollers.com', // Cambia "Portfolio" si tu repo se llama diferente (debe coincidir)
+  base: '/', // usa '/' para dominio personalizado en la raíz
   plugins: [
     react(),
     VitePWA({
@@ -37,8 +37,8 @@ export default defineConfig({
     port: 3000,
     host: '0.0.0.0',
     allowedHosts: [
-      'nahuel-granollers-portfolio.onrender.com'
-	  'nahuelgranollers.com'
+      'nahuel-granollers-portfolio.onrender.com',
+      'nahuelgranollers.com'
     ]
   },
   define: {
