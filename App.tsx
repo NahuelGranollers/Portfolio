@@ -10,6 +10,9 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundEffect from './components/BackgroundEffect';
+import { registerSW } from 'virtual:pwa-register';
+registerSW();
+
 
 function App(): React.ReactElement {
  const [fullscreenVideo, setFullscreenVideo] = useState(null as Video | null);
