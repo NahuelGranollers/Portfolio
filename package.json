@@ -12,6 +12,7 @@
     "tailwind:watch": "npx tailwindcss -i ./index.css -o ./dist/tailwind.css --watch"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
     "express": "^5.1.0",
     "path": "^0.12.7",
     "react": "^19.2.0",
