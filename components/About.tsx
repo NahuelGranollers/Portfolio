@@ -16,6 +16,8 @@ const About: React.FC = () => {
       <PixelatePhoto 
         src="images/profile.jpg" 
         alt="Nahuel Granollers" 
+		width={550}   // ← REQUERIDO: Ancho de la imagen
+height={550}  // ← REQUERIDO: Alto de la imagen
               size={20} 
               brushRadius={2}
               className="rounded-2xl shadow-2xl"
