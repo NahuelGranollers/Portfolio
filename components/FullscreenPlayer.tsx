@@ -101,7 +101,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
               <p
                 className={
                   "text-brand-text-secondary text-base whitespace-pre-line mb-2 transition-all duration-300 " +
-                  (showFullDescription ? "" : "line-clamp-3")
+                  (showFullDescription ? "" : "line-clamp-2")
                 }
                 style={
                   !showFullDescription
