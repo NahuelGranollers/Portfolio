@@ -4,26 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer base {
   html {
     font-family: 'Inter', 'system-ui', 'sans-serif';
-  }
-}
-
-/* =========================================================
-   🪩 BASE GLOBAL - Neon Cyberpunk Theme
-   ========================================================= */
-@layer base {
-  html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply min-h-screen font-inter bg-[#0a0a0f] text-gray-200 antialiased transition-colors duration-700 ease-in-out;
+    @apply min-h-screen bg-[#0a0a0f] text-gray-200 antialiased transition-colors duration-700 ease-in-out;
+    font-family: 'Inter', 'system-ui', 'sans-serif'; /* ← Cambiado aquí */
   }
 
   /* Luz suave de fondo general */
