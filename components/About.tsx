@@ -14,7 +14,7 @@ const About: React.FC = () => {
   {/* Imagen de perfil */}
   <div className="order-2 md:order-1 flex justify-center">
       <PixelatePhoto 
-        src="images/profile.jpg" 
+        src="/images/profile.jpg" 
         alt="Nahuel Granollers" 
 		width={550}   // ← REQUERIDO: Ancho de la imagen
 height={550}  // ← REQUERIDO: Alto de la imagen
