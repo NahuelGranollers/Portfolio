@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import PixelatePhoto from './PixelatePhoto';
+import DepthEffectPhoto from './DepthEffectPhoto';
 
 const About: React.FC = () => {
   return (
@@ -12,16 +12,16 @@ const About: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Imagen de perfil */}
-          <div className="order-2 md:order-1 flex justify-center">
-            <PixelatePhoto 
-              src="/images/profile.wepb" 
-              width={550} 
-              height={550}
-              size={20} 
-              brushRadius={2}
-              className="rounded-2xl shadow-2xl"
-            />
-          </div>
+<div className="order-2 md:order-1 flex justify-center">
+  <DepthEffectPhoto
+    src="/images/profile.webp"
+    depth="/images/deph.webp"
+    width={500}
+    height={500}
+    blurAmount={32} // Ajusta la intensidad a tu gusto
+    className="rounded-2xl shadow-2xl"
+  />
+</div>
           
           {/* Contenido */}
           <div className="order-1 md:order-2 space-y-6">
