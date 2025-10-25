@@ -3,7 +3,7 @@ import { Video } from './types';
 export const VIDEOS: Video[] = [
   {
     id: 1,
-    title: 'Poesía Visual Experimental - haiku',
+    title: 'Poesía Visual Experimental',
     description: `Pieza audiovisual experimental que fusiona luz, imagen y movimiento. Este videopoema explora el lenguaje visual a través de tipografía cinética, texturas orgánicas y metáforas visuales, creando una narrativa sensorial que trasciende lo literal. Un trabajo personal que refleja mi interés en las formas híbridas de expresión audiovisual contemporánea.`,
     thumbnailUrl: '/videos/haiku.webp',  // ← Agregada barra inicial
     videoUrl: '/videos/haiku.webm',      // ← Agregada barra inicial
@@ -25,7 +25,7 @@ export const VIDEOS: Video[] = [
   },
   {
     id: 3,
-    title: 'Corto con Material - sin guion',
+    title: 'Corto editado sin guion',
     description: 'Ejercicio de edición narrativa trabajando con material existente sin guion previo. Desafío de construir una historia coherente y emotiva a través del montaje y la selección de tomas.',
     thumbnailUrl: '/videos/cortosinguion.webp',
     videoUrl: '/videos/Corto-Sin-Guion.webm',
