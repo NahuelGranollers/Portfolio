@@ -56,4 +56,15 @@ const About: React.FC = () => {
   );
 };
 
+import PixelatePhoto from './PixelatePhoto';
+import profileImg from '../assets/profile.jpg';
+
+const About = () => (
+  <section className="py-16 flex flex-col items-center" id="about">
+    <h2 className="text-3xl font-bold mb-6">Sobre mí</h2>
+    <PixelatePhoto src={profileImg} width={300} height={300} size={20} className="mb-8" />
+    {/* resto de tu descripción */}
+  </section>
+);
+
 export default About;
