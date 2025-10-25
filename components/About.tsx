@@ -18,7 +18,7 @@ const About: React.FC = () => {
               alpha="/images/alpha.webp"
               width={500}
               height={500}
-              intensity={5}
+              intensity={2}
               className="rounded-2xl"
             />
           </div>

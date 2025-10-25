@@ -101,7 +101,7 @@ const DepthParallaxMasked: React.FC<Props> = ({
       for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
           const i = (y * width + x) * 4;
-          const depthValue = depthData[i] / 255;
+          const depthValue i = (depthData[i] / 255);
 
           const displaceX = Math.round(x + offsetX * depthValue);
           const displaceY = Math.round(y + offsetY * depthValue);
