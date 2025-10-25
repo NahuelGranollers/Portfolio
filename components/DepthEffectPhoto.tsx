@@ -1,122 +1,139 @@
 import React, { useRef, useEffect, useState } from "react";
 
 interface Props {
-  src: string;         // Ruta de la imagen original
-  depth: string;       // Ruta del mapa de profundidad (en escala de grises)
+  src: string;        // Imagen original
+  depth: string;      // Mapa de profundidad (escala de grises)
   width: number;
   height: number;
-  blurAmount?: number; // Solo para ajustar la intensidad del desenfoque
+  blurIntensity?: number; // 0-50 (cuanto más, más desenfoque)
   className?: string;
 }
 
-const DepthEffectPhoto: React.FC<Props> = ({
+const DepthOfField: React.FC<Props> = ({
   src,
   depth,
   width,
   height,
-  blurAmount = 20, // Cuanto mayor, más desenfoque en la zona más profunda
+  blurIntensity = 25,
   className = "",
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [loaded, setLoaded] = useState(false);
+  const [isRendering, setIsRendering] = useState(false);
 
   useEffect(() => {
-    const img = new window.Image();
-    const depthImg = new window.Image();
-    let bothLoaded = 0;
+    // Cargar ambas imágenes
+    const loadImages = async () => {
+      const img = new Image();
+      const depthMap = new Image();
 
-    img.onload = () => {
-      bothLoaded += 1;
-      if (bothLoaded === 2) setLoaded(true);
+      img.crossOrigin = "anonymous";
+      depthMap.crossOrigin = "anonymous";
+
+      await Promise.all([
+        new Promise((resolve) => {
+          img.onload = resolve;
+          img.src = src;
+        }),
+        new Promise((resolve) => {
+          depthMap.onload = resolve;
+          depthMap.src = depth;
+        }),
+      ]);
+
+      // Renderizar efecto
+      renderDepthEffect(img, depthMap);
     };
-    depthImg.onload = () => {
-      bothLoaded += 1;
-      if (bothLoaded === 2) setLoaded(true);
-    };
 
-    img.src = src;
-    depthImg.src = depth;
+    loadImages().catch(console.error);
+  }, [src, depth, width, height, blurIntensity]);
 
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext("2d");
-      if (!ctx) return;
-      ctx.clearRect(0, 0, width, height);
-    }
+  const renderDepthEffect = (img: HTMLImageElement, depthMap: HTMLImageElement) => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    if (!loaded) return;
+    setIsRendering(true);
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
 
-    // Pintamos todo después de cargar
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext("2d");
-      if (!ctx) return;
+    // Dibujar imagen original
+    ctx.drawImage(img, 0, 0, width, height);
 
-      // Dibujar la imagen base
-      ctx.drawImage(img, 0, 0, width, height);
+    // Obtener datos de profundidad
+    const tempCanvas = document.createElement("canvas");
+    tempCanvas.width = width;
+    tempCanvas.height = height;
+    const tempCtx = tempCanvas.getContext("2d");
+    if (!tempCtx) return;
 
-      // Obtener píxeles profundidad
-      const tempCanvas = document.createElement("canvas");
-      tempCanvas.width = width;
-      tempCanvas.height = height;
-      const tempCtx = tempCanvas.getContext("2d");
-      if (!tempCtx) return;
+    tempCtx.drawImage(depthMap, 0, 0, width, height);
+    const depthData = tempCtx.getImageData(0, 0, width, height).data;
 
-      tempCtx.drawImage(depthImg, 0, 0, width, height);
-      const depthData = tempCtx.getImageData(0, 0, width, height);
+    // Aplicar blur basado en profundidad usando capas
+    const blurLayers = 6;
+    for (let layer = 0; layer < blurLayers; layer++) {
+      const minDepth = (255 / blurLayers) * layer;
+      const maxDepth = (255 / blurLayers) * (layer + 1);
 
-      // Para cada rango de profundidad, aplica más blur y pinta la parte correspondiente
-      // Para mejor efecto, lo dividimos en pasos (capas graduales)
-      const steps = 8;
-      for (let s = 0; s < steps; s++) {
-        // Crea una máscara
-        tempCtx.clearRect(0, 0, width, height);
-        tempCtx.globalAlpha = 1;
-        const minGray = (255 / steps) * s;
-        const maxGray = (255 / steps) * (s + 1);
+      // Crear máscara para esta capa
+      const maskCanvas = document.createElement("canvas");
+      maskCanvas.width = width;
+      maskCanvas.height = height;
+      const maskCtx = maskCanvas.getContext("2d");
+      if (!maskCtx) continue;
 
-        // Pinta solo los píxeles cuyo valor de profundidad está entre minGray y maxGray
-        const mask = tempCtx.createImageData(width, height);
-        for (let i = 0; i < depthData.data.length; i += 4) {
-          const gray = depthData.data[i];
-          if (gray >= minGray && gray < maxGray) {
-            mask.data[i] = 255;
-            mask.data[i + 1] = 255;
-            mask.data[i + 2] = 255;
-            mask.data[i + 3] = 255;
-          }
+      const maskData = maskCtx.createImageData(width, height);
+      for (let i = 0; i < depthData.length; i += 4) {
+        const depthValue = depthData[i];
+        if (depthValue >= minDepth && depthValue < maxDepth) {
+          maskData.data[i] = 255;     // R
+          maskData.data[i + 1] = 255; // G
+          maskData.data[i + 2] = 255; // B
+          maskData.data[i + 3] = 255; // A
         }
-        tempCtx.putImageData(mask, 0, 0);
-
-        // Aplica blur
-        ctx.save();
-        ctx.filter = `blur(${(blurAmount * s) / steps}px)`;
-        ctx.globalCompositeOperation = "destination-in";
-        ctx.drawImage(tempCanvas, 0, 0);
-        ctx.restore();
-
-        // Mezcla la imagen base en esas áreas blurreadas
-        ctx.save();
-        ctx.filter = `blur(${(blurAmount * s) / steps}px)`;
-        ctx.globalCompositeOperation = "destination-over";
-        ctx.drawImage(img, 0, 0, width, height);
-        ctx.restore();
-
-        ctx.globalCompositeOperation = "source-over";
       }
-    }
-    // Solo repintar tras cargarse todo
-    // eslint-disable-next-line
-  }, [src, depth, width, height, blurAmount, loaded]);
+      maskCtx.putImageData(maskData, 0, 0);
 
-  // Solo renderiza el canvas
+      // Aplicar blur progresivo
+      const blurAmount = (blurIntensity * layer) / blurLayers;
+      ctx.save();
+      ctx.filter = `blur(${blurAmount}px)`;
+      ctx.globalCompositeOperation = "destination-in";
+      ctx.drawImage(maskCanvas, 0, 0);
+      ctx.restore();
+
+      // Superponer imagen blureada
+      ctx.save();
+      ctx.filter = `blur(${blurAmount}px)`;
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.drawImage(img, 0, 0, width, height);
+      ctx.restore();
+
+      ctx.globalCompositeOperation = "source-over";
+    }
+
+    setIsRendering(false);
+  };
+
   return (
-    <canvas
-      ref={canvasRef}
-      width={width}
-      height={height}
-      className={className}
-      style={{ width, height, display: "block", borderRadius: "1rem" }}
-    />
+    <div className={`relative inline-block ${className}`} style={{ width, height }}>
+      nvas
+        ref={canvasRef}
+        width={width}
+        height={height}
+        style={{
+          width: "100%",
+          height: "100%",
+          borderRadius: "1rem",
+          display: "block",
+        }} }}
+      />
+      {isRendering && (
+        <div style={{ position: "absolute", top: 0, left: 0 }}>
+          Renderizando...
+        </div>
+      )}
+    </div>
   );
 };
 
-export default DepthEffectPhoto;
+export default DepthOfField;
