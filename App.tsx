@@ -1,4 +1,4 @@
-import './index.css'; // ← Debe estar al inicio
+import './index.css';
 import React, { useState, lazy, Suspense } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';
@@ -10,69 +10,57 @@ import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import BackgroundEffect from './components/BackgroundEffect';
+import BackgroundEffect from './components/BackgroundEffect'; // ← Debe estar aquí
 import { registerSW } from 'virtual:pwa-register';
 registerSW();
 
-
 function App(): React.ReactElement {
- const [fullscreenVideo, setFullscreenVideo] = useState(null as Video | null);
+  const [fullscreenVideo, setFullscreenVideo] = useState(null as Video | null);
 
- const handleSelectVideo = (video: Video) => {
- setFullscreenVideo(video);
- };
+  const handleSelectVideo = (video: Video) => {
+    setFullscreenVideo(video);
+  };
 
- const handleCloseFullscreen = () => {
- setFullscreenVideo(null);
- };
+  const handleCloseFullscreen = () => {
+    setFullscreenVideo(null);
+  };
 
- return (
- <div className="min-h-screen bg-brand-bg font-sans">
- {/* BackgroundEffect */}
- <BackgroundEffect />
+  return (
+    <div className="min-h-screen bg-brand-bg font-sans">
+      {/* BackgroundEffect - DEBE ESTAR AQUÍ */}
+      <BackgroundEffect />
 
- {/* Navigation */}
- <Navigation />
+      {/* Navigation */}
+      <Navigation />
 
- {/* Hero Section */}
- <Hero />
+      {/* Hero Section */}
+      <Hero />
 
- {/* Projects Section */}
- <section id="proyectos" className="py-24 px-4 sm:px-6 lg:px-8">
- <div className="max-w-7xl mx-auto">
- <div className="text-center mb-16">
- <h2 className="text-4xl sm:text-5xl font-bold text-brand-primary mb-4">
- Proyectos Destacados
- </h2>
- <p className="text-xl text-brand-text-secondary max-w-3xl mx-auto">
- Una selección de mis trabajos más recientes. Pasa el cursor para previsualizar, haz clic para ver el proyecto completo.
- </p>
- </div>
+      {/* Projects Section */}
+      <section id="proyectos" className="py-24 px-4 sm:px-6 lg:px-8">
+        {/* ... resto del contenido ... */}
+      </section>
 
- <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
- </div>
- </section>
+      {/* About */}
+      <About />
 
- {/* About Section */}
- <About />
+      {/* Services */}
+      <Services />
 
- {/* Services Section */}
- <Services />
+      {/* Contact */}
+      <Contact />
 
- {/* Contact Section */}
- <Contact />
+      {/* Footer */}
+      <Footer />
 
- {/* Footer */}
- <Footer />
-
- {/* Fullscreen Video Player - lazy loaded */}
- {fullscreenVideo && (
- <Suspense fallback={<div className="fixed inset-0 z-50 flex items-center justify-center">Cargando...</div>}>
- <FullscreenPlayer video={fullscreenVideo} onClose={handleCloseFullscreen} />
- </Suspense>
- )}
- </div>
- );
+      {/* Fullscreen Video Player */}
+      {fullscreenVideo && (
+        <Suspense fallback={<div>Cargando...</div>}>
+          <FullscreenPlayer video={fullscreenVideo} onClose={handleCloseFullscreen} />
+        </Suspense>
+      )}
+    </div>
+  );
 }
 
 export default App;
