@@ -120,9 +120,4 @@ export const SERVICES = [
     description: 'Dirección y producción de cortometrajes, fashion films y contenido narrativo.',
     icon: '🎥'
   },
-  {
-    title: 'Color Grading',
-    description: 'Corrección y gradación de color profesional para darle a tu proyecto el look perfecto.',
-    icon: '🎨'
-  }
 ];
