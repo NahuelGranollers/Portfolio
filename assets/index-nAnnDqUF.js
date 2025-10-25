@@ -9,7 +9,7 @@ import{r as x,j as e,R as y,a as w}from"./vendor_react-Y9HpgmFa.js";import"./ven
             height: 50%;
             background: radial-gradient(ellipse, rgba(187,134,252,0.05) 0%, transparent 60%);
             pointer-events: none;
-            z-index: 0;
+            z-index: -1;
           }
         `}),e.jsx("div",{className:"top-glow","aria-hidden":"true"})]}):e.jsxs(e.Fragment,{children:[e.jsx("style",{children:`
         .bg-gradient-fixed {
@@ -17,7 +17,7 @@ import{r as x,j as e,R as y,a as w}from"./vendor_react-Y9HpgmFa.js";import"./ven
           background-attachment: fixed;
           position: fixed;
           inset: 0;
-          z-index: 0;
+          z-index: -3;
           pointer-events: none;
           overflow: hidden;
         }
@@ -44,7 +44,7 @@ import{r as x,j as e,R as y,a as w}from"./vendor_react-Y9HpgmFa.js";import"./ven
           height: 100%;
           overflow: hidden;
           pointer-events: none;
-          z-index: 1;
+          z-index: -2;
         }
 
         .particle {
@@ -80,7 +80,7 @@ import{r as x,j as e,R as y,a as w}from"./vendor_react-Y9HpgmFa.js";import"./ven
           height: 60%;
           background: radial-gradient(circle at center, rgba(187,134,252,0.12) 0%, transparent 70%);
           filter: blur(60px);
-          z-index: 0;
+          z-index: -1;
           pointer-events: none;
           animation: pulse 10s ease-in-out infinite;
         }
