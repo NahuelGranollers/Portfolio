@@ -94,12 +94,8 @@ export const PERSONAL_INFO = {
   },
   skills: [
     'Edición de Video',
-    'Motion Graphics',
     'Dirección Cinematográfica',
-    'After Effects',
     'Premiere Pro',
-    'DaVinci Resolve',
-    'Color Grading',
     'Diseño de UI/UX',
     'Storytelling Visual'
   ],
