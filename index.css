@@ -2,62 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+/* =========================================================
+   🪩 BASE GLOBAL - Neon Cyberpunk Theme
+   ========================================================= */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen font-inter bg-[#0a0a0f] text-gray-200 antialiased transition-colors duration-700 ease-in-out;
+  }
+
+  /* Luz suave de fondo general */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
+    animation: shimmer-bg 16s ease-in-out infinite alternate;
+  }
+
+  @keyframes shimmer-bg {
+    0% {opacity: 0.3; transform: scale(1);}
+    50% {opacity: 0.6; transform: scale(1.02);}
+    100% {opacity: 0.3; transform: scale(1);}
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
+/* =========================================================
+   💫 SCROLLBAR Personalizado
+   ========================================================= */
 ::-webkit-scrollbar {
   width: 10px;
 }
-
 ::-webkit-scrollbar-track {
   background: #1e1e1e;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #bb86fc;
-  border-radius: 5px;
+  background: linear-gradient(180deg, #bb86fc, #03dac6);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(187,134,252,0.4);
+  transition: all 0.3s ease;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #9965d4;
+  background: linear-gradient(180deg, #9965d4, #00bfa5);
 }
 
+/* =========================================================
+   🔄 SPINNER DE CARGA Neón
+   ========================================================= */
 .loading-spinner {
-  border: 3px solid rgba(187, 134, 252, 0.3);
-  border-top: 3px solid #bb86fc;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
+  @apply w-10 h-10 rounded-full border-4 border-violet-500/30 border-t-violet-400 animate-spin;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+/* =========================================================
+   🎞️ VÍDEO HOVER GRADIENT EFECTO
+   ========================================================= */
 .video-thumbnail-wrapper {
   position: relative;
   overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(187,134,252,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-thumbnail-wrapper:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(187,134,252,0.45);
 }
 
 .video-thumbnail-wrapper::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to top, rgba(18, 18, 18, 0.8) 0%, transparent 50%);
+  inset: 0;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.85) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .video-thumbnail-wrapper:hover::after {
   opacity: 1;
+}
+
+/* =========================================================
+   🔘 BOTONES CIBERPUNK con Glow
+   ========================================================= */
+.btn-neon {
+  @apply px-5 py-2 rounded-md text-sm font-medium bg-violet-600/20 border border-violet-400/50 text-violet-300 
+  transition-all duration-300;
+  box-shadow: 0 0 15px rgba(187,134,252,0.3);
+}
+
+.btn-neon:hover {
+  @apply bg-violet-600/40 text-violet-100 scale-105;
+  box-shadow: 0 0 25px rgba(187,134,252,0.5), 0 0 10px rgba(3,218,198,0.3);
+}
+
+/* =========================================================
+   ⚡ ANIMACIONES ADICIONALES
+   ========================================================= */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(187,134,252,0.4); }
+  50% { box-shadow: 0 0 30px rgba(3,218,198,0.6); }
+}
+
+.glow-box {
+  animation: glow-pulse 4s infinite ease-in-out alternate;
+}
+
+/* =========================================================
+   🕶️ AYUDAS DE TEMA OSCURO y BLENDING
+   ========================================================= */
+.dark-glow {
+  background: radial-gradient(circle, rgba(3,218,198,0.05) 0%, transparent 70%);
+  mix-blend-mode: screen;
+  filter: blur(60px);
+  pointer-events: none;
 }
