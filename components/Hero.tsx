@@ -17,8 +17,8 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20">
-      <div className="max-w-4xl mx-auto text-center">
+<section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
+  <div className="max-w-4xl mx-auto text-center relative z-20">
         <div className="animate-slide-up">
           <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold tracking-tight text-brand-primary mb-6">
             {PERSONAL_INFO.name}
