@@ -83,8 +83,8 @@ const DepthParallaxMasked: React.FC<Props> = ({
       const alphaData = alphaCtx.getImageData(0, 0, width, height).data;
 
       // 4. Calcular desplazamiento basado en mouse
-      const offsetX = -(mousePos.x - 0.5) * intensity;
-      const offsetY = -(mousePos.y - 0.5) * intensity;
+      const offsetX = (mousePos.x - 0.5) * intensity;
+      const offsetY = (mousePos.y - 0.5) * intensity;
 
       // 5. Canvas temporal para la imagen
       const imgCanvas = document.createElement("canvas");

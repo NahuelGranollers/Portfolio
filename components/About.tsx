@@ -19,7 +19,7 @@ const About: React.FC = () => {
               background="/images/fondo.webp"
               width={500}
               height={500}
-              intensity={5}
+              intensity={10}
               className="rounded-2xl"
             />
           </div>
