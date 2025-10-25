@@ -10,16 +10,17 @@ const About: React.FC = () => {
           Sobre Mí
         </h2>
         
-       <div className="order-2 md:order-1 flex justify-center">
-  <DepthParallax
-    src="/images/profile.webp"
-    depth="/images/deph.webp"  // ← AHORA SÍ usa el mapa
-    width={500}
-    height={500}
-    intensity={25}
-    className="rounded-2xl shadow-2xl"
-  />
-</div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1 flex justify-center">
+            <DepthParallax
+              src="/images/profile.jpg"
+              depth="/images/deph.jpg"
+              width={500}
+              height={500}
+              intensity={25}
+              className="rounded-2xl shadow-2xl"
+            />
+          </div>
           
           <div className="order-1 md:order-2 space-y-6">
             <p className="text-lg text-gray-200 leading-relaxed">
