@@ -85,40 +85,40 @@ const PixelatePhoto: React.FC<Props> = ({
     }
   };
 
-  return (
+return (
+  <div
+    className={`relative group inline-block ${className}`}
+    style={{ width: `${width}px`, height: `${height}px` }} // ← Fuerza dimensiones exactas
+  >
+    {/* Imagen de fondo */}
+    <img
+      src={src}
+      ref={imgRef}
+      alt="Profile"
+      width={width}
+      height={height}
+      className="block object-cover rounded-md"
+      draggable={false}
+      style={{ width: `${width}px`, height: `${height}px` }} // ← Fuerza dimensiones exactas
+    />
+    {/* Canvas Overlay */}
+    <canvas
+      ref={canvasRef}
+      width={width}
+      height={height}
+      className="absolute left-0 top-0 cursor-crosshair"
+      style={{ width: `${width}px`, height: `${height}px`, zIndex: 5 }} // ← Fuerza dimensiones exactas
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      onClick={handleClick}
+    />
+    {/* Sombra extra para feedback */}
     <div
-      className={`relative group w-fit inline-block ${className}`}
-      style={{ width, height }}
-    >
-      {/* Imagen de fondo */}
-      <img
-        src={src}
-        ref={imgRef}
-        alt="Profile"
-        width={width}
-        height={height}
-        className="block object-cover rounded-md"
-        draggable={false}
-        style={{ pointerEvents: 'none', width, height }}
-      />
-      {/* Canvas Overlay */}
-      <canvas
-        ref={canvasRef}
-        width={width}
-        height={height}
-        className="absolute left-0 top-0 w-full h-full cursor-crosshair"
-        style={{ zIndex: 5 }}
-        onMouseMove={handleMove}
-        onMouseLeave={handleLeave}
-        onClick={handleClick}
-      />
-      {/* Sombra extra para feedback */}
-      <div
-        className="absolute inset-0 pointer-events-none rounded-md"
-        style={{ boxShadow: '0 4px 30px 8px rgba(70,0,140,0.07)' }}
-      />
-    </div>
-  );
+      className="absolute inset-0 pointer-events-none rounded-md"
+      style={{ boxShadow: '0 4px 30px 8px rgba(139,92,246,0.15)' }}
+    />
+  </div>
+);
 };
 
 export default PixelatePhoto;

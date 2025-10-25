@@ -4,7 +4,7 @@ import PixelatePhoto from './PixelatePhoto';
 
 const About: React.FC = () => {
   return (
-    <section id="sobre-mi" className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-surface">
+    <section id="sobre-mi" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl sm:text-5xl font-bold text-violet-400 mb-12 text-center">
           Sobre Mí
@@ -13,15 +13,13 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Imagen de perfil con efecto pixelado */}
           <div className="order-2 md:order-1">
-            <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
-              <PixelatePhoto 
-                src="/images/profile.jpg" 
-                width={500} 
-                height={500} 
-                size={20} 
-                className="w-full h-full"
-              />
-            </div>
+            <PixelatePhoto 
+              src="/images/profile.jpg" 
+              width={600} 
+              height={600} 
+              size={25} 
+              className="rounded-2xl shadow-2xl"
+            />
           </div>
           
           {/* Contenido */}
