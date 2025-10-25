@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import Parallax3D from './Parallax3D';
+import DepthParallax from './DepthParallax';
 
 const About: React.FC = () => {
   return (
@@ -10,16 +10,16 @@ const About: React.FC = () => {
           Sobre Mí
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1 flex justify-center">
-            <Parallax3D
-              src="/images/profile.webp"
-              width={500}
-              height={500}
-              intensity={15}  // Ajusta entre 5-30 según lo que quieras
-              className="rounded-2xl"
-            />
-          </div>
+       <div className="order-2 md:order-1 flex justify-center">
+  <DepthParallax
+    src="/images/profile.webp"
+    depth="/images/deph.webp"  // ← AHORA SÍ usa el mapa
+    width={500}
+    height={500}
+    intensity={25}
+    className="rounded-2xl shadow-2xl"
+  />
+</div>
           
           <div className="order-1 md:order-2 space-y-6">
             <p className="text-lg text-gray-200 leading-relaxed">
