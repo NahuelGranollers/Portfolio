@@ -1,3 +1,4 @@
+import './index.css'; // ← Debe estar al inicio
 import React, { useState, lazy, Suspense } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';

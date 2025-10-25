@@ -36,6 +36,8 @@ const Footer: React.FC = () => {
 
         <div className="mt-8 pt-8 border-t border-brand-border text-center text-brand-text-secondary text-sm">
           <p>&copy; {currentYear} {PERSONAL_INFO.name}. Todos los derechos reservados.</p>
+		  <p className="mt-2">
+		</p>
         </div>
       </div>
     </footer>
