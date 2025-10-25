@@ -12,12 +12,12 @@ const About: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Imagen de perfil con efecto pixelado */}
-          <div className="order-2 md:order-1">
+          <div className="order-2 md:order-1 flex justify-center">
             <PixelatePhoto 
               src="/images/profile.jpg" 
-              width={600} 
-              height={600} 
-              size={25} 
+              width={400} 
+              height={400} 
+              size={16} 
               className="rounded-2xl shadow-2xl"
             />
           </div>
