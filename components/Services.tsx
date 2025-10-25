@@ -12,7 +12,7 @@ const Services: React.FC = () => {
           Soluciones audiovisuales profesionales adaptadas a tus necesidades
         </p>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-8">
           {SERVICES.map((service, index) => (
             <div
               key={index}
