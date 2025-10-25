@@ -13,8 +13,8 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
             <DepthParallax
-              src="/images/profile.jpg"
-              depth="/images/deph.jpg"
+              src="/images/profile.webp"
+              depth="/images/deph.webp"
               width={500}
               height={500}
               intensity={25}
