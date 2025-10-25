@@ -10,6 +10,7 @@ export default {
       colors: {
         'brand-primary': '#bb86fc',
         'brand-primary-dark': '#9965d4',
+        'brand-bg': '#0a0a0f',
         'brand-text': '#f5f5f5',
         'brand-text-secondary': '#a7a9a9',
         'brand-surface': '#1e1e1e',
