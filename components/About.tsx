@@ -14,7 +14,7 @@ const About: React.FC = () => {
           {/* Imagen de perfil */}
           <div className="order-2 md:order-1 flex justify-center">
             <PixelatePhoto 
-              src="/images/profile.jpg" 
+              src="/images/profile.wepb" 
               width={550} 
               height={550}
               size={20} 
