@@ -10,7 +10,7 @@ import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import BackgroundEffect from './components/BackgroundEffect'; // ← Debe estar aquí
+import BackgroundEffect from './components/BackgroundEffect';
 import { registerSW } from 'virtual:pwa-register';
 registerSW();
 
@@ -27,7 +27,7 @@ function App(): React.ReactElement {
 
   return (
     <div className="min-h-screen bg-brand-bg font-sans">
-      {/* BackgroundEffect - DEBE ESTAR AQUÍ */}
+      {/* BackgroundEffect */}
       <BackgroundEffect />
 
       {/* Navigation */}
@@ -38,7 +38,18 @@ function App(): React.ReactElement {
 
       {/* Projects Section */}
       <section id="proyectos" className="py-24 px-4 sm:px-6 lg:px-8">
-        {/* ... resto del contenido ... */}
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-violet-400 mb-4">
+              Proyectos Destacados
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Una selección de mis trabajos más recientes. Pasa el cursor para previsualizar, haz clic para ver el proyecto completo.
+            </p>
+          </div>
+
+          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+        </div>
       </section>
 
       {/* About */}
@@ -55,7 +66,7 @@ function App(): React.ReactElement {
 
       {/* Fullscreen Video Player */}
       {fullscreenVideo && (
-        <Suspense fallback={<div>Cargando...</div>}>
+        <Suspense fallback={<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 text-white">Cargando...</div>}>
           <FullscreenPlayer video={fullscreenVideo} onClose={handleCloseFullscreen} />
         </Suspense>
       )}
