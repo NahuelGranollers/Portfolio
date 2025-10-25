@@ -1,74 +1,102 @@
 import React, { useRef, useEffect, useState } from "react";
 
 interface Props {
-  src: string;
-  depth: string;
+  src: string;          // Imagen original
+  depth: string;        // Mapa de profundidad
   width: number;
   height: number;
-  blurIntensity?: number;
+  intensity?: number;   // Intensidad del efecto (0-50)
   className?: string;
 }
 
-const DepthEffectPhoto: React.FC<Props> = ({
+const Parallax3D: React.FC<Props> = ({
   src,
   depth,
   width,
   height,
-  blurIntensity = 25,
+  intensity = 30,
   className = "",
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [isRendering, setIsRendering] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
+  const [images, setImages] = useState<{ base: HTMLImageElement; depth: HTMLImageElement | null }>({
+    base: new window.Image(),
+    depth: null,
+  });
 
+  // Cargar imágenes
   useEffect(() => {
-    const loadImages = async () => {
-      const img = new Image();
-      const depthMap = new Image();
+    const img = new window.Image();
+    const depthMap = new window.Image();
 
-      img.crossOrigin = "anonymous";
-      depthMap.crossOrigin = "anonymous";
+    img.crossOrigin = "anonymous";
+    depthMap.crossOrigin = "anonymous";
 
-      await Promise.all([
-        new Promise((resolve) => {
-          img.onload = resolve;
-          img.src = src;
-        }),
-        new Promise((resolve) => {
-          depthMap.onload = resolve;
-          depthMap.src = depth;
-        }),
-      ]);
-
-      renderDepthEffect(img, depthMap);
+    let loaded = 0;
+    const onLoad = () => {
+      loaded++;
+      if (loaded === 2) {
+        setImages({ base: img, depth: depthMap });
+      }
     };
 
-    loadImages().catch(console.error);
-  }, [src, depth, width, height, blurIntensity]);
+    img.onload = onLoad;
+    depthMap.onload = onLoad;
 
-  const renderDepthEffect = (img: HTMLImageElement, depthMap: HTMLImageElement) => {
+    img.src = src;
+    depthMap.src = depth;
+  }, [src, depth]);
+
+  // Detección de movimiento del mouse
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      setMousePos({ x: Math.max(0, Math.min(1, x)), y: Math.max(0, Math.min(1, y)) });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  // Renderizar efecto parallax
+  useEffect(() => {
+    if (!canvasRef.current || !images.base || !images.depth) return;
     const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    setIsRendering(true);
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) return;
 
-    ctx.drawImage(img, 0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
 
+    // Obtener datos de profundidad
     const tempCanvas = document.createElement("canvas");
     tempCanvas.width = width;
     tempCanvas.height = height;
     const tempCtx = tempCanvas.getContext("2d");
     if (!tempCtx) return;
 
-    tempCtx.drawImage(depthMap, 0, 0, width, height);
+    tempCtx.drawImage(images.depth, 0, 0, width, height);
     const depthData = tempCtx.getImageData(0, 0, width, height).data;
 
-    const blurLayers = 6;
-    for (let layer = 0; layer < blurLayers; layer++) {
-      const minDepth = (255 / blurLayers) * layer;
-      const maxDepth = (255 / blurLayers) * (layer + 1);
+    // Calcular offset basado en posición del mouse y profundidad
+    const centerX = mousePos.x * 2 - 1; // -1 a 1
+    const centerY = mousePos.y * 2 - 1; // -1 a 1
 
+    // Crear capas parallax
+    const layers = 8;
+    for (let layer = 0; layer < layers; layer++) {
+      const minDepth = (255 / layers) * layer;
+      const maxDepth = (255 / layers) * (layer + 1);
+
+      // Calculador offset para esta capa
+      const layerDepth = layer / layers;
+      const offsetX = centerX * intensity * layerDepth;
+      const offsetY = centerY * intensity * layerDepth;
+
+      // Crear máscara para esta capa
       const maskCanvas = document.createElement("canvas");
       maskCanvas.width = width;
       maskCanvas.height = height;
@@ -87,27 +115,31 @@ const DepthEffectPhoto: React.FC<Props> = ({
       }
       maskCtx.putImageData(maskData, 0, 0);
 
-      const blurAmount = (blurIntensity * layer) / blurLayers;
+      // Dibujar esta capa con offset
       ctx.save();
-      ctx.filter = `blur(${blurAmount}px)`;
-      ctx.globalCompositeOperation = "destination-in";
+      ctx.globalCompositeOperation = "destination-out";
       ctx.drawImage(maskCanvas, 0, 0);
       ctx.restore();
 
       ctx.save();
-      ctx.filter = `blur(${blurAmount}px)`;
-      ctx.globalCompositeOperation = "destination-over";
-      ctx.drawImage(img, 0, 0, width, height);
+      ctx.globalCompositeOperation = "source-over";
+      ctx.translate(offsetX, offsetY);
+      ctx.drawImage(images.base, 0, 0, width, height);
       ctx.restore();
 
-      ctx.globalCompositeOperation = "source-over";
+      ctx.globalCompositeOperation = "lighten";
+      ctx.drawImage(maskCanvas, 0, 0);
     }
 
-    setIsRendering(false);
-  };
+    ctx.globalCompositeOperation = "source-over";
+  }, [images, width, height, mousePos, intensity]);
 
   return (
-    <div className={`relative inline-block ${className}`} style={{ width, height }}>
+    <div
+      ref={containerRef}
+      className={`relative inline-block overflow-hidden ${className}`}
+      style={{ width, height }}
+    >
       <canvas
         ref={canvasRef}
         width={width}
@@ -117,15 +149,11 @@ const DepthEffectPhoto: React.FC<Props> = ({
           height: "100%",
           borderRadius: "1rem",
           display: "block",
+          cursor: "pointer",
         }}
       />
-      {isRendering && (
-        <div style={{ position: "absolute", top: 0, left: 0 }}>
-          Renderizando...
-        </div>
-      )}
     </div>
   );
 };
 
-export default DepthEffectPhoto;
+export default Parallax3D;

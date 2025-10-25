@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import DepthEffectPhoto from './DepthEffectPhoto';
+import Parallax3D from './Parallax3D';
 
 const About: React.FC = () => {
   return (
@@ -13,12 +13,12 @@ const About: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Imagen de perfil */}
 <div className="order-2 md:order-1 flex justify-center">
-  <DepthEffectPhoto
+  <Parallax3D
     src="/images/profile.webp"
     depth="/images/deph.webp"
     width={500}
     height={500}
-    blurAmount={32} // Ajusta la intensidad a tu gusto
+    intensity={40}  // Ajusta entre 0-50 para más/menos movimiento
     className="rounded-2xl shadow-2xl"
   />
 </div>
