@@ -1,96 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;700;900&display=swap');
+import React, { useEffect } from 'react';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+const BackgroundEffect: React.FC = () => {
+  const prefersReducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-@layer base {
-  html {
-    font-family: 'Inter', 'system-ui', 'sans-serif';
-    @apply scroll-smooth;
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach((p) => {
+      const el = p as HTMLElement;
+      el.style.setProperty('--dx', `${Math.random() * 100 - 50}px`);
+      el.style.setProperty('--dy', `${Math.random() * 100 - 50}px`);
+    });
+  }, [prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return (
+      <>
+        <style>{`
+          .top-glow-reduced {
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 50%;
+            background: radial-gradient(ellipse, rgba(187,134,252,0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+          }
+        `}</style>
+        <div className="top-glow-reduced" aria-hidden="true" />
+      </>
+    );
   }
 
-  body {
-    @apply min-h-screen bg-[#0a0a0f] text-gray-200 antialiased;
-    font-family: 'Inter', 'system-ui', 'sans-serif';
-  }
+  return (
+    <>
+      <style>{`
+        .bg-gradient-fixed {
+          background: radial-gradient(circle at 50% 20%, #1a1a2e 0%, #0a0a0f 50%, #050505 100%);
+          background-attachment: fixed;
+          position: fixed;
+          inset: 0;
+          z-index: -3;
+          pointer-events: none;
+          overflow: hidden;
+        }
 
-  /* Luz suave de fondo general */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: -4; /* ← z-index negativo para estar detrás de todo */
-    animation: shimmer-bg 16s ease-in-out infinite alternate;
-  }
+        .bg-gradient-fixed::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(187,134,252,0.15) 0%, rgba(3,218,198,0.1) 100%);
+          animation: shimmer 12s ease-in-out infinite alternate;
+        }
 
-  @keyframes shimmer-bg {
-    0% {opacity: 0.3; transform: scale(1);}
-    50% {opacity: 0.6; transform: scale(1.02);}
-    100% {opacity: 0.3; transform: scale(1);}
-  }
-}
+        @keyframes shimmer {
+          0% {opacity: 0.4; transform: scale(1);}
+          50% {opacity: 0.8; transform: scale(1.02);}
+          100% {opacity: 0.4; transform: scale(1);}
+        }
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #1e1e1e;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #bb86fc, #03dac6);
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(187,134,252,0.4);
-  transition: all 0.3s ease;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9965d4, #00bfa5);
-}
+        .particles-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          pointer-events: none;
+          z-index: -2;
+        }
 
-/* SPINNER */
-.loading-spinner {
-  @apply w-10 h-10 rounded-full border-4 border-violet-500/30 border-t-violet-400 animate-spin;
-}
+        .particle {
+          position: absolute;
+          border-radius: 50%;
+          background: var(--color, rgba(255,255,255,0.4));
+          width: var(--size, 4px);
+          height: var(--size, 4px);
+          top: var(--top, 50%);
+          left: var(--left, 50%);
+          animation: float var(--duration, 10s) ease-in-out infinite;
+          box-shadow: 0 0 10px var(--color, rgba(255,255,255,0.3));
+        }
 
-/* VIDEO HOVER */
-.video-thumbnail-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 20px rgba(187,134,252,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .particle:nth-child(1) { --color: rgba(187,134,252,0.6); --size: 8px; --top: 30%; --left: 15%; --duration: 8s; }
+        .particle:nth-child(2) { --color: rgba(3,218,198,0.5); --size: 10px; --top: 60%; --left: 70%; --duration: 12s; }
+        .particle:nth-child(3) { --color: rgba(255,255,255,0.4); --size: 6px; --top: 50%; --left: 40%; --duration: 10s; }
+        .particle:nth-child(4) { --color: rgba(187,134,252,0.4); --size: 7px; --top: 75%; --left: 25%; --duration: 14s; }
+        .particle:nth-child(5) { --color: rgba(3,218,198,0.4); --size: 5px; --top: 20%; --left: 80%; --duration: 9s; }
+        .particle:nth-child(6) { --color: rgba(187,134,252,0.5); --size: 6px; --top: 40%; --left: 60%; --duration: 11s; }
 
-.video-thumbnail-wrapper:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 30px rgba(187,134,252,0.45);
-}
+        @keyframes float {
+          0%   { transform: translate(0, 0) scale(1); opacity: 0.5; }
+          25%  { transform: translate(var(--dx, 20px), var(--dy, -30px)) scale(1.2); opacity: 0.8; }
+          50%  { transform: translate(calc(var(--dx, 20px)*-1), calc(var(--dy, -30px)*-1)) scale(1); opacity: 0.6; }
+          100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+        }
 
-.video-thumbnail-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(18, 18, 18, 0.85) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
+        .top-glow {
+          position: fixed;
+          top: -20%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 120%;
+          height: 70%;
+          background: radial-gradient(circle at center, rgba(187,134,252,0.25) 0%, rgba(3,218,198,0.15) 30%, transparent 70%);
+          filter: blur(80px);
+          z-index: -1;
+          pointer-events: none;
+          animation: pulse 10s ease-in-out infinite;
+        }
 
-.video-thumbnail-wrapper:hover::after {
-  opacity: 1;
-}
+        @keyframes pulse {
+          0%, 100% {opacity: 0.7;}
+          50% {opacity: 1;}
+        }
 
-/* BOTONES NEON */
-.btn-neon {
-  @apply px-5 py-2 rounded-md text-sm font-medium bg-violet-600/20 border border-violet-400/50 text-violet-300 
-  transition-all duration-300;
-  box-shadow: 0 0 15px rgba(187,134,252,0.3);
-}
+        .bottom-glow {
+          position: fixed;
+          bottom: -30%;
+          right: -10%;
+          width: 80%;
+          height: 60%;
+          background: radial-gradient(circle at center, rgba(3,218,198,0.2) 0%, transparent 60%);
+          filter: blur(100px);
+          z-index: -1;
+          pointer-events: none;
+          animation: pulse-slow 15s ease-in-out infinite;
+        }
 
-.btn-neon:hover {
-  @apply bg-violet-600/40 text-violet-100 scale-105;
-  box-shadow: 0 0 25px rgba(187,134,252,0.5), 0 0 10px rgba(3,218,198,0.3);
-}
+        @keyframes pulse-slow {
+          0%, 100% {opacity: 0.5;}
+          50% {opacity: 0.9;}
+        }
+      `}</style>
+
+      <div className="bg-gradient-fixed" aria-hidden="true" />
+      <div className="top-glow" aria-hidden="true" />
+      <div className="bottom-glow" aria-hidden="true" />
+      <div className="particles-container" aria-hidden="true">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="particle" />
+        ))}
+      </div>
+    </>
+  );
+};
+
+export default BackgroundEffect;
