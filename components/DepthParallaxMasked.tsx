@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useState } from "react";
 interface Props {
   src: string;
   depth: string;
-  alpha: string; // Mapa alpha para recortar
+  alpha: string;
   width: number;
   height: number;
   intensity?: number;
@@ -53,6 +53,10 @@ const DepthParallaxMasked: React.FC<Props> = ({
 
     const renderDepthMasked = () => {
       ctx.clearRect(0, 0, width, height);
+      
+      // Fondo oscuro
+      ctx.fillStyle = "#1a2332";
+      ctx.fillRect(0, 0, width, height);
 
       // Obtener datos del mapa de profundidad
       const depthCanvas = document.createElement("canvas");
@@ -72,9 +76,9 @@ const DepthParallaxMasked: React.FC<Props> = ({
       alphaCtx.drawImage(alphaImg, 0, 0, width, height);
       const alphaData = alphaCtx.getImageData(0, 0, width, height).data;
 
-      // Dibujar imagen original con desplazamiento
-      const offsetX = (mousePos.x - 0.5) * intensity;
-      const offsetY = (mousePos.y - 0.5) * intensity;
+      // Calcular desplazamiento (INVERTIDO para que siga al ratón)
+      const offsetX = -(mousePos.x - 0.5) * intensity;
+      const offsetY = -(mousePos.y - 0.5) * intensity;
 
       // Canvas temporal para la imagen
       const imgCanvas = document.createElement("canvas");
