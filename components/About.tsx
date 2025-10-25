@@ -11,19 +11,16 @@ const About: React.FC = () => {
         </h2>
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Imagen de perfil */}
-<div className="order-2 md:order-1 flex justify-center">
-  <Parallax3D
-    src="/images/profile.webp"
-    depth="/images/deph.webp"
-    width={500}
-    height={500}
-    intensity={40}  // Ajusta entre 0-50 para más/menos movimiento
-    className="rounded-2xl shadow-2xl"
-  />
-</div>
+          <div className="order-2 md:order-1 flex justify-center">
+            <Parallax3D
+              src="/images/profile.webp"
+              width={500}
+              height={500}
+              intensity={15}  // Ajusta entre 5-30 según lo que quieras
+              className="rounded-2xl"
+            />
+          </div>
           
-          {/* Contenido */}
           <div className="order-1 md:order-2 space-y-6">
             <p className="text-lg text-gray-200 leading-relaxed">
               {PERSONAL_INFO.about.intro}
@@ -35,7 +32,6 @@ const About: React.FC = () => {
               {PERSONAL_INFO.about.approach}
             </p>
             
-            {/* Skills */}
             <div className="pt-6">
               <h3 className="text-xl font-semibold text-violet-300 mb-4">
                 Habilidades & Herramientas
