@@ -1,6 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import DepthParallax from './DepthParallax';
+import DepthParallaxMasked from './DepthParallaxMasked';
 
 const About: React.FC = () => {
   return (
@@ -12,13 +12,14 @@ const About: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
-            <DepthParallax
+            <DepthParallaxMasked
               src="/images/profile.webp"
               depth="/images/deph.webp"
+              alpha="/images/alpha.webp"
               width={500}
               height={500}
               intensity={5}
-              className="rounded-2xl shadow-2xl"
+              className="rounded-2xl"
             />
           </div>
           
