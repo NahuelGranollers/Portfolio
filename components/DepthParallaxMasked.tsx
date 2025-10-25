@@ -4,6 +4,7 @@ interface Props {
   src: string;
   depth: string;
   alpha: string;
+  background?: string;
   width: number;
   height: number;
   intensity?: number;
@@ -14,9 +15,10 @@ const DepthParallaxMasked: React.FC<Props> = ({
   src,
   depth,
   alpha,
+  background,
   width,
   height,
-  intensity = 20,
+  intensity = 5,
   className = "",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -46,19 +48,23 @@ const DepthParallaxMasked: React.FC<Props> = ({
     const img = new Image();
     const depthImg = new Image();
     const alphaImg = new Image();
+    const bgImg = new Image();
 
     img.crossOrigin = "anonymous";
     depthImg.crossOrigin = "anonymous";
     alphaImg.crossOrigin = "anonymous";
+    bgImg.crossOrigin = "anonymous";
 
     const renderDepthMasked = () => {
-      ctx.clearRect(0, 0, width, height);
-      
-      // Fondo oscuro
-      ctx.fillStyle = "#1a2332";
-      ctx.fillRect(0, 0, width, height);
+      // 1. Dibujar fondo primero
+      if (background) {
+        ctx.drawImage(bgImg, 0, 0, width, height);
+      } else {
+        ctx.fillStyle = "#1a2332";
+        ctx.fillRect(0, 0, width, height);
+      }
 
-      // Obtener datos del mapa de profundidad
+      // 2. Obtener datos del mapa de profundidad
       const depthCanvas = document.createElement("canvas");
       depthCanvas.width = width;
       depthCanvas.height = height;
@@ -67,7 +73,7 @@ const DepthParallaxMasked: React.FC<Props> = ({
       depthCtx.drawImage(depthImg, 0, 0, width, height);
       const depthData = depthCtx.getImageData(0, 0, width, height).data;
 
-      // Obtener datos del mapa alpha
+      // 3. Obtener datos del mapa alpha
       const alphaCanvas = document.createElement("canvas");
       alphaCanvas.width = width;
       alphaCanvas.height = height;
@@ -76,11 +82,11 @@ const DepthParallaxMasked: React.FC<Props> = ({
       alphaCtx.drawImage(alphaImg, 0, 0, width, height);
       const alphaData = alphaCtx.getImageData(0, 0, width, height).data;
 
-      // Calcular desplazamiento (INVERTIDO para que siga al ratón)
+      // 4. Calcular desplazamiento basado en mouse
       const offsetX = -(mousePos.x - 0.5) * intensity;
       const offsetY = -(mousePos.y - 0.5) * intensity;
 
-      // Canvas temporal para la imagen
+      // 5. Canvas temporal para la imagen
       const imgCanvas = document.createElement("canvas");
       imgCanvas.width = width;
       imgCanvas.height = height;
@@ -89,7 +95,7 @@ const DepthParallaxMasked: React.FC<Props> = ({
       imgCtx.drawImage(img, 0, 0, width, height);
       const imgData = imgCtx.getImageData(0, 0, width, height);
 
-      // Crear imagen con desplazamiento por profundidad
+      // 6. Crear imagen con desplazamiento por profundidad
       const displacedCanvas = document.createElement("canvas");
       displacedCanvas.width = width;
       displacedCanvas.height = height;
@@ -101,7 +107,7 @@ const DepthParallaxMasked: React.FC<Props> = ({
       for (let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
           const i = (y * width + x) * 4;
-          const depthValue i = (depthData[i] / 255);
+          const depthValue = 1 - (depthData[i] / 255); // Invertido
 
           const displaceX = Math.round(x + offsetX * depthValue);
           const displaceY = Math.round(y + offsetY * depthValue);
@@ -123,11 +129,11 @@ const DepthParallaxMasked: React.FC<Props> = ({
 
       displacedCtx.putImageData(displacedImageData, 0, 0);
 
-      // Aplicar máscara alpha
-      const finalImageData = ctx.createImageData(width, height);
+      // 7. Aplicar máscara alpha Y dibujar encima del fondo
+      const finalImageData = displacedCtx.createImageData(width, height);
 
       for (let i = 0; i < displacedImageData.data.length; i += 4) {
-        const alphaValue = alphaData[i]; // Usar canal R del alpha
+        const alphaValue = alphaData[i];
 
         finalImageData.data[i] = displacedImageData.data[i];
         finalImageData.data[i + 1] = displacedImageData.data[i + 1];
@@ -135,23 +141,28 @@ const DepthParallaxMasked: React.FC<Props> = ({
         finalImageData.data[i + 3] = (alphaValue / 255) * displacedImageData.data[i + 3];
       }
 
-      ctx.putImageData(finalImageData, 0, 0);
+      // 8. Dibujar la cara con alpha encima del fondo
+      displacedCtx.putImageData(finalImageData, 0, 0);
+      ctx.drawImage(displacedCanvas, 0, 0, width, height);
     };
 
     let loadedCount = 0;
     const onLoad = () => {
       loadedCount++;
-      if (loadedCount === 3) renderDepthMasked();
+      const requiredImages = background ? 4 : 3;
+      if (loadedCount === requiredImages) renderDepthMasked();
     };
 
     img.onload = onLoad;
     depthImg.onload = onLoad;
     alphaImg.onload = onLoad;
+    if (background) bgImg.onload = onLoad;
 
     img.src = src;
     depthImg.src = depth;
     alphaImg.src = alpha;
-  }, [src, depth, alpha, width, height, mousePos, intensity]);
+    if (background) bgImg.src = background;
+  }, [src, depth, alpha, background, width, height, mousePos, intensity]);
 
   return (
     <div
