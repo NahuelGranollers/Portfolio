@@ -12,8 +12,7 @@ const About: React.FC = () => {
         
        <div className="grid md:grid-cols-2 gap-12 items-center">
   {/* Imagen de perfil */}
-  <div className="order-2 md:order-1">
-    <div className="aspect-square bg-brand-surface-light rounded-2xl overflow-hidden shadow-2xl">
+  <div className="order-2 md:order-1 flex justify-center">
       <PixelatePhoto 
         src="images/profile.jpg" 
         alt="Nahuel Granollers" 
@@ -21,7 +20,6 @@ const About: React.FC = () => {
               brushRadius={2}
               className="rounded-2xl shadow-2xl"
       />
-    </div>
   </div>
           
           {/* Contenido */}
