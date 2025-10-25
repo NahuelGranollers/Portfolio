@@ -14,6 +14,24 @@
     @apply min-h-screen bg-[#0a0a0f] text-gray-200 antialiased;
     font-family: 'Inter', 'system-ui', 'sans-serif';
   }
+
+  /* Luz suave de fondo general */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: -4; /* ← z-index negativo para estar detrás de todo */
+    animation: shimmer-bg 16s ease-in-out infinite alternate;
+  }
+
+  @keyframes shimmer-bg {
+    0% {opacity: 0.3; transform: scale(1);}
+    50% {opacity: 0.6; transform: scale(1.02);}
+    100% {opacity: 0.3; transform: scale(1);}
+  }
 }
 
 /* SCROLLBAR */
