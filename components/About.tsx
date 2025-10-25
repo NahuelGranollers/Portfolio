@@ -15,8 +15,8 @@ const About: React.FC = () => {
           <div className="order-2 md:order-1 flex justify-center">
             <PixelatePhoto 
               src="/images/profile.jpg" 
-              width={550}  {/* ← AÑADIDO */}
-              height={550} {/* ← AÑADIDO */}
+              width={550} 
+              height={550}
               size={20} 
               brushRadius={2}
               className="rounded-2xl shadow-2xl"
