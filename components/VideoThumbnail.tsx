@@ -78,13 +78,6 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
         className={`absolute inset-0 w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
       />
 
-      {/* MEDALLA DE INNOVACIÓN */}
-      {video.innovative && (
-        <div className="absolute bottom-4 left-4 bg-yellow-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-black flex items-center gap-1 shadow-lg">
-          <span>⭐</span> Innovación
-        </div>
-      )}
-
       {/* Category Badge */}
       {video.category && (
         <div className="absolute top-4 right-4 bg-brand-primary/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold">
@@ -101,7 +94,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
 
       {/* Badge de "¡Pruébalo!" si tiene link externo */}
       {video.externalLink && (
-        <div className="absolute top-14 right-4 bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 animate-pulse">
+        <div className="absolute bot-4 right-4 bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 animate-pulse">
           ↗ ¡Pruébalo!
         </div>
       )}
