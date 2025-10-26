@@ -3,41 +3,46 @@ import { PERSONAL_INFO } from '../constants';
 
 const About: React.FC = () => {
   return (
-    <section id="sobre-mi" className="py-20 px-6 bg-brand-surface">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">Sobre Mí</h2>
+    <section id="sobre-mi" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl sm:text-5xl font-bold text-violet-400 mb-12 text-center">
+          Sobre Mí
+        </h2>
         
-        {/* ✅ Grid layout responsivo */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          
-          {/* Columna izquierda: Textos */}
-          <div className="space-y-6">
-            <p className="text-gray-300 leading-relaxed text-lg">
-              {PERSONAL_INFO.about.intro}
-            </p>
-            <p className="text-gray-300 leading-relaxed">
-              {PERSONAL_INFO.about.experience}
-            </p>
-            <p className="text-gray-300 leading-relaxed">
-              {PERSONAL_INFO.about.approach}
-            </p>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1 flex justify-center">
+            <img
+              src="/images/profile.webp"
+              alt="Nahuel Granollers"
+              className="w-full max-w-lg h-auto object-cover rounded-2xl shadow-2xl"
+            />
           </div>
           
-          {/* Columna derecha: Skills */}
-          <div>
-            <h3 className="text-2xl font-semibold mb-6 text-brand-primary">
-              Habilidades & Herramientas
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              {/* ✅ Agregar key={index} */}
-              {PERSONAL_INFO.skills.map((skill, index) => (
-                <span 
-                  key={index}
-                  className="bg-brand-primary/10 border border-brand-primary text-brand-primary px-4 py-2 rounded-full text-sm font-medium hover:bg-brand-primary hover:text-white transition-all duration-300 cursor-default"
-                >
-                  {skill}
-                </span>
-              ))}
+          <div className="order-1 md:order-2 space-y-6">
+            <p className="text-lg text-gray-200 leading-relaxed">
+              {PERSONAL_INFO.about.intro}
+            </p>
+            <p className="text-lg text-gray-200 leading-relaxed">
+              {PERSONAL_INFO.about.experience}
+            </p>
+            <p className="text-lg text-gray-200 leading-relaxed">
+              {PERSONAL_INFO.about.approach}
+            </p>
+            
+            <div className="pt-6">
+              <h3 className="text-xl font-semibold text-violet-300 mb-4">
+                Habilidades & Herramientas
+              </h3>
+              <div className="flex flex-wrap gap-3">
+                {PERSONAL_INFO.skills.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gray-800/50 text-gray-200 rounded-full text-sm border border-gray-700 hover:border-violet-400 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
