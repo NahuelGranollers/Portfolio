@@ -14,7 +14,7 @@ const About: React.FC = () => {
             <img
               src="/images/profile.webp"
               alt="Nahuel Granollers"
-              className="w-full max-w-md h-auto object-cover rounded-2xl shadow-2xl"
+              className="w-full max-w-lg h-auto object-cover rounded-2xl shadow-2xl"
             />
           </div>
           
@@ -22,12 +22,9 @@ const About: React.FC = () => {
             <p className="text-lg text-gray-200 leading-relaxed">
               {PERSONAL_INFO.about.intro}
             </p>
-            
-            <ReadMore
-              preview={PERSONAL_INFO.about.experience}
-              extra="Un trabajo personal que refleja mi interés en las formas visuales y la experimentación audiovisual. Cada proyecto es una oportunidad para explorar nuevos lenguajes y técnicas."
-            />
-            
+            <p className="text-lg text-gray-200 leading-relaxed">
+              {PERSONAL_INFO.about.experience}
+            </p>
             <p className="text-lg text-gray-200 leading-relaxed">
               {PERSONAL_INFO.about.approach}
             </p>
