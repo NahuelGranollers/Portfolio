@@ -103,7 +103,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
   const videoType = getVideoType(video.videoUrl);
 
   return (
-    <div className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+    <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
       <div ref={containerRef} className="relative w-full max-w-6xl">
         
         {/* Video */}
@@ -136,7 +136,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
           {video.description && (
             <div className="mb-4">
-              <p className={`text-gray-300 leading-relaxed ${!showFullDescription && 'line-clamp-3'}`}>
+              <p className={`text-gray-300 leading-relaxed ${!showFullDescription && 'line-clamp-2'}`}>
                 {video.description}
               </p>
               {video.description.length > 150 && (
