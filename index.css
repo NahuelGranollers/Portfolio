@@ -15,16 +15,16 @@
     font-family: 'Inter', 'system-ui', 'sans-serif';
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: -4;
-    animation: shimmer-bg 16s ease-in-out infinite alternate;
-  }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: -4;
+  animation: shimmer-bg 16s ease-in-out infinite alternate;
+}
 
   @keyframes shimmer-bg {
     0% {opacity: 0.3; transform: scale(1);}
