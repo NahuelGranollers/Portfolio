@@ -11,14 +11,14 @@ const Services: React.FC = () => {
         </p>
         
         {/* ✅ Grid responsivo completo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           {/* ✅ Agregar key={index} */}
           {SERVICES.map((service, index) => (
             <div 
               key={index}
               className="bg-brand-bg border border-brand-border rounded-lg p-6 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all duration-300 group"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl mb-3 group-hover:scale-110 text-center transition-transform duration-300">
                 {service.icon}
               </div>
               <h3 className="text-xl font-semibold mb-3 text-brand-text">

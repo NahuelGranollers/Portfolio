@@ -92,13 +92,6 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
         </div>
       )}
 
-      {/* Badge de "¡Pruébalo!" si tiene link externo */}
-      {video.externalLink && (
-        <div className="absolute bot-1 right-4 bg-green-500/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 animate-pulse">
-          ↗ ¡Pruébalo!
-        </div>
-      )}
-
       {/* Info */}
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2 group-hover:text-brand-primary transition">
