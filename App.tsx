@@ -12,10 +12,12 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundEffect from './components/BackgroundEffect';
 import { registerSW } from 'virtual:pwa-register';
+
 registerSW();
 
 function App(): React.ReactElement {
-  const [fullscreenVideo, setFullscreenVideo] = useState(null as Video | null);
+  // ✅ Tipo simplificado
+  const [fullscreenVideo, setFullscreenVideo] = useState<Video | null>(null);
 
   const handleSelectVideo = (video: Video) => {
     setFullscreenVideo(video);
@@ -26,51 +28,32 @@ function App(): React.ReactElement {
   };
 
   return (
-    <div className="min-h-screen bg-brand-bg font-sans">
-      {/* BackgroundEffect */}
+    <>
       <BackgroundEffect />
-
-      {/* Navigation */}
       <Navigation />
-
-      {/* Hero Section */}
-      <Hero />
-
-      {/* Projects Section */}
-      <section id="proyectos" className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-violet-400 mb-4">
-              Proyectos Destacados
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Una selección de mis trabajos más recientes. Pasa el cursor para previsualizar, haz clic para ver el proyecto completo.
-            </p>
-          </div>
-
-          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-        </div>
-      </section>
-
-      {/* About */}
-      <About />
-
-      {/* Services */}
-      <Services />
-
-      {/* Contact */}
-      <Contact />
-
-      {/* Footer */}
+      <main>
+        <Hero />
+        {/* VideoGrid tiene id="proyectos", Contact tiene id="contacto" */}
+        <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+        <About />
+        <Services />
+        <Contact />
+      </main>
       <Footer />
-
-      {/* Fullscreen Video Player */}
-      {fullscreenVideo && (
-        <Suspense fallback={<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 text-white">Cargando...</div>}>
-          <FullscreenPlayer video={fullscreenVideo} onClose={handleCloseFullscreen} />
-        </Suspense>
-      )}
-    </div>
+      
+      <Suspense fallback={
+        <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-brand-primary"></div>
+        </div>
+      }>
+        {fullscreenVideo && (
+          <FullscreenPlayer
+            video={fullscreenVideo}
+            onClose={handleCloseFullscreen}
+          />
+        )}
+      </Suspense>
+    </>
   );
 }
 

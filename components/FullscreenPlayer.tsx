@@ -7,10 +7,22 @@ interface FullscreenPlayerProps {
 }
 
 const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
-  <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
   </svg>
 );
+
+// ✅ Función helper para videoType con fallback
+const getVideoType = (url: string): string => {
+  const ext = url.split('.').pop()?.toLowerCase();
+  const validTypes: Record<string, string> = {
+    'mp4': 'video/mp4',
+    'webm': 'video/webm',
+    'mov': 'video/mp4',
+    'avi': 'video/mp4'
+  };
+  return validTypes[ext || ''] || 'video/mp4';
+};
 
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -34,14 +46,16 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       if (event.key === 'Escape') {
         handleClose();
       }
+
       // Trap focus with Tab
       if (event.key === 'Tab') {
-        const focusable = containerRef.current?.querySelectorAll<HTMLElement>(
+        const focusable = containerRef.current?.querySelectorAll(
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
         if (!focusable || focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
+
+        const first = focusable as HTMLElement;
+        const last = focusable[focusable.length - 1] as HTMLElement;
 
         if (event.shiftKey) {
           if (document.activeElement === first) {
@@ -63,13 +77,12 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       }
     };
 
-    document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+    document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('mousedown', handleClickOutside);
 
-    // Set focus to container
     setTimeout(() => {
-      const firstFocusable = containerRef.current?.querySelector<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const firstFocusable = containerRef.current?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
       firstFocusable?.focus();
     }, 0);
 
@@ -77,37 +90,34 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
-      // Pausar video al desmontar
+
       if (videoRef.current) {
         videoRef.current.pause();
       }
-      // Restore focus
+
       previouslyFocused.current?.focus();
     };
   }, [onClose]);
 
-  const videoType = `video/${video.videoUrl.split('.').pop()}`;
+  // ✅ Usar función helper con fallback
+  const videoType = getVideoType(video.videoUrl);
 
   return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" 
-      role="dialog" 
-      aria-modal="true" 
-      aria-label={`${video.title} video player`}
-    >
-      <div
-        ref={containerRef}
-        className="relative w-full max-w-4xl rounded-2xl shadow-1xl p-0 md:p-8"
-      >
-        {/* Video arriba, sin glass para la mejor experiencia */}
-        <div className="aspect-video rounded-t-2xl overflow-hidden bg-black">
+    <div className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
+      <div ref={containerRef} className="relative w-full max-w-6xl">
+        
+        {/* Video */}
+        <div className="mb-6 rounded-lg overflow-hidden shadow-2xl">
+          {/* ✅ Agregar controls y preload */}
           <video
             ref={videoRef}
-            key={video.id}
+            className="w-full max-h-[70vh] bg-black"
             controls
+            preload="metadata"
             autoPlay
-            className="w-full h-full"
-            onEnded={() => {
+            loop
+            onClick={(e) => {
+              e.stopPropagation();
               if (videoRef.current) {
                 videoRef.current.currentTime = 0;
               }
@@ -119,40 +129,41 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         </div>
 
         {/* Glass Panel con los detalles */}
-        <div className="bg-brand-surface/70 backdrop-blur-2x1 border border-white/20 rounded-b-2xl p-6 md:p-8 flex flex-col gap-4 shadow-inner -mt-2">
-          <h2 className="text-2xl font-extrabold mb-2 text-white">{video.title}</h2>
+        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 shadow-xl">
+          <h2 className="text-3xl font-bold mb-4 text-brand-primary">
+            {video.title}
+          </h2>
+
           {video.description && (
-            <div className="mb-2">
-              <p
-                className={
-                  "text-brand-text-secondary text-base whitespace-pre-line mb-2 transition-all duration-300 " +
-                  (showFullDescription ? "" : "line-clamp-2")
-                }
-                style={
-                  !showFullDescription
-                    ? { overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' }
-                    : {}
-                }
-              >
+            <div className="mb-4">
+              <p className={`text-gray-300 leading-relaxed ${!showFullDescription && 'line-clamp-3'}`}>
                 {video.description}
               </p>
-              <button
-                className="text-brand-primary underline cursor-pointer text-sm"
-                onClick={() => setShowFullDescription((v) => !v)}
-              >
-                {showFullDescription ? "Ver menos" : "Ver más"}
-              </button>
+              {video.description.length > 150 && (
+                <button
+                  onClick={() => setShowFullDescription((v) => !v)}
+                  className="text-brand-primary hover:underline text-sm mt-2"
+                >
+                  {showFullDescription ? 'Ver menos' : 'Ver más'}
+                </button>
+              )}
             </div>
           )}
+
           {video.role && (
-            <p className="text-brand-primary text-sm font-medium mb-1">
+            <p className="text-brand-primary font-medium mb-4">
               {video.role}
             </p>
           )}
+
           {video.tools && video.tools.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-2">
+            <div className="flex flex-wrap gap-2">
+              {/* ✅ Agregar key={idx} */}
               {video.tools.map((tool, idx) => (
-                <span key={idx} className="px-2 py-1 bg-brand-surface-light/70 text-brand-text-secondary text-xs rounded border border-brand-border">
+                <span 
+                  key={idx}
+                  className="bg-brand-surface px-3 py-1 rounded-full text-sm text-gray-300"
+                >
                   {tool}
                 </span>
               ))}
@@ -163,10 +174,10 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         {/* Botón cerrar */}
         <button
           onClick={handleClose}
-          className="absolute -top-4 -right-4 md:-top-5 md:-right-5 h-10 w-10 md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-lg"
-          aria-label="Close video player"
+          className="absolute -top-4 -right-4 bg-red-500 hover:bg-red-600 text-white rounded-full p-3 shadow-lg transition-all hover:scale-110"
+          aria-label="Cerrar reproductor"
         >
-          <CloseIcon className="h-6 w-6" />
+          <CloseIcon className="w-6 h-6" />
         </button>
       </div>
     </div>

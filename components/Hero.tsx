@@ -17,38 +17,43 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
-      <div className="max-w-4xl mx-auto text-center relative z-20">
-        <div className="animate-slide-up">
-          <h1 className="text-5xl sm:text-6xl lg:text-8xl font-extrabold tracking-tight text-violet-400 mb-6">
-            {PERSONAL_INFO.name}
-          </h1>
-          <p className="text-2xl sm:text-3xl font-semibold text-white mb-4">
-            {PERSONAL_INFO.title}
-          </p>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-12">
-            {PERSONAL_INFO.tagline}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={scrollToProjects}
-              className="px-6 py-3 min-w-[140px] bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              Ver Proyectos
-            </button>
-            <button
-              onClick={scrollToContact}
-              className="px-6 py-3 min-w-[140px] border-2 border-violet-400 text-violet-400 rounded-lg hover:bg-violet-600 hover:text-white transition-all duration-300 transform hover:scale-105"
-            >
-              Hablemos
-            </button>
-          </div>
+    <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center z-10">
+        {/* ✅ Nullchecks con optional chaining y defaults */}
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-slide-up">
+          {PERSONAL_INFO?.name || 'Portfolio'}
+        </h1>
+        
+        <p className="text-xl md:text-2xl text-gray-400 mb-6 animate-slide-up animation-delay-100">
+          {PERSONAL_INFO?.title || 'Creative Professional'}
+        </p>
+        
+        <p className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto animate-slide-up animation-delay-200">
+          {PERSONAL_INFO?.tagline || 'Creando experiencias visuales únicas'}
+        </p>
+
+        {/* Botones CTA */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up animation-delay-300">
+          <button
+            onClick={scrollToProjects}
+            className="px-8 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all hover:scale-105 shadow-lg shadow-brand-primary/20"
+          >
+            Ver Proyectos
+          </button>
+          
+          <button
+            onClick={scrollToContact}
+            className="px-8 py-3 bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all hover:scale-105"
+          >
+            Hablemos
+          </button>
         </div>
-        {/* Scroll Indicator */}
-        <div className="mt-16 animate-bounce">
-          <svg className="w-6 h-6 mx-auto text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-brand-primary rounded-full flex items-start justify-center p-2">
+          <div className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse"></div>
         </div>
       </div>
     </section>
