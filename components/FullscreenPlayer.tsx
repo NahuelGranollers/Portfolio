@@ -14,15 +14,25 @@ const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
 
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
+
+  // Función para cerrar y pausar
+  const handleClose = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    onClose();
+  };
 
   useEffect(() => {
     previouslyFocused.current = document.activeElement as HTMLElement | null;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose();
+        handleClose();
       }
       // Trap focus with Tab
       if (event.key === 'Tab') {
@@ -49,7 +59,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
     const handleClickOutside = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        onClose();
+        handleClose();
       }
     };
 
@@ -67,6 +77,10 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
+      // Pausar video al desmontar
+      if (videoRef.current) {
+        videoRef.current.pause();
+      }
       // Restore focus
       previouslyFocused.current?.focus();
     };
@@ -75,8 +89,12 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
   const videoType = `video/${video.videoUrl.split('.').pop()}`;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" role="dialog" aria-modal="true" aria-label={`${video.title} video player`}>
-
+    <div 
+      className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" 
+      role="dialog" 
+      aria-modal="true" 
+      aria-label={`${video.title} video player`}
+    >
       <div
         ref={containerRef}
         className="relative w-full max-w-4xl rounded-2xl shadow-1xl p-0 md:p-8"
@@ -84,15 +102,22 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         {/* Video arriba, sin glass para la mejor experiencia */}
         <div className="aspect-video rounded-t-2xl overflow-hidden bg-black">
           <video
+            ref={videoRef}
             key={video.id}
             controls
             autoPlay
             className="w-full h-full"
+            onEnded={() => {
+              if (videoRef.current) {
+                videoRef.current.currentTime = 0;
+              }
+            }}
           >
             <source src={video.videoUrl} type={videoType} />
             Your browser does not support the video tag.
           </video>
         </div>
+
         {/* Glass Panel con los detalles */}
         <div className="bg-brand-surface/70 backdrop-blur-2x1 border border-white/20 rounded-b-2xl p-6 md:p-8 flex flex-col gap-4 shadow-inner -mt-2">
           <h2 className="text-2xl font-extrabold mb-2 text-white">{video.title}</h2>
@@ -134,9 +159,10 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
             </div>
           )}
         </div>
+
         {/* Botón cerrar */}
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute -top-4 -right-4 md:-top-5 md:-right-5 h-10 w-10 md:h-12 md:w-12 bg-white rounded-full flex items-center justify-center text-black hover:bg-brand-primary hover:text-white transition-all duration-200 shadow-lg"
           aria-label="Close video player"
         >
