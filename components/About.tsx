@@ -1,5 +1,6 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
+import ReadMore from './ReadMore';
 
 const About: React.FC = () => {
   return (
@@ -9,12 +10,12 @@ const About: React.FC = () => {
           Sobre Mí
         </h2>
         
- <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
             <img
               src="/images/profile.webp"
               alt="Nahuel Granollers"
-              className="w-96 h-96 object-cover rounded-2xl shadow-2xl"
+              className="w-full max-w-md h-auto object-cover rounded-2xl shadow-2xl"
             />
           </div>
           
@@ -22,9 +23,12 @@ const About: React.FC = () => {
             <p className="text-lg text-gray-200 leading-relaxed">
               {PERSONAL_INFO.about.intro}
             </p>
-            <p className="text-lg text-gray-200 leading-relaxed">
-              {PERSONAL_INFO.about.experience}
-            </p>
+            
+            <ReadMore
+              preview={PERSONAL_INFO.about.experience}
+              extra="Un trabajo personal que refleja mi interés en las formas visuales y la experimentación audiovisual. Cada proyecto es una oportunidad para explorar nuevos lenguajes y técnicas."
+            />
+            
             <p className="text-lg text-gray-200 leading-relaxed">
               {PERSONAL_INFO.about.approach}
             </p>
