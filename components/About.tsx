@@ -1,6 +1,5 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import DepthParallaxMasked from './DepthParallaxMasked';
 
 const About: React.FC = () => {
   return (
@@ -10,17 +9,12 @@ const About: React.FC = () => {
           Sobre Mí
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+ <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1 flex justify-center">
-            <DepthParallaxMasked
+            <img
               src="/images/profile.webp"
-              depth="/images/deph.webp"
-              alpha="/images/alpha.webp"
-              background="/images/fondo.webp"
-              width={500}
-              height={500}
-              intensity={10}
-              className="rounded-2xl"
+              alt="Nahuel Granollers"
+              className="w-96 h-96 object-cover rounded-2xl shadow-2xl"
             />
           </div>
           
