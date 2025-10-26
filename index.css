@@ -1131,4 +1131,3 @@ select:focus-visible {
 .rounded-lg { border-radius: var(--radius-md); }
 .rounded-xl { border-radius: var(--radius-lg); }
 .rounded-full { border-radius: var(--radius-full); }
-```
