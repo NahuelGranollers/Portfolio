@@ -1,6 +1,5 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
-import ReadMore from './ReadMore';
 
 const About: React.FC = () => {
   return (
