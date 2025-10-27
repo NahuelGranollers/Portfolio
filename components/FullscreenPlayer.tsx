@@ -142,7 +142,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
               {video.description.length > 150 && (
                 <button
                   onClick={() => setShowFullDescription((v) => !v)}
-                  className="text-brand-primary hover:underline text-sm"
+                  className="text-brand-primary hover:underline text-sm mt-2"
                 >
                   {showFullDescription ? 'Ver menos' : 'Ver más'}
                 </button>
