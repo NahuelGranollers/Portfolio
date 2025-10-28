@@ -12,25 +12,12 @@ const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-// ✅ Función helper para videoType con fallback
-const getVideoType = (url: string): string => {
-  const ext = url.split('.').pop()?.toLowerCase();
-  const validTypes: Record<string, string> = {
-    'mp4': 'video/mp4',
-    'webm': 'video/webm',
-    'mov': 'video/mp4',
-    'avi': 'video/mp4'
-  };
-  return validTypes[ext || ''] || 'video/mp4';
-};
-
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  // Función para cerrar y pausar
   const handleClose = () => {
     if (videoRef.current) {
       videoRef.current.pause();
@@ -53,10 +40,8 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
           'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
         if (!focusable || focusable.length === 0) return;
-
-        const first = focusable as HTMLElement;
+        const first = focusable[0] as HTMLElement;
         const last = focusable[focusable.length - 1] as HTMLElement;
-
         if (event.shiftKey) {
           if (document.activeElement === first) {
             last.focus();
@@ -93,22 +78,18 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
       if (videoRef.current) {
         videoRef.current.pause();
+        videoRef.current.currentTime = 0;
       }
-
       previouslyFocused.current?.focus();
     };
   }, [onClose]);
 
-  // ✅ Usar función helper con fallback
-  const videoType = getVideoType(video.videoUrl);
-
   return (
     <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
       <div ref={containerRef} className="relative w-full max-w-6xl">
-        
+
         {/* Video */}
         <div className="mb-6 rounded-lg overflow-hidden shadow-2xl">
-          {/* ✅ Agregar controls y preload */}
           <video
             ref={videoRef}
             className="w-full max-h-[70vh] bg-black"
@@ -116,19 +97,14 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
             preload="metadata"
             autoPlay
             loop
-            onClick={(e) => {
-              e.stopPropagation();
-              if (videoRef.current) {
-                videoRef.current.currentTime = 0;
-              }
-            }}
+            onClick={e => e.stopPropagation()}
           >
-            <source src={video.videoUrl} type={videoType} />
-            Your browser does not support the video tag.
+            <source src={video.videoUrl} type="video/webm" />
+            Tu navegador no soporta video.
           </video>
         </div>
 
-        {/* Glass Panel con los detalles */}
+        {/* Glass Panel con detalles */}
         <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 shadow-xl">
           <h2 className="text-3xl font-bold mb-4 text-brand-primary">
             {video.title}
@@ -158,9 +134,8 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
           {video.tools && video.tools.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              {/* ✅ Agregar key={idx} */}
               {video.tools.map((tool, idx) => (
-                <span 
+                <span
                   key={idx}
                   className="bg-brand-surface px-3 py-1 rounded-full text-sm text-gray-300"
                 >
