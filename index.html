@@ -22,23 +22,133 @@
 	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
-	  "@type": "WebPage",
-	  "name": "Nahuel Granollers - Dirección Audiovisual",
-	  "url": "https://nahuelgranollers.com/",
-	  "description": "Portfolio profesional de Nahuel Granollers, director audiovisual y técnico de realización en Barcelona. Proyectos creativos de videoclips, fashion films, motion graphics, edición avanzada y colaboraciones con marcas.",
-	  "about": {
-		"@type": "Person",
-		"name": "Nahuel Granollers",
-		"jobTitle": "Director Audiovisual, Técnico de Realización y Motion Designer",
-		"knowsAbout": [
-		  "dirección audiovisual",
-		  "edición de video",
-		  "fashion film",
-		  "motion graphics",
-		  "videoclips",
-		  "proyectos audiovisuales Barcelona"
-		]
-	  }
+	  "@graph": [
+		{
+		  "@type": "WebPage",
+		  "@id": "https://nahuelgranollers.com/",
+		  "url": "https://nahuelgranollers.com/",
+		  "name": "Portfolio de Nahuel Granollers – Técnico de realización y director audiovisual",
+		  "headline": "Portfolio profesional de Nahuel Granollers",
+		  "description": "Portfolio profesional de Nahuel Granollers, director audiovisual y técnico de realización. Videoclips, fashion films, proyectos para marcas, edición y motion graphics en Barcelona.",
+		  "inLanguage": "es",
+		  "mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "https://nahuelgranollers.com/"
+		  }
+		},
+		{
+		  "@type": "Person",
+		  "name": "Nahuel Granollers",
+		  "url": "https://nahuelgranollers.com/",
+		  "image": "https://nahuelgranollers.com/images/profile.webp",  <!-- pon aquí la URL real de la foto -->
+		  "jobTitle": "Técnico de realización y director audiovisual",
+		  "worksFor": {
+			"@type": "Organization",
+			"name": "Nahuel Granollers"
+		  },
+		  "description": "Especialista en videoclips, fashion films, edición, motion graphics y proyectos visuales para marcas. Con base en Barcelona, ofrece soluciones audiovisuales creativas y técnicas.",
+		  "sameAs": [
+			"https://www.linkedin.com/in/nahuelgranollers"  <!-- adapta estas URLs -->
+		  ]
+		},
+		{
+		  "@type": "LocalBusiness",
+		  "name": "Nahuel Granollers",
+		  "description": "Servicios audiovisuales profesionales en Barcelona: videoclips, fashion films, edición y motion graphics.",
+		  "image": "https://nahuelgranollers.com/images/profile.webp",
+		  "url": "https://nahuelgranollers.com/",
+		  "address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Barcelona",
+			"addressCountry": "ES"
+		  },
+		  "areaServed": {
+			"@type": "Place",
+			"name": "España y Latinoamérica"
+		  },
+		  "availableLanguage": ["es", "en"]
+		},
+		{
+		  "@type": "Service",
+		  "serviceType": "Producción y dirección audiovisual",
+		  "provider": {
+			"@type": "Person",
+			"name": "Nahuel Granollers"
+		  },
+		  "areaServed": {
+			"@type": "Place",
+			"name": "España y Latinoamérica"
+		  },
+		  "description": "Servicios profesionales de producción audiovisual: videoclips, fashion films, edición, animación y dirección creativa en Barcelona.",
+		  "hasOfferCatalog": {
+			"@type": "OfferCatalog",
+			"name": "Servicios audiovisuales",
+			"itemListElement": [
+			  {
+				"@type": "Offer",
+				"itemOffered": {
+				  "@type": "Service",
+				  "name": "Videoclips"
+				}
+			  },
+			  {
+				"@type": "Offer",
+				"itemOffered": {
+				  "@type": "Service",
+				  "name": "Fashion films"
+				}
+			  },
+			  {
+				"@type": "Offer",
+				"itemOffered": {
+				  "@type": "Service",
+				  "name": "Motion graphics"
+				}
+			  },
+			  {
+				"@type": "Offer",
+				"itemOffered": {
+				  "@type": "Service",
+				  "name": "Edición y postproducción"
+				}
+			  }
+			]
+		  }
+		},
+		{
+		  "@type": "FAQPage",
+		  "mainEntity": [
+			{
+			  "@type": "Question",
+			  "name": "¿Quién es Nahuel Granollers?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Nahuel Granollers es un técnico de realización y director audiovisual especializado en videoclips, fashion films y proyectos creativos para marcas."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "¿Qué servicios ofrece?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Ofrece producción audiovisual integral: dirección de videoclips, edición, motion graphics, fashion films y soporte técnico en rodajes."
+			  }
+			},
+			{
+			  "@type": "Question",
+			  "name": "¿Dónde trabaja Nahuel?",
+			  "acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Con base en Barcelona, realiza proyectos en toda España y también colabora con marcas internacionales."
+			  }
+			}
+		  ]
+		},
+		{
+		  "@type": "SpeakableSpecification",
+		  "cssSelector": [".hero-title", ".intro"]
+		}
+	  ]
 	}
 	</script>
 
@@ -47,7 +157,7 @@
   <meta property="og:url" content="https://nahuelgranollers.com/" />
   <meta property="og:title" content="Nahuel Granollers - Dirección Audiovisual" />
   <meta property="og:description" content="Portfolio audiovisual con proyectos de edición creativa, fashion films y dirección técnica en Barcelona." />
-  <meta property="og:image" content="https://nahuelgranollers.com/logo.png" />
+  <meta property="og:image" content="https://nahuelgranollers.com/images/logo.png" />
   <meta property="og:site_name" content="Nahuel Granollers Portfolio" />
   <meta property="og:image:type" content="image/png" />
 
@@ -55,7 +165,7 @@
   <meta property="twitter:url" content="https://nahuelgranollers.com/" />
   <meta property="twitter:title" content="Nahuel Granollers - Director Audiovisual & Técnico de Realización" />
   <meta property="twitter:description" content="Portfolio audiovisual con proyectos de edición, motion graphics y dirección cinematográfica" />
-  <meta property="twitter:image" content="https://nahuelgranollers.com/logo.png" />
+  <meta property="twitter:image" content="https://nahuelgranollers.com/images/logo.png" />
 
  <!-- Google Fonts Optimizado (sin bloqueo) -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
