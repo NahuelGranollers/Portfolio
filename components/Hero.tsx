@@ -57,10 +57,14 @@ const Hero: React.FC = () => {
         </div>
       </div>
     </section>
-<section className="hero">
-  <h1 className="hero-title">Este es el Hero Title</h1>
-</section>
   );
 };
+
+// Hero.tsx
+const Hero = () => (
+  <section className="hero">
+    <h1 className="hero-title">Este es el Hero Title</h1>
+  </section>
+);
 
 export default Hero;
