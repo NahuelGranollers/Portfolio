@@ -60,11 +60,4 @@ const Hero: React.FC = () => {
   );
 };
 
-// Hero.tsx
-const Hero = () => (
-  <section className="hero">
-    <h1 className="hero-title">Este es el Hero Title</h1>
-  </section>
-);
-
 export default Hero;
