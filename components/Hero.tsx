@@ -57,8 +57,8 @@ const Hero: React.FC = () => {
         </div>
       </div>
     </section>
-	<section class="hero">
-  <h1 class="hero-title">Este es el Hero Title</h1>
+<section className="hero">
+  <h1 className="hero-title">Este es el Hero Title</h1>
 </section>
   );
 };
