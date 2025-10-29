@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Inici",
+    "about": "Sobre mi",
+    "projects": "Projectes",
+    "services": "Serveis",
+    "contact": "Contacte"
+  },
+  "footer": {
+    "rights": "Alguns drets reservats",
+  },
+  "cta": {
+    "work_with_me": "Treballa amb mi",
+    "see_projects": "Veure projectes",
+    "contact_now": "Contacta ara"
+  },
+  "hero": {
+    "greeting": "Hola, sóc",
+    "tagline": "Director audiovisual i tècnic de realització",
+    "intro": "Especialista en vídeo, motion graphics i narratives visuals."
+  },
+  "about": {
+    "title": "Sobre mi",
+    "intro": "Sóc un creador audiovisual apassionat per explicar històries a través del vídeo i l'animació. El meu treball combina tècnica cinematogràfica amb disseny en moviment per crear peces visuals que captiven i comuniquen.",
+    "experience": "Amb experiència en direcció, edició i motion graphics, treballo en projectes que van des de fashion films fins a animació d'interfícies. Em dedico a transformar conceptes abstractes en experiències visuals memorables.",
+    "approach": "El meu enfocament és col·laboratiu i orientat als resultats. Crec en la importància d'entendre la visió del client i traduir-la en contingut audiovisual que superi les expectatives."
+  },
+  "skills": [
+    "Edició de vídeo",
+    "Direcció cinematogràfica",
+    "Premiere Pro",
+    "Disseny de UI/UX",
+    "Storytelling visual"
+  ],
+  "services": [
+    {
+      "title": "Edició de vídeo",
+      "description": "Muntatge professional de material audiovisual per a marques, esdeveniments i contingut digital.",
+      "icon": "🎬"
+    },
+    {
+      "title": "Direcció cinematogràfica",
+      "description": "Direcció i producció de curtmetratges, fashion films i contingut narratiu.",
+      "icon": "🎥"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Poesia Visual Experimental",
+      "description": "Peça audiovisual experimental que fusiona llum, imatge i moviment. Aquest videopoema explora el llenguatge visual a través de tipografia cinètica, textures orgàniques i metàfores visuals, creant una narrativa sensorial que traspassa el literal. Un treball personal que reflecteix el meu interès per les formes híbrides d'expressió audiovisual contemporània.",
+      "role": "Director Creatiu & Editor",
+      "category": "Art Experimental"
+    },
+    {
+      "title": "Fashion Film",
+      "description": "Curtmetratge cinematogràfic enfocat en moda. Direcció, cinematografia i edició completa, explorant la narrativa visual a través de l'estil i l'estètica contemporània.",
+      "role": "Director & Editor",
+      "category": "Cinematografia"
+    },
+    {
+      "title": "Curt editat sense guió",
+      "description": "Exercici d'edició narrativa treballant amb material existent sense guió previ. Repte de construir una història coherent i emotiva a través del muntatge i la selecció de plans.",
+      "role": "Editor",
+      "category": "Edició"
+    },
+    {
+      "title": "Gravació i Edició de Curtmetratge",
+      "description": "Treball d'edició i càmera realitzat a exteriors per a un curtmetratge de ficció. Vaig participar durant la gravació en localització real, encarregant-me tant de la captació d'imatge com de l'edició posterior en un entorn professional. El vídeo mostra únicament alguns fragments seleccionats del curt complet per motius de drets i durada.",
+      "role": "Editor i operador de càmera",
+      "category": "Cinematografia"
+    },
+    {
+      "title": "Codebreak - Joc Multijugador",
+      "description": "Joc de lògica multijugador en temps real on els jugadors han de desxifrar codis secrets.",
+      "role": "Desenvolupador Full Stack",
+      "category": "Desenvolupament Web"
+    },
+    {
+      "title": "Pantalles a Resolume per a betevé",
+      "description": "Disseny integral de visuals dinàmiques pel sistema Resolume de betevé, usades en directe per anunciar convidats especials i concerts. Va ser una proposta creativa, explorant noves tendències visuals i innovació en el flux audiovisual del plató per a televisió en viu. Vaig barrejar tipografies animades, colors en tendència i layouts adaptatius per a donar un look fresc i únic al programa.",
+      "role": "Motion Designer & Creatiu",
+      "category": "Live Visuals"
+    },
+    {
+      "title": "Logo Animat amb AE",
+      "description": "Animació de logotip creada en After Effects utilitzant principis de motion design. El projecte explora transicions fluides i efectes visuals moderns per donar vida a la identitat de marca.",
+      "role": "Motion Designer",
+      "category": "Motion Graphics"
+    }
+  ],
+  "contact": {
+    "send_message": "Envia missatge",
+    "your_name": "El teu nom",
+    "your_email": "El teu email",
+    "your_message": "El teu missatge",
+    "success": "Missatge enviat amb èxit!",
+    "error": "Error en enviar el missatge. Torna-ho a intentar més tard."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "footer": {
+    "rights": "Some rights reserved",
+  },
+  "cta": {
+    "work_with_me": "Work with me",
+    "see_projects": "See projects",
+    "contact_now": "Contact now"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "tagline": "Audiovisual Director & Technical Producer",
+    "intro": "Specialist in video, motion graphics and visual storytelling."
+  },
+  "about": {
+    "title": "About me",
+    "intro": "I am a passionate audiovisual creator, telling stories through video and animation. My work combines cinematic technique with motion design to create visual pieces that captivate and communicate.",
+    "experience": "With experience in directing, editing and motion graphics, I work on projects ranging from fashion films to interface animations. I specialize in transforming abstract concepts into memorable visual experiences.",
+    "approach": "My approach is collaborative and results-driven. I believe in understanding the client's vision and translating it into audiovisual content that exceeds expectations."
+  },
+  "skills": [
+    "Video Editing",
+    "Film Direction",
+    "Premiere Pro",
+    "UI/UX Design",
+    "Visual Storytelling"
+  ],
+  "services": [
+    {
+      "title": "Video Editing",
+      "description": "Professional editing of audiovisual material for brands, events, and digital content.",
+      "icon": "🎬"
+    },
+    {
+      "title": "Film Direction",
+      "description": "Direction and production of short films, fashion films and narrative content.",
+      "icon": "🎥"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Experimental Visual Poetry",
+      "description": "Experimental audiovisual piece blending light, image, and movement. This video poem explores visual language via kinetic typography, organic textures, and visual metaphors, creating a sensory narrative that transcends the literal. A personal work reflecting my interest in hybrid forms of contemporary audiovisual expression.",
+      "role": "Creative Director & Editor",
+      "category": "Experimental Art"
+    },
+    {
+      "title": "Fashion Film",
+      "description": "Cinematic short film focused on fashion. Direction, cinematography, and full editing, exploring visual storytelling through style and contemporary aesthetics.",
+      "role": "Director & Editor",
+      "category": "Cinematography"
+    },
+    {
+      "title": "Short Edited Without Script",
+      "description": "Narrative editing exercise working with existing, unscripted material. Challenge of building a coherent and moving story through montage and shot selection.",
+      "role": "Editor",
+      "category": "Editing"
+    },
+    {
+      "title": "Short Film Shooting & Editing",
+      "description": "Editing and camera work for a fiction short film shot on location. I participated in both image capturing and post-production editing in a professional environment. The video shown only features select segments for rights and duration reasons.",
+      "role": "Editor and Camera Operator",
+      "category": "Cinematography"
+    },
+    {
+      "title": "Codebreak - Multiplayer Game",
+      "description": "Real-time multiplayer logic game where players must crack secret codes.",
+      "role": "Full Stack Developer",
+      "category": "Web Development"
+    },
+    {
+      "title": "Resolume Screens for betevé",
+      "description": "Comprehensive dynamic visual design for betevé's Resolume system, used live to announce special guests and concerts. A creative proposal, exploring new visual trends and innovation in live studio TV workflows. I mixed animated typography, trending colors, and adaptive layouts to give the show a fresh, unique look.",
+      "role": "Motion Designer & Creative",
+      "category": "Live Visuals"
+    },
+    {
+      "title": "Animated Logo with AE",
+      "description": "Logo animation created in After Effects using principles of motion design. The project explores fluid transitions and modern visual effects to bring the brand identity to life.",
+      "role": "Motion Designer",
+      "category": "Motion Graphics"
+    }
+  ],
+  "contact": {
+    "send_message": "Send message",
+    "your_name": "Your name",
+    "your_email": "Your email",
+    "your_message": "Your message",
+    "success": "Message sent successfully!",
+    "error": "Error sending the message. Please try again later."
+  }
+}
