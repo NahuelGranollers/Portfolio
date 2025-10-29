@@ -89,10 +89,10 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       <div ref={containerRef} className="relative w-full max-w-6xl">
 
         {/* Video */}
-        <div className="mb-6 rounded-lg overflow-hidden shadow-2xl relative w-full h-[80vh] min-h-[400px]">
+		<div className="mb-6 rounded-lg overflow-hidden shadow-2xl relative w-full max-h-[65vh] min-h-[250px] flex items-center justify-center bg-black">
 		  <video
 			ref={videoRef}
-			className="absolute inset-0 min-w-full min-h-full w-auto max-w-none h-full bg-black"
+			className="w-auto h-full max-h-[65vh] min-h-[200px] bg-black"
 			controls
 			preload="metadata"
 			autoPlay
