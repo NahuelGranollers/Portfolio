@@ -1,5 +1,4 @@
 import './index.css';
-import './i18n';  // <-- MUY IMPORTANTE: debe estar aquí
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
