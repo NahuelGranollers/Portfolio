@@ -83,6 +83,21 @@
   @apply absolute inset-0 min-w-full min-h-full w-auto max-w-none;
 }
 
+.intro {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 8px #000;
+  margin: 0 0 20px 0;
+}
+
 /* Neon button styles */
 .btn-neon {
   @apply px-5 py-2 rounded-md text-sm font-medium bg-violet-600/20 border border-violet-400/50 text-violet-300 transition-all duration-300;
