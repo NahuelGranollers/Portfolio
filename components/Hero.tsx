@@ -1,5 +1,18 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
+import { useNavigate, useParams } from 'react-router-dom';
+
+export const LanguageSwitcher = () => {
+  const { lang } = useParams();
+  const navigate = useNavigate();
+  return (
+    <div>
+      <button disabled={lang === 'es'} onClick={() => navigate('/es')}>ES</button>
+      <button disabled={lang === 'ca'} onClick={() => navigate('/ca')}>CA</button>
+      <button disabled={lang === 'en'} onClick={() => navigate('/en')}>EN</button>
+    </div>
+  );
+};
 
 const Hero: React.FC = () => {
   const scrollToProjects = () => {

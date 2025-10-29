@@ -12,7 +12,13 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundEffect from './components/BackgroundEffect';
 import { registerSW } from 'virtual:pwa-register';
-import './i18n';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './i18n'; // ❗️ Importante: importa antes para inicializar i18next
+import AppRoutes from './AppRoutes'; // o './routes'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<AppRoutes />);
+
 
 registerSW();
 
