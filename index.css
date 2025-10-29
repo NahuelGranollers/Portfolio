@@ -13,16 +13,16 @@
     font-family: 'Inter', 'system-ui', 'sans-serif';
   }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: -4;
-  animation: shimmer-bg 16s ease-in-out infinite alternate;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 20%, rgba(187,134,252,0.08), transparent 70%);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: -4;
+    animation: shimmer-bg 16s ease-in-out infinite alternate;
+  }
 
   @keyframes shimmer-bg {
     0% {opacity: 0.3; transform: scale(1);}
@@ -31,6 +31,7 @@ body::before {
   }
 }
 
+/* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -47,16 +48,15 @@ body::before {
   background: linear-gradient(180deg, #9965d4, #00bfa5);
 }
 
+/* Loading spinner */
 .loading-spinner {
   @apply w-10 h-10 rounded-full border-4 border-violet-500/30 border-t-violet-400 animate-spin;
 }
 
+/* Video thumbnail and video wrapper: Fullscreen & no black margins */
 .video-thumbnail-wrapper {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem;
+  @apply w-full h-screen min-h-screen relative overflow-hidden rounded-lg shadow-xl transition-transform duration-300;
   box-shadow: 0 0 20px rgba(187,134,252,0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .video-thumbnail-wrapper:hover {
@@ -77,9 +77,15 @@ body::before {
   opacity: 1;
 }
 
+/* Fullscreen scaling for videos and iframes inside the wrapper */
+.video-thumbnail-wrapper video,
+.video-thumbnail-wrapper iframe {
+  @apply absolute inset-0 min-w-full min-h-full w-auto max-w-none;
+}
+
+/* Neon button styles */
 .btn-neon {
-  @apply px-5 py-2 rounded-md text-sm font-medium bg-violet-600/20 border border-violet-400/50 text-violet-300 
-  transition-all duration-300;
+  @apply px-5 py-2 rounded-md text-sm font-medium bg-violet-600/20 border border-violet-400/50 text-violet-300 transition-all duration-300;
   box-shadow: 0 0 15px rgba(187,134,252,0.3);
 }
 
