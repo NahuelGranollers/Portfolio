@@ -89,16 +89,15 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       <div ref={containerRef} className="relative w-full max-w-6xl">
 
         {/* Video */}
-<div className="mb-6 rounded-lg overflow-hidden shadow-2xl relative w-full max-h-[165vh] min-h-[250px] bg-black">
+<div className="mb-6 rounded-lg overflow-hidden shadow-2xl w-full max-w-3xl mx-auto aspect-video bg-black relative">
   <video
     ref={videoRef}
-    className="absolute inset-0 w-full h-full object-cover"
+    className="w-full h-full object-cover"
     controls
     preload="metadata"
     autoPlay
     loop
     onClick={e => e.stopPropagation()}
-    style={{ aspectRatio: '16/9' }}
   >
     <source src={video.videoUrl} type="video/webm" />
     Tu navegador no soporta video.
