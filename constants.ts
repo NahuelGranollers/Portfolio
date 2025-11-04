@@ -1,6 +1,18 @@
 import { Video } from './types';
 
 export const VIDEOS: Video[] = [
+  
+  {
+	  id: 8, // El siguiente número después del último video que tengas
+	  title: 'Campaña Publicitaria IA',
+	  description: 'Spot realizado con inteligencia artificial para la campaña de publicidad de la Escuela Creativa. El video utiliza generación de imágenes, voz sintética y edición avanzada para transmitir el valor de la innovación educativa.',
+	  thumbnailUrl: '/videos/escuela-ia-thumb.webp',    // Pon aquí la ruta a tu thumbnail
+	  videoUrl: '/videos/escuela-ia.webm',              // Pon aquí la ruta al video .webm
+	  year: '2025',
+	  role: 'Director IA & Editor',
+	  tools: ['Veo3', 'Premiere Pro', 'ElevenLabs', 'Stable Diffusion'],
+	  category: 'Publicidad',
+	}
   {
     id: 1,
     title: 'Poesía Visual Experimental',
