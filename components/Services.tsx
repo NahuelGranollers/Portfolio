@@ -11,7 +11,7 @@ const Services: React.FC = () => {
         </p>
         
         {/* ✅ Grid responsivo completo */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* ✅ Agregar key={index} */}
           {SERVICES.map((service, index) => (
             <div 
