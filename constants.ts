@@ -121,11 +121,22 @@ export const SERVICES = [
   {
     title: 'Edición de Video',
     description: 'Montaje profesional de material audiovisual para marcas, eventos y contenido digital.',
-    icon: '🎬'
+    icon: '✂️'
   },
   {
     title: 'Dirección Cinematográfica',
     description: 'Dirección y producción de cortometrajes, fashion films y contenido narrativo.',
-    icon: '🎥'
+    icon: '🎬'
   },
+  {
+    title: 'Realización Broadcast',
+    description: 'Dirección técnica y operación de sistemas de realización en directo para televisión, streaming y grandes eventos. Especialista en coordinación de señales, switchers, mezcladores y flujos multicámara profesionales.',
+    icon: '📡'
+  },
+  {
+    title: 'Operador de Cámara',
+    description: 'Operación de cámaras en plató y exteriores, incluyendo captación de imagen multiángulo, manejo de ópticas profesionales y seguimiento de guion visual en producción multicámara.',
+    icon: '🎥'
+  }
 ];
+
