@@ -12,7 +12,7 @@ export const VIDEOS: Video[] = [
 	  role: 'Director IA & Editor',
 	  tools: ['Veo3', 'Premiere Pro', 'ElevenLabs', 'Stable Diffusion'],
 	  category: 'Publicidad',
-	}
+	},
   {
     id: 1,
     title: 'Poesía Visual Experimental',
