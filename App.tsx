@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackgroundEffect from './components/BackgroundEffect';
 import { registerSW } from 'virtual:pwa-register';
+import LiquidGlassCursor from './components/LiquidGlassCursor';
 
 registerSW();
 
@@ -29,6 +30,7 @@ function App(): React.ReactElement {
 
   return (
     <>
+	<LiquidGlassCursor />
       <BackgroundEffect />
       <Navigation />
       <main>
