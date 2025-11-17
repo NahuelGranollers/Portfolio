@@ -112,19 +112,19 @@
 .liquid-glass-cursor {
   pointer-events: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 55% 40%, rgba(187,134,252,0.20) 0%, rgba(157,174,255,0.07) 70%, transparent 100%);
-  box-shadow:
-      0 0 24px 7px rgba(187,134,252,0.12),
-      0 0 0 11px rgba(120,200,255,0.09) inset;
-  backdrop-filter: blur(12px) saturate(180%);
-  border: 1.5px solid rgba(180, 180, 255, 0.13);
-  filter: drop-shadow(0 0 24px #bb86fc60);
-  opacity: 0.7;
-  transition: opacity .2s, transform .15s cubic-bezier(.38,.12,.44,1.18);
   z-index: 9999;
+  top: 0; left: 0;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 55% 40%, rgba(180,180,255,0.17) 0%, rgba(200,190,250,0.09) 65%, transparent 100%);
+  box-shadow:
+      0 0 67px 19px rgba(187,134,252,0.10),
+      0 0 0 35px rgba(187,134,252,0.07) inset;
+  backdrop-filter: blur(16px) saturate(180%);
+  transition: opacity .17s, transform .05s cubic-bezier(.88,.14,.95,1.23);
+  filter: blur(0.3px);
+  opacity: 0.56;
   mix-blend-mode: lighten;
 }
+
