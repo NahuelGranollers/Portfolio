@@ -114,17 +114,16 @@
   position: fixed;
   z-index: 9999;
   top: 0; left: 0;
-  width: 95px;
-  height: 95px;
+  width: 90px; height: 90px;
   border-radius: 50%;
-  background: radial-gradient(circle at 55% 40%, rgba(180,180,255,0.17) 0%, rgba(200,190,250,0.09) 65%, transparent 100%);
-  box-shadow:
-      0 0 67px 19px rgba(187,134,252,0.10),
-      0 0 0 35px rgba(187,134,252,0.07) inset;
-  backdrop-filter: blur(16px) saturate(180%);
-  transition: opacity .17s, transform .05s cubic-bezier(.88,.14,.95,1.23);
-  filter: blur(0.3px);
-  opacity: 0.56;
+  background:
+    /* Grano suave SVG encoded */
+    url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='f'><feTurbulence baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 9 -9  0 0 0 9 -9  0 0 0 9 -9  0 0 0 0.5 0'/></filter><rect width='100' height='100' filter='url(%23f)' opacity='0.09'/></svg>") center/100% 100% repeat,
+    radial-gradient(ellipse at 55% 45%, rgba(190,190,255,0.12) 0%, rgba(200,200,255,0.06) 75%, transparent 100%);
+  box-shadow: 0 0 38px 4px rgba(180,194,255,.07), 0 0 0 18px rgba(180,200,255,.07) inset;
+  backdrop-filter: blur(19px) saturate(142%);
+  opacity: 0.39;
+  transition: opacity .17s, border-radius .22s cubic-bezier(.93,.31,.61,1.23), transform .09s cubic-bezier(.90,.05,.97,1.04);
   mix-blend-mode: lighten;
+  filter: blur(.3px);
 }
-
