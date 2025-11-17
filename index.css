@@ -116,19 +116,16 @@
   top: 0; left: 0;
   width: 90px; height: 90px;
   border-radius: 50%;
-  background: 
-    radial-gradient(ellipse at 60% 35%, rgba(255,255,255,0.38) 24%, rgba(255,255,255,0.16) 55%, transparent 85%),
-    radial-gradient(ellipse at 28% 58%, rgba(100,130,200,0.15) 18%, transparent 70%),
-    linear-gradient(115deg, rgba(225,236,255,0.17) 6%, transparent 55%),
-    rgba(210,222,255,0.10);
-  box-shadow: 
-    0 0 60px 2px rgba(220,230,255,0.04), 
-    0 4px 44px 0 rgba(90,130,240,0.07) inset,
-    0 0 0 1px rgba(160,190,255,0.04);
-  backdrop-filter: blur(16px) saturate(145%);
-  opacity: 0.32;
-  filter: blur(0.25px);
-  transition: opacity .13s, transform .09s cubic-bezier(.53,.13,.97,1.04);
+  background:
+    /* Grano SVG inline */
+    url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='f'><feTurbulence baseFrequency='1.05' numOctaves='2' seed='11'/><feColorMatrix values='0 0 0 9 -8  0 0 0 9 -8  0 0 0 9 -8  0 0 0 0.16 0'/></filter><rect width='100' height='100' filter='url(%23f)' opacity='0.16'/></svg>") center/cover repeat,
+    radial-gradient(ellipse at 56% 43%, rgba(255,255,255,0.28) 15%, rgba(220,220,255,0.08) 48%, transparent 92%),
+    rgba(255,255,255,0.10);
+  box-shadow: 0 0 40px 5px rgba(200,210,255,.04), 0 0 0 14px rgba(160,180,255,0.05) inset;
+  backdrop-filter: blur(22px) saturate(175%);
+  filter: blur(0.4px);
+  opacity: 0.16;
+  transition: opacity .22s, border-radius .12s cubic-bezier(.93,.31,.61,1.23), transform .16s cubic-bezier(.90,.05,.97,1.04);
   mix-blend-mode: lighten;
   overflow: hidden;
 }
@@ -139,7 +136,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence seed='3' baseFrequency='.98' numOctaves='1'/><feColorMatrix values='0 0 0 9 -8  0 0 0 9 -8  0 0 0 9 -8  0 0 0 0.18 0'/></filter><rect filter='url(%23n)' width='100' height='100' opacity='0.18'/></svg>");
+  background: url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence seed='6' baseFrequency='0.99' numOctaves='2'/><feColorMatrix values='0 0 0 9 -8  0 0 0 9 -8  0 0 0 9 -8  0 0 0 0.12 0'/></filter><rect width='100' height='100' filter='url(%23n)' opacity='0.21'/></svg>");
   opacity: 0.33;
   pointer-events: none;
 }
