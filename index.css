@@ -117,13 +117,12 @@
   width: 90px; height: 90px;
   border-radius: 50%;
   background:
-    /* Grano suave SVG encoded */
-    url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='f'><feTurbulence baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 9 -9  0 0 0 9 -9  0 0 0 9 -9  0 0 0 0.5 0'/></filter><rect width='100' height='100' filter='url(%23f)' opacity='0.09'/></svg>") center/100% 100% repeat,
-    radial-gradient(ellipse at 55% 45%, rgba(190,190,255,0.12) 0%, rgba(200,200,255,0.06) 75%, transparent 100%);
-  box-shadow: 0 0 38px 4px rgba(180,194,255,.07), 0 0 0 18px rgba(180,200,255,.07) inset;
-  backdrop-filter: blur(19px) saturate(142%);
-  opacity: 0.39;
-  transition: opacity .17s, border-radius .22s cubic-bezier(.93,.31,.61,1.23), transform .09s cubic-bezier(.90,.05,.97,1.04);
+    url("data:image/svg+xml;utf8,<svg width='100' height='100' xmlns='http://www.w3.org/2000/svg'><filter id='f'><feTurbulence baseFrequency='.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 9 -9  0 0 0 9 -9  0 0 0 9 -9  0 0 0 0.5 0'/></filter><rect width='100' height='100' filter='url(%23f)' opacity='0.13'/></svg>") center/100% 100% repeat,
+    radial-gradient(ellipse at 50% 50%, rgba(190,190,255,0.05) 5%, transparent 80%);
+  box-shadow: 0 0 36px 3px rgba(180,194,255,.07), 0 0 0 12px rgba(180,200,255,.04) inset;
+  backdrop-filter: blur(18px) saturate(138%);
+  opacity: 0.21;
+  transition: opacity .18s, border-radius .22s cubic-bezier(.93,.31,.61,1.23), transform .10s cubic-bezier(.90,.05,.97,1.04);
+  filter: blur(.2px);
   mix-blend-mode: lighten;
-  filter: blur(.3px);
 }
