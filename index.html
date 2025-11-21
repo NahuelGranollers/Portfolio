@@ -22,6 +22,30 @@
   </script>
   <!-- End Hotjar -->
   
+  <!-- Suppress Framer Motion React 19 compatibility errors -->
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e.message && (e.message.includes('Cannot set properties of undefined') && 
+          (e.message.includes('Activity') || e.message.includes('Children')))) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      }
+    }, true);
+    
+    const originalError = console.error;
+    console.error = function() {
+      const args = Array.from(arguments);
+      const message = args.join(' ');
+      if (message.includes('Cannot set properties of undefined') && 
+          (message.includes('Activity') || message.includes('Children'))) {
+        return;
+      }
+      originalError.apply(console, arguments);
+    };
+  </script>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nahuel Granollers - Dirección Audiovisual</title>
@@ -190,9 +214,9 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap">
   </noscript>
-  <script type="module" crossorigin src="/assets/index-CXGSeQuu.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-7y_14nlD.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor_react-ilUaGkRg.js">
+  <script type="module" crossorigin src="/assets/index-Bv4bd_LB.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-8FDFhE4G.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor_react-CNjqxVC6.js">
   <link rel="stylesheet" crossorigin href="/assets/index-CNfIuiza.css">
 <link rel="manifest" href="/manifest.webmanifest"></head>
   <body class="text-brand-text antialiased">
