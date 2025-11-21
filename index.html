@@ -29,7 +29,7 @@
     console.log('[INIT] User Agent:', navigator.userAgent);
     console.log('[INIT] Base URL:', document.baseURI);
     
-    // Log all errors with full details
+    // CRITICAL: Prevent Framer Motion error from blocking execution
     window.addEventListener('error', function(e) {
       console.error('%c[ERROR] Global error caught:', 'color: red; font-weight: bold');
       console.error('  Message:', e.message);
@@ -38,10 +38,14 @@
       console.error('  Error object:', e.error);
       console.error('  Stack:', e.error?.stack);
       
-      // Don't suppress, let it show for debugging
-      if (e.message && e.message.includes('Cannot set properties of undefined')) {
-        console.warn('%c[FRAMER] Framer Motion React 19 compatibility issue detected', 'color: orange');
+      // SUPPRESS and CONTINUE execution for Framer Motion React 19 bug
+      if (e.message && (e.message.includes('Cannot set properties of undefined') || 
+                        e.message.includes('Activity') || 
+                        e.message.includes('Children'))) {
+        console.warn('%c[FRAMER] Framer Motion error suppressed - continuing execution', 'color: orange; font-weight: bold');
         e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
         return false;
       }
     }, true);
@@ -88,6 +92,19 @@
       console.log('[LOAD] Root element:', root);
       console.log('[LOAD] Root innerHTML length:', root?.innerHTML?.length || 0);
       console.log('[LOAD] Root children:', root?.children?.length || 0);
+      
+      // Force check React rendering after 1 second
+      setTimeout(function() {
+        console.log('%c[CHECK] Checking React render status after 1s...', 'color: yellow; font-weight: bold');
+        const rootAfter = document.getElementById('root');
+        console.log('[CHECK] Root innerHTML length:', rootAfter?.innerHTML?.length || 0);
+        console.log('[CHECK] Root children:', rootAfter?.children?.length || 0);
+        if (rootAfter && rootAfter.children.length === 0) {
+          console.error('%c[CHECK] PROBLEM: React did not render! Root is still empty.', 'color: red; font-weight: bold; font-size: 16px');
+        } else {
+          console.log('%c[CHECK] SUCCESS: React rendered content!', 'color: green; font-weight: bold');
+        }
+      }, 1000);
     });
   </script>
   
