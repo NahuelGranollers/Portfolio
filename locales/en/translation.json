@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "name": "Nahuel Granollers",
+    "title": "Audiovisual Director & Broadcast Technician",
+    "tagline": "Creating visual stories that connect and move",
+    "viewProjects": "View Projects",
+    "letsTalk": "Let's Talk"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Explore my audiovisual work",
+    "all": "All",
+    "viewMore": "View more projects",
+    "viewLess": "View less",
+    "noResults": "No projects in this category",
+    "empty": "Your portfolio is empty.",
+    "emptyHint": "Add videos to the `videos/` folder and configure them in the `constants.ts` file to get started.",
+    "filterBy": "Filter by {{category}}"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "<strong>Freelance</strong> broadcast technician specialized in <strong>live television</strong>, <strong>recording studios</strong> and <strong>broadcast post-production</strong>.",
+    "experience": "Extensive experience in <strong>multicam television production</strong>, <strong>DIT technical workflows</strong> in professional studios and <strong>broadcast editing</strong>. Specialized in demanding television production environments.",
+    "approach": "Available for <strong>television networks</strong>, <strong>production companies</strong> and <strong>video studios</strong>. Immediate adaptation to complex technical systems and professional workflows with focus on <strong>precision</strong> and <strong>efficiency</strong>.",
+    "experienceTitle": "Experience",
+    "beteve": "Broadcast Technician",
+    "amazon": "DigiTech",
+    "skills": "Professional Competencies"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Professional audiovisual solutions tailored to your needs",
+    "videoEditing": {
+      "title": "Video Editing",
+      "description": "Premiere Pro, DaVinci Resolve, After Effects. Professional multicam editing and visual storytelling."
+    },
+    "directing": {
+      "title": "Directing",
+      "description": "Canon EOS, BlackMagic — Creative directing, storyboarding and narrative content production."
+    },
+    "broadcast": {
+      "title": "Broadcast",
+      "description": "vMix, OBS, Switchers — Live technical direction and multicam streaming."
+    },
+    "camera": {
+      "title": "Camera Operator",
+      "description": "Sony, Panasonic, Canon, RED — Professional multicam operation and cinema lens handling."
+    },
+    "digitech": {
+      "title": "DigiTech",
+      "description": "Capture One, Lightroom, DIT workflows. On-set digital technical management and secure backup."
+    }
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "Have a project in mind? I'd love to hear from you",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "connectWithMe": "Connect with me",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "characters": "characters",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "✓ Message sent successfully! I'll respond soon.",
+      "error": "✗ There was an error. Please try again.",
+      "errorName": "Name is required",
+      "errorEmail": "Invalid email",
+      "errorMessage": "Message is required",
+      "errorMessageLength": "Message cannot exceed 1000 characters",
+      "errorConnection": "Connection error. Please check your internet."
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "madeWith": "Made with",
+    "in": "in"
+  },
+  "video": {
+    "viewProject": "View project",
+    "tryIt": "Try it!",
+    "innovation": "Innovation",
+    "close": "Close"
+  },
+  "categories": {
+    "Publicidad": "Advertising",
+    "Arte Experimental": "Experimental Art",
+    "Cinematografía": "Cinematography",
+    "Edición": "Editing",
+    "Desarrollo Web": "Web Development",
+    "Live Visuals": "Live Visuals",
+    "Motion Graphics": "Motion Graphics"
+  },
+  "skills": {
+    "Edición Multicam": "Multicam Editing",
+    "Realización Broadcast": "Broadcast Production",
+    "DIT Workflows": "DIT Workflows",
+    "Operador Cámara": "Camera Operator",
+    "Premiere Pro": "Premiere Pro",
+    "DaVinci Resolve": "DaVinci Resolve"
+  },
+  "videos": {
+    "8": {
+      "title": "AI Advertising Campaign",
+      "description": "Spot created with artificial intelligence for the Creative School advertising campaign. The video uses image generation and advanced editing to convey the value of educational innovation.",
+      "role": "AI Director & Editor",
+      "category": "Advertising"
+    },
+    "1": {
+      "title": "Experimental Visual Poetry",
+      "description": "Experimental audiovisual piece that fuses light, image and movement. This video-poem explores visual language through kinetic typography, organic textures and visual metaphors, creating a sensory narrative that transcends the literal. A personal work that reflects my interest in hybrid forms of contemporary audiovisual expression.",
+      "role": "Creative Director & Editor",
+      "category": "Experimental Art"
+    },
+    "2": {
+      "title": "Fashion Film",
+      "description": "Cinematographic short film focused on fashion. Direction, cinematography and complete editing, exploring visual narrative through contemporary style and aesthetics.",
+      "role": "Director & Editor",
+      "category": "Cinematography"
+    },
+    "3": {
+      "title": "Short Film Edited Without Script",
+      "description": "Narrative editing exercise working with existing material without a prior script. Challenge of building a coherent and emotional story through editing and shot selection.",
+      "role": "Editor",
+      "category": "Editing"
+    },
+    "4": {
+      "title": "Short Film Recording and Editing",
+      "description": "Editing and camera work done outdoors for a fiction short film. I participated during filming on real location, handling both image capture and post-editing in a professional environment. The video shown only includes some selected fragments of the complete short for copyright and duration reasons.",
+      "role": "Editor and camera operator",
+      "category": "Cinematography"
+    },
+    "5": {
+      "title": "Codebreak - Multiplayer Game",
+      "description": "Real-time multiplayer logic game where players must crack secret codes.",
+      "role": "Full Stack Developer",
+      "category": "Web Development"
+    },
+    "6": {
+      "title": "Resolume Screens for betevé",
+      "description": "Comprehensive design of dynamic visuals for betevé's Resolume system, used live to announce special guests and concerts. It was my own creative proposal, exploring new visual trends (trending styles) and innovation in the audiovisual flow of the set for live television. I mixed animated typography, trending colors and adaptive layouts to give the program a fresh and unique look.",
+      "role": "Motion Designer & Creative",
+      "category": "Live Visuals"
+    },
+    "7": {
+      "title": "Animated Logo with AE",
+      "description": "Logo animation created in After Effects using motion design principles. The project explores smooth transitions and modern visual effects to bring brand identity to life.",
+      "role": "Motion Designer",
+      "category": "Motion Graphics"
+    }
+  }
+}

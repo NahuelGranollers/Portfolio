@@ -1,0 +1,161 @@
+{
+  "nav": {
+    "projects": "Projectes",
+    "about": "Sobre mi",
+    "services": "Serveis",
+    "contact": "Contacte"
+  },
+  "hero": {
+    "name": "Nahuel Granollers",
+    "title": "Director Audiovisual & Tècnic de Realització",
+    "tagline": "Creant històries visuals que connecten i emocionen",
+    "viewProjects": "Veure Projectes",
+    "letsTalk": "Parlem"
+  },
+  "projects": {
+    "title": "Projectes",
+    "subtitle": "Explora el meu treball audiovisual",
+    "all": "Tots",
+    "viewMore": "Veure més projectes",
+    "viewLess": "Veure menys",
+    "noResults": "No hi ha projectes en aquesta categoria",
+    "empty": "El teu portafoli està buit.",
+    "emptyHint": "Afegeix vídeos a la carpeta `videos/` i configura'ls a l'arxiu `constants.ts` per començar.",
+    "filterBy": "Filtrar per {{category}}"
+  },
+  "about": {
+    "title": "Sobre Mi",
+    "intro": "Tècnic de realització <strong>freelance</strong> especialitzat en <strong>televisió en directe</strong>, <strong>estudis de gravació</strong> i <strong>post-producció broadcast</strong>.",
+    "experience": "Àmplia experiència en <strong>realització multicàmera</strong> per a televisió, <strong>fluxos tècnics DIT</strong> en estudis professionals i <strong>edició broadcast</strong>. Especialitzat en entorns de producció televisiva exigents.",
+    "approach": "Disponible per a <strong>televisions</strong>, <strong>productores</strong> i <strong>estudis de vídeo</strong>. Adaptació immediata a sistemes tècnics complexos i fluxos de treball professionals amb enfocament en <strong>precisió</strong> i <strong>eficiència</strong>.",
+    "experienceTitle": "Experiència",
+    "beteve": "Tècnic de Realització",
+    "amazon": "DigiTech",
+    "skills": "Competències Professionals"
+  },
+  "services": {
+    "title": "Serveis",
+    "subtitle": "Solucions audiovisuals professionals adaptades a les teves necessitats",
+    "videoEditing": {
+      "title": "Edició de Vídeo",
+      "description": "Premiere Pro, DaVinci Resolve, After Effects. Muntatge professional multicàmera i narrativa visual."
+    },
+    "directing": {
+      "title": "Direcció",
+      "description": "Canon EOS, BlackMagic — Direcció creativa, storyboarding i producció de contingut narratiu."
+    },
+    "broadcast": {
+      "title": "Realització",
+      "description": "vMix, OBS, Switchers — Direcció tècnica en directe i streaming multicàmera."
+    },
+    "camera": {
+      "title": "Operador Càmera",
+      "description": "Sony, Panasonic, Canon, RED — Operació multicàmera professional i maneig d'òptiques cinema."
+    },
+    "digitech": {
+      "title": "DigiTech",
+      "description": "Capture One, Lightroom, DIT workflows. Gestió tècnica digital en set i backup segur."
+    }
+  },
+  "contact": {
+    "title": "Treballem Junts",
+    "subtitle": "Tens un projecte en ment? M'encantaria escoltar-te",
+    "email": "Correu electrònic",
+    "linkedin": "LinkedIn",
+    "connectWithMe": "Connecta amb mi",
+    "form": {
+      "name": "Nom",
+      "email": "Correu electrònic",
+      "subject": "Assumpte",
+      "message": "Missatge",
+      "characters": "caràcters",
+      "send": "Enviar Missatge",
+      "sending": "Enviant...",
+      "success": "✓ Missatge enviat correctament! Et respondré aviat.",
+      "error": "✗ Hi ha hagut un error. Si us plau, torna-ho a provar.",
+      "errorName": "El nom és obligatori",
+      "errorEmail": "Correu electrònic invàlid",
+      "errorMessage": "El missatge és obligatori",
+      "errorMessageLength": "El missatge no pot excedir els 1000 caràcters",
+      "errorConnection": "Error de connexió. Si us plau, verifica la teva internet."
+    }
+  },
+  "footer": {
+    "rights": "Tots els drets reservats",
+    "madeWith": "Fet amb",
+    "in": "a"
+  },
+  "video": {
+    "viewProject": "Veure projecte",
+    "tryIt": "Prova-ho!",
+    "innovation": "Innovació",
+    "close": "Tancar"
+  },
+  "categories": {
+    "Publicidad": "Publicitat",
+    "Arte Experimental": "Art Experimental",
+    "Cinematografía": "Cinematografia",
+    "Edición": "Edició",
+    "Desarrollo Web": "Desenvolupament Web",
+    "Live Visuals": "Visuals en Directe",
+    "Motion Graphics": "Motion Graphics"
+  },
+  "skills": {
+    "Edición Multicam": "Edició Multicam",
+    "Realización Broadcast": "Realització Broadcast",
+    "DIT Workflows": "DIT Workflows",
+    "Operador Cámara": "Operador Càmera",
+    "Premiere Pro": "Premiere Pro",
+    "DaVinci Resolve": "DaVinci Resolve"
+  },
+  "videos": {
+    "8": {
+      "title": "Campanya Publicitària IA",
+      "description": "Spot realitzat amb intel·ligència artificial per a la campanya de publicitat de l'Escola Creativa. El vídeo utilitza generació d'imatges i edició avançada per transmetre el valor de la innovació educativa.",
+      "role": "Director IA & Editor",
+      "category": "Publicitat"
+    },
+    "1": {
+      "title": "Poesia Visual Experimental",
+      "description": "Peça audiovisual experimental que fusiona llum, imatge i moviment. Aquest videopoema explora el llenguatge visual a través de tipografia cinètica, textures orgàniques i metàfores visuals, creant una narrativa sensorial que transcendeix el literal. Un treball personal que reflecteix el meu interès en les formes híbrides d'expressió audiovisual contemporània.",
+      "role": "Director Creatiu & Editor",
+      "category": "Art Experimental"
+    },
+    "2": {
+      "title": "Fashion Film",
+      "description": "Curtmetratge cinematogràfic centrat en moda. Direcció, cinematografia i edició completa, explorant la narrativa visual a través de l'estil i l'estètica contemporània.",
+      "role": "Director & Editor",
+      "category": "Cinematografia"
+    },
+    "3": {
+      "title": "Curt editat sense guió",
+      "description": "Exercici d'edició narrativa treballant amb material existent sense guió previ. Repte de construir una història coherent i emotiva a través del muntatge i la selecció de preses.",
+      "role": "Editor",
+      "category": "Edició"
+    },
+    "4": {
+      "title": "Gravació i Edició de Curtmetratge",
+      "description": "Treball d'edició i càmera realitzat en exteriors per a un curtmetratge de ficció. Vaig participar durant la gravació en localització real, encarregant-me tant de la captació d'imatge com de l'edició posterior en un entorn professional. El vídeo mostrat recull únicament alguns fragments seleccionats del curt complet per motius de drets i durada.",
+      "role": "Editor i operador de càmera",
+      "category": "Cinematografia"
+    },
+    "5": {
+      "title": "Codebreak - Joc Multijugador",
+      "description": "Joc de lògica multijugador en temps real on els jugadors han de desxifrar codis secrets.",
+      "role": "Desenvolupador Full Stack",
+      "category": "Desenvolupament Web"
+    },
+    "6": {
+      "title": "Pantalles a Resolume per betevé",
+      "description": "Disseny integral de visuals dinàmiques per al sistema Resolume de betevé, usades en directe per anunciar convidats especials i concerts. Va ser una proposta creativa pròpia, explorant noves tendències visuals (trending styles) i innovació en el flux audiovisual del plató per a televisió en viu. Vaig barrejar tipografies animades, colors en tendència i layouts adaptatius per donar un look fresc i únic al programa.",
+      "role": "Motion Designer & Creatiu",
+      "category": "Live Visuals"
+    },
+    "7": {
+      "title": "Logo Animat amb AE",
+      "description": "Animació de logotip creada a After Effects utilitzant principis de motion design. El projecte explora transicions fluides i efectes visuals moderns per donar vida a la identitat de marca.",
+      "role": "Motion Designer",
+      "category": "Motion Graphics"
+    }
+  }
+}
