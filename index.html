@@ -22,43 +22,73 @@
   </script>
   <!-- End Hotjar -->
   
-  <!-- Suppress and prevent Framer Motion React 19 errors -->
+  <!-- Debug and diagnostic logging -->
   <script>
-    // Override Object.defineProperty to prevent undefined assignments
+    console.log('%c[INIT] Starting portfolio load', 'color: green; font-weight: bold');
+    console.log('[INIT] Location:', window.location.href);
+    console.log('[INIT] User Agent:', navigator.userAgent);
+    console.log('[INIT] Base URL:', document.baseURI);
+    
+    // Log all errors with full details
+    window.addEventListener('error', function(e) {
+      console.error('%c[ERROR] Global error caught:', 'color: red; font-weight: bold');
+      console.error('  Message:', e.message);
+      console.error('  Filename:', e.filename);
+      console.error('  Line:', e.lineno, 'Col:', e.colno);
+      console.error('  Error object:', e.error);
+      console.error('  Stack:', e.error?.stack);
+      
+      // Don't suppress, let it show for debugging
+      if (e.message && e.message.includes('Cannot set properties of undefined')) {
+        console.warn('%c[FRAMER] Framer Motion React 19 compatibility issue detected', 'color: orange');
+        e.preventDefault();
+        return false;
+      }
+    }, true);
+    
+    // Log unhandled promise rejections
+    window.addEventListener('unhandledrejection', function(e) {
+      console.error('%c[PROMISE] Unhandled rejection:', 'color: red; font-weight: bold');
+      console.error('  Reason:', e.reason);
+      console.error('  Promise:', e.promise);
+    });
+    
+    // Override Object.defineProperty with logging
     (function() {
       const originalDefineProperty = Object.defineProperty;
       Object.defineProperty = function(obj, prop, descriptor) {
         if (obj === undefined || obj === null) {
-          console.warn('Prevented setting property', prop, 'on undefined object');
+          console.warn('[DEFINE] Prevented setting property', prop, 'on undefined/null object');
           return obj;
         }
         try {
           return originalDefineProperty.call(this, obj, prop, descriptor);
         } catch (e) {
-          console.warn('Error defining property', prop, ':', e.message);
+          console.warn('[DEFINE] Error defining property', prop, ':', e.message);
           return obj;
         }
       };
     })();
     
-    // Suppress error display in console
-    window.addEventListener('error', function(e) {
-      if (e.message && e.message.includes('Cannot set properties of undefined')) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        return false;
-      }
-    }, true);
+    // Log when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('%c[DOM] DOMContentLoaded fired', 'color: blue; font-weight: bold');
+        console.log('[DOM] Root element:', document.getElementById('root'));
+      });
+    } else {
+      console.log('%c[DOM] DOM already loaded', 'color: blue; font-weight: bold');
+      console.log('[DOM] Root element:', document.getElementById('root'));
+    }
     
-    const originalError = console.error;
-    console.error = function() {
-      const message = Array.from(arguments).join(' ');
-      if (message.includes('Cannot set properties of undefined')) {
-        return;
-      }
-      originalError.apply(console, arguments);
-    };
+    // Log when page is fully loaded
+    window.addEventListener('load', function() {
+      console.log('%c[LOAD] Page fully loaded', 'color: green; font-weight: bold');
+      const root = document.getElementById('root');
+      console.log('[LOAD] Root element:', root);
+      console.log('[LOAD] Root innerHTML length:', root?.innerHTML?.length || 0);
+      console.log('[LOAD] Root children:', root?.children?.length || 0);
+    });
   </script>
   
   <meta charset="UTF-8" />
