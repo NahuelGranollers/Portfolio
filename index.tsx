@@ -6,20 +6,18 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { registerSW } from 'virtual:pwa-register';
 
-// Suppress Framer Motion React 19 compatibility warnings
-const originalError = console.error;
-console.error = (...args: any[]) => {
-  if (
-    typeof args[0] === 'string' &&
-    (args[0].includes('Cannot set properties of undefined') ||
-     args[0].includes('Activity'))
-  ) {
-    return;
-  }
-  originalError.apply(console, args);
-};
-
 registerSW();
+
+// Suppress Framer Motion + React 19 compatibility error
+window.addEventListener('error', (event) => {
+  if (
+    event.message?.includes('Cannot set properties of undefined') &&
+    event.message?.includes('Activity')
+  ) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
