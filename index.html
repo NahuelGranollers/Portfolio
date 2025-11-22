@@ -199,6 +199,27 @@
   </style>
 </head>
   <body class="text-brand-text antialiased">
+    <!-- Global Error Handler (BSOD) -->
+    <div id="global-error-overlay" style="display:none; position:fixed; inset:0; background:blue; color:white; z-index:999999; padding:20px; overflow:auto; font-family:monospace; white-space:pre-wrap;">
+      <h1>CRITICAL SYSTEM ERROR</h1>
+      <div id="error-content"></div>
+    </div>
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        var overlay = document.getElementById('global-error-overlay');
+        var content = document.getElementById('error-content');
+        overlay.style.display = 'block';
+        content.innerHTML += 'ERROR: ' + msg + '\nURL: ' + url + '\nLine: ' + line + ':' + col + '\nStack: ' + (error ? error.stack : 'N/A') + '\n\n';
+        return false;
+      };
+      window.onunhandledrejection = function(event) {
+        var overlay = document.getElementById('global-error-overlay');
+        var content = document.getElementById('error-content');
+        overlay.style.display = 'block';
+        content.innerHTML += 'UNHANDLED PROMISE REJECTION: ' + event.reason + '\n\n';
+      };
+    </script>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWZCJ3H8"

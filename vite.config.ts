@@ -48,7 +48,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-    }
+    },
+    dedupe: ['react', 'react-dom', 'framer-motion'],
   },
   build: {
     rollupOptions: {
