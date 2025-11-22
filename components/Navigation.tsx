@@ -4,6 +4,15 @@ import LanguageSwitcher from './LanguageSwitcher';
 import analytics from '../utils/analytics';
 
 const Navigation: React.FC = () => {
+    // Cerrar menú móvil al hacer scroll si está abierto
+    useEffect(() => {
+      if (!isMobileMenuOpen) return;
+      const handleScrollCloseMenu = () => {
+        setIsMobileMenuOpen(false);
+      };
+      window.addEventListener('scroll', handleScrollCloseMenu, { passive: true });
+      return () => window.removeEventListener('scroll', handleScrollCloseMenu);
+    }, [isMobileMenuOpen]);
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
