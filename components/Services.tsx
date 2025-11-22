@@ -25,24 +25,24 @@ const Services: React.FC = () => {
           message: 'Hola, quiero saber más sobre el servicio de Mapping.'
         },
         videoEditing: {
-          subject: 'Consulta sobre Video Editing',
-          message: 'Hola, me interesa el servicio de Video Editing.'
+          subject: 'Consulta sobre Edición de Video',
+          message: 'Hola, me interesa el servicio de Edición de Video.'
         },
         directing: {
-          subject: 'Consulta sobre Directing',
-          message: 'Hola, me interesa el servicio de Directing.'
+          subject: 'Consulta sobre Dirección',
+          message: 'Hola, me interesa el servicio de Dirección.'
         },
         broadcast: {
-          subject: 'Consulta sobre Broadcast',
-          message: 'Hola, me interesa el servicio de Broadcast.'
+          subject: 'Consulta sobre Realización',
+          message: 'Hola, me interesa el servicio de Realización.'
         },
         camera: {
-          subject: 'Consulta sobre Camera',
-          message: 'Hola, me interesa el servicio de Camera.'
+          subject: 'Consulta sobre Operador Cámara',
+          message: 'Hola, me interesa el servicio de Operador Cámara.'
         },
         digitech: {
-          subject: 'Consulta sobre Digitech',
-          message: 'Hola, me interesa el servicio de Digitech.'
+          subject: 'Consulta sobre DigiTech',
+          message: 'Hola, me interesa el servicio de DigiTech.'
         }
       },
       en: {
