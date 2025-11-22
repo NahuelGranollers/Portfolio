@@ -48,8 +48,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
+      'framer-motion': path.resolve(__dirname, 'src/mocks/framer-motion.tsx'),
     },
-    dedupe: ['react', 'react-dom', 'framer-motion'],
+    dedupe: ['react', 'react-dom'],
   },
   build: {
     rollupOptions: {
