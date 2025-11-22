@@ -6,14 +6,10 @@ const ParticlesCursor = () => {
   const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const particlesRef = useRef<THREE.Points | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0, prevX: 0, prevY: 0 });
-  const velocityRef = useRef({ x: 0, y: 0 });
+  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!containerRef.current) return;
-    
-    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -38,75 +34,45 @@ const ParticlesCursor = () => {
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Particles geometry - estilo BackgroundEffect
+    // Particles geometry - menos partículas
     const geometry = new THREE.BufferGeometry();
-    const particleCount = 20; // Menos partículas
+    const particleCount = 50; // Reducido de 800
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
-    const sizes = new Float32Array(particleCount);
     const velocities = new Float32Array(particleCount * 3);
-    const phases = new Float32Array(particleCount); // Para animación ondulante
-
-    // Colores del BackgroundEffect: morado (#BB86FC) y cyan (#03DAC6)
-    const colorPalette = [
-      new THREE.Color(0xBB86FC), // Morado
-      new THREE.Color(0x03DAC6), // Cyan
-      new THREE.Color(0xFFFFFF).multiplyScalar(0.4), // Blanco muy suave
-    ];
+    const ages = new Float32Array(particleCount); // Track age para desvanecimiento
 
     for (let i = 0; i < particleCount; i++) {
       const idx = i * 3;
-      // Mayor distribución espacial
       positions[idx] = (Math.random() - 0.5) * 400;
-      positions[idx + 1] = (Math.random() - 0.5) * 350;
+      positions[idx + 1] = (Math.random() - 0.5) * 300;
       positions[idx + 2] = (Math.random() - 0.5) * 200;
 
-      // Asignar colores de la paleta
-      const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+      // Colores azul-púrpura-cian con variación
+      const hue = Math.random() * 0.35 + 0.45;
+      const color = new THREE.Color().setHSL(hue, 0.6, 0.55);
       colors[idx] = color.r;
       colors[idx + 1] = color.g;
       colors[idx + 2] = color.b;
 
-      // Tamaños más pequeños (2-5px)
-      sizes[i] = Math.random() * 3 + 2;
+      velocities[idx] = (Math.random() - 0.5) * 0.3;
+      velocities[idx + 1] = (Math.random() - 0.5) * 0.3;
+      velocities[idx + 2] = (Math.random() - 0.5) * 0.3;
 
-      // Velocidades más lentas
-      velocities[idx] = (Math.random() - 0.5) * 0.08;
-      velocities[idx + 1] = (Math.random() - 0.5) * 0.08;
-      velocities[idx + 2] = (Math.random() - 0.5) * 0.05;
-
-      phases[i] = Math.random() * Math.PI * 2;
+      ages[i] = Math.random() * 100; // Edad aleatoria inicial
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
-    // Crear canvas para partículas redondas
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d')!;
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(255,255,255,1)');
-    gradient.addColorStop(0.3, 'rgba(255,255,255,0.8)');
-    gradient.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
-
-    const texture = new THREE.CanvasTexture(canvas);
-
-    // Material con glow y textura redonda
+    // Material optimizado
     const material = new THREE.PointsMaterial({
-      size: 4, // Tamaño base más pequeño
-      map: texture, // Textura redonda
+      size: 1.8,
       vertexColors: true,
       transparent: true,
-      opacity: 0.3, // Mucho más translúcido
+      opacity: 0.2, // Más translúcido
       sizeAttenuation: true,
       fog: false,
-      blending: THREE.AdditiveBlending, // Efecto glow
-      depthWrite: false,
     });
 
     // Points mesh
@@ -114,103 +80,90 @@ const ParticlesCursor = () => {
     scene.add(particles);
     particlesRef.current = particles;
 
-    // Mouse tracking con interpolación suave (lerp)
-    const targetMouse = { x: 0, y: 0 };
+    // Mouse tracking
     const onMouseMove = (e: MouseEvent) => {
-      targetMouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-      targetMouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseRef.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
     };
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    window.addEventListener('mousemove', onMouseMove);
 
-    // Animation loop con transformación suave
-    let time = 0;
+    // Animation loop
+    let frameCount = 0;
     const animate = () => {
       requestAnimationFrame(animate);
-      time += 0.016; // ~60fps
+      frameCount++;
+
+      // Actualizar solo cada 2 frames para mejor performance
+      if (frameCount % 2 !== 0) {
+        renderer.render(scene, camera);
+        return;
+      }
 
       if (particles) {
-        // Interpolación suave del mouse (lerp) para evitar saltos
-        const lerpFactor = 0.08; // Más bajo = más suave
-        mouseRef.current.x += (targetMouse.x - mouseRef.current.x) * lerpFactor;
-        mouseRef.current.y += (targetMouse.y - mouseRef.current.y) * lerpFactor;
-
-        // Calcular velocidad interpolada (sin saltos)
-        const smoothDx = targetMouse.x - mouseRef.current.x;
-        const smoothDy = targetMouse.y - mouseRef.current.y;
-        velocityRef.current.x = smoothDx;
-        velocityRef.current.y = smoothDy;
-        
-        const mouseSpeed = Math.sqrt(smoothDx ** 2 + smoothDy ** 2);
-        const speedFactor = Math.min(mouseSpeed * 8, 1);
-
-        // Rotación muy sutil
-        particles.rotation.y += 0.0002;
+        particles.rotation.x += 0.00005;
+        particles.rotation.y += 0.00015;
 
         const positionAttribute = geometry.getAttribute('position');
         const posArray = positionAttribute.array as Float32Array;
-        const sizeAttribute = geometry.getAttribute('size');
-        const sizeArray = sizeAttribute.array as Float32Array;
+        const colorAttribute = geometry.getAttribute('color');
+        const colorArray = colorAttribute.array as Float32Array;
 
         for (let i = 0; i < particleCount; i++) {
           const idx = i * 3;
+
+          // Incrementa edad y desvanecimiento
+          ages[i]++;
+          const maxAge = 200;
+          const fadeOut = Math.max(0, 1 - ages[i] / maxAge);
+
+          // Cuando se desvanecen completamente, reinicia
+          if (ages[i] > maxAge) {
+            posArray[idx] = (Math.random() - 0.5) * 400;
+            posArray[idx + 1] = (Math.random() - 0.5) * 300;
+            posArray[idx + 2] = (Math.random() - 0.5) * 200;
+            ages[i] = 0;
+            velocities[idx] = (Math.random() - 0.5) * 0.3;
+            velocities[idx + 1] = (Math.random() - 0.5) * 0.3;
+            velocities[idx + 2] = (Math.random() - 0.5) * 0.3;
+          }
 
           const x = posArray[idx];
           const y = posArray[idx + 1];
           const z = posArray[idx + 2];
 
-          // Distancia al mouse interpolado
-          const dx = mouseRef.current.x * 180 - x;
-          const dy = mouseRef.current.y * 180 - y;
+          // Atracción suave hacia el mouse
+          const dx = mouseRef.current.x * 120 - x;
+          const dy = mouseRef.current.y * 120 - y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-
-          // Atracción y repulsión ultra suave
-          let attraction = 0;
-          if (distance < 100) {
-            // Repulsión suave
-            attraction = speedFactor > 0.05 ? -0.015 * speedFactor : 0.005;
-          } else if (distance < 220) {
-            // Atracción muy suave
-            attraction = 0.002;
-          }
-
-          // Movimiento ondulante más lento (como float-particle del background)
-          const wave = Math.sin(time * 0.4 + phases[i]) * 0.25;
-          const waveY = Math.cos(time * 0.35 + phases[i]) * 0.25;
-
-          // Movimiento ultra suave con interpolación
-          const targetVelX = dx * attraction * 0.3 + velocities[idx] * 0.5 + wave;
-          const targetVelY = dy * attraction * 0.3 + velocities[idx + 1] * 0.5 + waveY;
           
-          posArray[idx] += targetVelX * 0.5;
-          posArray[idx + 1] += targetVelY * 0.5;
-          posArray[idx + 2] += velocities[idx + 2] * 0.25;
+          const attraction = distance < 180 ? 0.008 : 0; // Menos agresivo
 
-          // Boundaries suaves más amplios
-          if (Math.abs(posArray[idx]) > 250) {
-            velocities[idx] *= -0.6;
-            posArray[idx] = Math.sign(posArray[idx]) * 250;
+          posArray[idx] += dx * attraction + velocities[idx];
+          posArray[idx + 1] += dy * attraction + velocities[idx + 1];
+          posArray[idx + 2] += velocities[idx + 2];
+
+          // Rebote suave en bordes (con damping)
+          if (Math.abs(posArray[idx]) > 220) {
+            velocities[idx] *= -0.8;
+            posArray[idx] = Math.sign(posArray[idx]) * 220;
           }
-          if (Math.abs(posArray[idx + 1]) > 200) {
-            velocities[idx + 1] *= -0.6;
-            posArray[idx + 1] = Math.sign(posArray[idx + 1]) * 200;
+          if (Math.abs(posArray[idx + 1]) > 170) {
+            velocities[idx + 1] *= -0.8;
+            posArray[idx + 1] = Math.sign(posArray[idx + 1]) * 170;
           }
           if (Math.abs(posArray[idx + 2]) > 120) {
-            velocities[idx + 2] *= -0.6;
+            velocities[idx + 2] *= -0.8;
             posArray[idx + 2] = Math.sign(posArray[idx + 2]) * 120;
           }
 
-          // Transformación sutil del tamaño con mejor respuesta al mouse
-          const proximityScale = distance < 100 ? 1 + (1 - distance / 100) * 0.4 * speedFactor : 1;
-          const pulseScale = 1 + Math.sin(time * 1.2 + phases[i]) * 0.08;
-          sizeArray[i] = (2 + Math.random() * 3) * proximityScale * pulseScale;
+          // Aplicar desvanecimiento al color (reducir opacity)
+          colorArray[idx] = (colorArray[idx] * 0.7 + 0.3) * fadeOut;
+          colorArray[idx + 1] = (colorArray[idx + 1] * 0.7 + 0.3) * fadeOut;
+          colorArray[idx + 2] = (colorArray[idx + 2] * 0.7 + 0.3) * fadeOut;
         }
 
         positionAttribute.needsUpdate = true;
-        sizeAttribute.needsUpdate = true;
-
-        // Decay velocity del mouse muy lento para movimiento fluido
-        velocityRef.current.x *= 0.88;
-        velocityRef.current.y *= 0.88;
+        colorAttribute.needsUpdate = true;
       }
 
       renderer.render(scene, camera);
@@ -246,7 +199,7 @@ const ParticlesCursor = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1, // DETRÁS de TODO (incluso del contenido)
+        zIndex: 1, // DETRÁS de todo
         pointerEvents: 'none',
       }}
     />

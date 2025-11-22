@@ -1,14 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
-export default defineConfig(({ command, mode }) => ({
-  // IMPORTANT: Change this based on your deployment:
-  // - Use '/' if you have a custom domain (nahuelgranollers.com)
-  // - Use '/Portfolio/' if using GitHub Pages URL (username.github.io/Portfolio)
-  base: '/',
-  plugins: [
+export default defineConfig({
+  base: '/', // Cambia "portfolio" por el nombre exacto de tu repositorio si es distinto
+  plugins: [react()],
     react(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -34,7 +30,7 @@ export default defineConfig(({ command, mode }) => ({
           }
         ]
       }
-    })
+    }),
   ],
   server: {
     port: 3000,
@@ -51,25 +47,21 @@ export default defineConfig(({ command, mode }) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-    },
-    dedupe: ['react', 'react-dom', 'framer-motion'],
+    }
   },
   build: {
-    minify: false, // Disable minification to debug the error
-    sourcemap: true, // Enable sourcemaps
-    // rollupOptions: {
-    //   output: {
-    //     manualChunks(id) {
-    //       if (id.includes('node_modules')) {
-    //         if (id.includes('react') || id.includes('react-dom')) {
-    //           return 'vendor_react';
-    //         }
-    //         if (id.includes('lodash')) return 'vendor_lodash';
-    //         return 'vendor';
-    //       }
-    //     }
-    //   }
-    // }
-  },
-  publicDir: 'public'
-}));
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor_react';
+            }
+            if (id.includes('lodash')) return 'vendor_lodash';
+            return 'vendor';
+          }
+        }
+      }
+    }
+  }
+});

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import type { Video } from '../types';
 
 interface FullscreenPlayerProps {
@@ -14,7 +13,6 @@ const CloseIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) => {
-  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const previouslyFocused = useRef<HTMLElement | null>(null);
@@ -109,20 +107,20 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         {/* Glass Panel con detalles */}
         <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 shadow-xl">
           <h2 className="text-3xl font-bold mb-4 text-brand-primary">
-            {t(`videos.${video.id}.title`, video.title)}
+            {video.title}
           </h2>
 
           {video.description && (
             <div className="mb-4">
               <p className={`text-gray-300 leading-relaxed ${!showFullDescription && 'line-clamp-2'}`}>
-                {t(`videos.${video.id}.description`, video.description)}
+                {video.description}
               </p>
               {video.description.length > 150 && (
                 <button
                   onClick={() => setShowFullDescription((v) => !v)}
                   className="text-brand-primary hover:underline text-sm mt-2"
                 >
-                  {showFullDescription ? t('projects.viewLess') : t('projects.viewMore')}
+                  {showFullDescription ? 'Ver menos' : 'Ver más'}
                 </button>
               )}
             </div>
@@ -130,7 +128,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
 
           {video.role && (
             <p className="text-brand-primary font-medium mb-4">
-              {t(`videos.${video.id}.role`, video.role)}
+              {video.role}
             </p>
           )}
 
@@ -152,7 +150,7 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
         <button
           onClick={handleClose}
           className="absolute -top-4 -right-4 bg-red-500 hover:bg-red-600 text-white rounded-full p-3 shadow-lg transition-all hover:scale-110"
-          aria-label={t('video.close')}
+          aria-label="Cerrar reproductor"
         >
           <CloseIcon className="w-6 h-6" />
         </button>

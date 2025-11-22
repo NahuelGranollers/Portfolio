@@ -1,56 +1,33 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { SERVICES } from '../constants';
 
 const Services: React.FC = () => {
-  const { t } = useTranslation();
-
-  const serviceKeys = ['videoEditing', 'directing', 'broadcast', 'camera', 'digitech'];
-
   return (
     <section id="servicios" className="py-20 px-6 bg-brand-surface">
       <div className="max-w-7xl mx-auto">
-        <motion.h2 
-          className="text-4xl font-bold mb-4 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          {t('services.title')}
-        </motion.h2>
-        <motion.p 
-          className="text-gray-400 text-center mb-12 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-        >
-          {t('services.subtitle')}
-        </motion.p>
+        <h2 className="text-4xl font-bold mb-4 text-center">Servicios</h2>
+        <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          Soluciones audiovisuales profesionales adaptadas a tus necesidades
+        </p>
         
-        {/* Grid responsivo de 5 columnas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        {/* ✅ Grid responsivo completo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* ✅ Agregar key={index} */}
           {SERVICES.map((service, index) => (
-            <motion.div 
+            <div 
               key={index}
               className="bg-brand-bg border border-brand-border rounded-lg p-6 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all duration-300 group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
             >
               <div className="text-4xl mb-3 group-hover:scale-110 text-center transition-transform duration-300">
                 {service.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-3 text-brand-text text-center">
-                {t(`services.${serviceKeys[index]}.title`)}
+              <h3 className="text-xl font-semibold mb-3 text-brand-text">
+                {service.title}
               </h3>
-              <p className="text-sm text-gray-400 leading-relaxed text-center">
-                {t(`services.${serviceKeys[index]}.description`)}
+              <p className="text-gray-400 leading-relaxed">
+                {service.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

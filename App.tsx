@@ -2,25 +2,22 @@ import './index.css';
 import React, { useState, lazy, Suspense } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';
-import ErrorBoundary from './components/ErrorBoundary';
-import { registerSW } from 'virtual:pwa-register';
-
-// Lazy load ALL components to prevent import-time errors from blocking App rendering
-const Navigation = lazy(() => import('./components/Navigation'));
-const Hero = lazy(() => import('./components/Hero'));
-const VideoGrid = lazy(() => import('./components/VideoGrid'));
-const About = lazy(() => import('./components/About'));
-const Services = lazy(() => import('./components/Services'));
-const Contact = lazy(() => import('./components/Contact'));
-const Footer = lazy(() => import('./components/Footer'));
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import VideoGrid from './components/VideoGrid';
 const FullscreenPlayer = lazy(() => import('./components/FullscreenPlayer'));
-const BackgroundEffect = lazy(() => import('./components/BackgroundEffect'));
-const ParticlesCursor = lazy(() => import('./components/ParticlesCursor'));
+import About from './components/About';
+import Services from './components/Services';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import BackgroundEffect from './components/BackgroundEffect';
+import { registerSW } from 'virtual:pwa-register';
+import ParticlesCursor from './components/ParticlesCursor';
 
 registerSW();
 
 function App(): React.ReactElement {
-  console.log('[APP] Rendering App with Lazy Components');
+  // ✅ Tipo simplificado
   const [fullscreenVideo, setFullscreenVideo] = useState<Video | null>(null);
 
   const handleSelectVideo = (video: Video) => {
@@ -31,26 +28,35 @@ function App(): React.ReactElement {
     setFullscreenVideo(null);
   };
 
-  const LoadingFallback = () => (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      <div className="animate-pulse">Loading...</div>
-    </div>
-  );
-
   return (
-    <div className="app-container bg-black min-h-screen text-white">
-      <Suspense fallback={<LoadingFallback />}>
-        <Navigation />
-        <main>
-          {/* Components temporarily disabled for debugging */}
-        </main>
-        <Footer />
+    <>
+	<ParticlesCursor />
+      <BackgroundEffect />
+      <Navigation />
+      <main>
+        <Hero />
+        {/* VideoGrid tiene id="proyectos", Contact tiene id="contacto" */}
+        <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+        <About />
+        <Services />
+        <Contact />
+      </main>
+      <Footer />
+      
+      <Suspense fallback={
+        <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-brand-primary"></div>
+        </div>
+      }>
+        {fullscreenVideo && (
+          <FullscreenPlayer
+            video={fullscreenVideo}
+            onClose={handleCloseFullscreen}
+          />
+        )}
       </Suspense>
-    </div>
+    </>
   );
-  /*
-  // Commented out block removed
-  */
 }
 
 export default App;
