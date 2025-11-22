@@ -38,6 +38,29 @@ function App(): React.ReactElement {
   );
 
   return (
+    <div className="app-container bg-black min-h-screen text-white">
+      <Suspense fallback={<LoadingFallback />}>
+        <Navigation />
+        <main>
+          <Hero />
+          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+          <About />
+          <Services />
+          <Contact />
+        </main>
+        <Footer />
+        
+        {fullscreenVideo && (
+          <FullscreenPlayer
+            video={fullscreenVideo}
+            onClose={handleCloseFullscreen}
+          />
+        )}
+      </Suspense>
+    </div>
+  );
+  /*
+  return (
     <ErrorBoundary>
       <Suspense fallback={<LoadingFallback />}>
         <Navigation />
@@ -59,6 +82,7 @@ function App(): React.ReactElement {
       </Suspense>
     </ErrorBoundary>
   );
+  */
 }
 
 export default App;
