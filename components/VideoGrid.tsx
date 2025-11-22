@@ -67,7 +67,7 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, type: 'spring', stiffness: 1200, damping: 18 }}
         >
           <h2 className="text-4xl font-bold mb-4 text-white">{t('projects.title') || ''}</h2>
           <p className="text-gray-200">{t('projects.subtitle') || ''}</p>
@@ -76,21 +76,35 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
         {/* Grid de videos sin filtros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(showAll ? videos : videos.slice(0, initialCount)).map((video) => (
-            <VideoThumbnail 
-              key={video.id} 
-              video={video} 
-              onSelectVideo={onSelectVideo} 
-            />
+            <motion.div
+              key={video.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, type: 'spring', stiffness: 1200, damping: 18 }}
+            >
+              <VideoThumbnail 
+                video={video} 
+                onSelectVideo={onSelectVideo} 
+              />
+            </motion.div>
           ))}
         </div>
 
         {/* Botón expandir/contraer */}
         {videos.length > initialCount && (
-          <GlassExpandButton 
-            expanded={showAll} 
-            onClick={() => setShowAll(!showAll)}
-            t={t}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, type: 'spring', stiffness: 1200, damping: 18 }}
+          >
+            <GlassExpandButton 
+              expanded={showAll} 
+              onClick={() => setShowAll(!showAll)}
+              t={t}
+            />
+          </motion.div>
         )}
       </div>
     </section>

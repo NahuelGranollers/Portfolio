@@ -78,7 +78,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
   return (
     <div 
       ref={containerRef}
-      className="group relative bg-brand-surface rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-brand-primary/20 transition-all duration-500 hover:scale-[1.02]"
+      className="group relative bg-brand-surface rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-brand-primary/20 transition-all duration-300 hover:scale-[1.02]"
       role="button"
       tabIndex={0}
       onClick={handleClick}
@@ -107,6 +107,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
         preload="metadata"
         aria-hidden="true"
         className={`absolute inset-0 w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        style={{ transition: 'opacity 0.3s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1)' }}
       />
 
       {/* Category Badge */}
@@ -125,7 +126,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
 
       {/* Info */}
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-brand-primary transition">
+        <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-brand-primary transition" style={{ transition: 'color 0.3s cubic-bezier(.4,0,.2,1), transform 0.4s cubic-bezier(.4,0,.2,1)' }}>
           {t(`videos.${video.id}.title`, video.title)}
         </h3>
         

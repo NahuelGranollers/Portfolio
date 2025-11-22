@@ -34,16 +34,20 @@ const Services: React.FC = () => {
           {SERVICES.map((service, index) => (
             <motion.div 
               key={index}
-              className="bg-brand-bg border border-brand-border rounded-lg p-6 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all duration-300 group"
+              className="bg-brand-bg border border-brand-border rounded-lg p-6 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all duration-200 group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              transition={{ delay: index * 0.05, type: 'spring', stiffness: 1200, damping: 18 }}
+              whileHover={{ y: -8, scale: 1.045, boxShadow: '0 8px 32px rgba(187,134,252,0.18)' }}
             >
-              <div className="text-4xl mb-3 group-hover:scale-110 text-center transition-transform duration-300">
+              <motion.div 
+                className="text-4xl mb-3 text-center"
+                whileHover={{ scale: 1.13 }}
+                transition={{ type: 'spring', stiffness: 1200, damping: 18 }}
+              >
                 {service.icon}
-              </div>
+              </motion.div>
               <h3 className="text-lg font-semibold mb-3 text-brand-text text-center">
                 {t(`services.${serviceKeys[index]}.title`)}
               </h3>
