@@ -48,27 +48,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-      'react': path.resolve(__dirname, 'node_modules/react'),
-      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     }
   },
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor_react';
-            }
-            if (id.includes('framer-motion')) {
-              return 'vendor_motion';
-            }
-            if (id.includes('three')) {
-              return 'vendor_three';
-            }
-            return 'vendor';
-          }
-        }
+        manualChunks: undefined
       }
     }
   }
