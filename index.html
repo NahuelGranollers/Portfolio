@@ -22,109 +22,29 @@
   </script>
   <!-- End Hotjar -->
   
-  <!-- CRITICAL: Patch Object.defineProperty BEFORE any modules load -->
+  <!-- Patch for Framer Motion compatibility -->
   <script>
+    // Patch Object.defineProperty to handle undefined objects gracefully
     (function() {
       const original = Object.defineProperty;
       Object.defineProperty = function(obj, prop, descriptor) {
-        // Silently return if object is undefined/null
-        if (obj == null) {
-          return obj;
-        }
+        if (obj == null) return obj;
         try {
           return original.call(this, obj, prop, descriptor);
         } catch (e) {
-          // Silently ignore errors
           return obj;
         }
       };
     })();
-  </script>
-  
-  <!-- Debug and diagnostic logging -->
-  <script>
-    console.log('%c[INIT] Starting portfolio load', 'color: green; font-weight: bold');
-    console.log('[INIT] Location:', window.location.href);
-    console.log('[INIT] User Agent:', navigator.userAgent);
-    console.log('[INIT] Base URL:', document.baseURI);
     
-    // CRITICAL: Prevent Framer Motion error from blocking execution
+    // Suppress Framer Motion initialization errors
     window.addEventListener('error', function(e) {
-      console.error('%c[ERROR] Global error caught:', 'color: red; font-weight: bold');
-      console.error('  Message:', e.message);
-      console.error('  Filename:', e.filename);
-      console.error('  Line:', e.lineno, 'Col:', e.colno);
-      console.error('  Error object:', e.error);
-      console.error('  Stack:', e.error?.stack);
-      
-      // SUPPRESS and CONTINUE execution for Framer Motion React 19 bug
-      if (e.message && (e.message.includes('Cannot set properties of undefined') || 
-                        e.message.includes('Activity') || 
-                        e.message.includes('Children'))) {
-        console.warn('%c[FRAMER] Framer Motion error suppressed - continuing execution', 'color: orange; font-weight: bold');
+      if (e.message && e.message.includes('Cannot set properties of undefined')) {
         e.preventDefault();
         e.stopPropagation();
-        e.stopImmediatePropagation();
         return false;
       }
     }, true);
-    
-    // Log unhandled promise rejections
-    window.addEventListener('unhandledrejection', function(e) {
-      console.error('%c[PROMISE] Unhandled rejection:', 'color: red; font-weight: bold');
-      console.error('  Reason:', e.reason);
-      console.error('  Promise:', e.promise);
-    });
-    
-    // Override Object.defineProperty with logging
-    (function() {
-      const originalDefineProperty = Object.defineProperty;
-      Object.defineProperty = function(obj, prop, descriptor) {
-        if (obj === undefined || obj === null) {
-          console.warn('[DEFINE] Prevented setting property', prop, 'on undefined/null object');
-          return obj;
-        }
-        try {
-          return originalDefineProperty.call(this, obj, prop, descriptor);
-        } catch (e) {
-          console.warn('[DEFINE] Error defining property', prop, ':', e.message);
-          return obj;
-        }
-      };
-    })();
-    
-    // Log when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('%c[DOM] DOMContentLoaded fired', 'color: blue; font-weight: bold');
-        console.log('[DOM] Root element:', document.getElementById('root'));
-      });
-    } else {
-      console.log('%c[DOM] DOM already loaded', 'color: blue; font-weight: bold');
-      console.log('[DOM] Root element:', document.getElementById('root'));
-    }
-    
-    // Log when page is fully loaded
-    window.addEventListener('load', function() {
-      console.log('%c[LOAD] Page fully loaded', 'color: green; font-weight: bold');
-      const root = document.getElementById('root');
-      console.log('[LOAD] Root element:', root);
-      console.log('[LOAD] Root innerHTML length:', root?.innerHTML?.length || 0);
-      console.log('[LOAD] Root children:', root?.children?.length || 0);
-      
-      // Force check React rendering after 1 second
-      setTimeout(function() {
-        console.log('%c[CHECK] Checking React render status after 1s...', 'color: yellow; font-weight: bold');
-        const rootAfter = document.getElementById('root');
-        console.log('[CHECK] Root innerHTML length:', rootAfter?.innerHTML?.length || 0);
-        console.log('[CHECK] Root children:', rootAfter?.children?.length || 0);
-        if (rootAfter && rootAfter.children.length === 0) {
-          console.error('%c[CHECK] PROBLEM: React did not render! Root is still empty.', 'color: red; font-weight: bold; font-size: 16px');
-        } else {
-          console.log('%c[CHECK] SUCCESS: React rendered content!', 'color: green; font-weight: bold');
-        }
-      }, 1000);
-    });
   </script>
   
   <meta charset="UTF-8" />
@@ -295,9 +215,9 @@
   <noscript>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap">
   </noscript>
-  <script type="module" crossorigin src="/assets/index-BKhhM4l7.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/vendor-BHaoFCBI.js">
-  <link rel="modulepreload" crossorigin href="/assets/vendor_react-s5MC17iv.js">
+  <script type="module" crossorigin src="/assets/index-CXGSeQuu.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/vendor-7y_14nlD.js">
+  <link rel="modulepreload" crossorigin href="/assets/vendor_react-ilUaGkRg.js">
   <link rel="stylesheet" crossorigin href="/assets/index-CNfIuiza.css">
 <link rel="manifest" href="/manifest.webmanifest"></head>
   <body class="text-brand-text antialiased">
