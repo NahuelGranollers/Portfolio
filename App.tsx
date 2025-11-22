@@ -7,7 +7,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import VideoGrid from './components/VideoGrid';
 import BackgroundEffect from './components/BackgroundEffect';
-// import ParticlesCursor from './components/ParticlesCursor';
+import ParticlesCursor from './components/ParticlesCursor';
 const FullscreenPlayer = lazy(() => import('./components/FullscreenPlayer'));
 import About from './components/About';
 import Services from './components/Services';
@@ -34,7 +34,7 @@ function App(): React.ReactElement {
       <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 9999, color: '#00ff00', background: 'rgba(0,0,0,0.8)', padding: '5px', borderRadius: '4px', fontSize: '12px', pointerEvents: 'none' }}>
         System Status: Active
       </div>
-      {/* <ParticlesCursor /> */}
+      <ParticlesCursor />
       <BackgroundEffect />
       <Navigation />
       <main>

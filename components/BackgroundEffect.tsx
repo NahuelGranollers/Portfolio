@@ -23,7 +23,7 @@ const BackgroundEffect: React.FC = () => {
           position: fixed;
           inset: 0;
           background: radial-gradient(circle at 50% 30%, #1a1a2e 0%, #0a0a0f 60%, #000000 100%);
-          z-index: -3;
+          z-index: -5;
           pointer-events: none;
         }
 
@@ -41,7 +41,7 @@ const BackgroundEffect: React.FC = () => {
             transparent 70%
           );
           filter: blur(100px);
-          z-index: -2;
+          z-index: -4;
           pointer-events: none;
           animation: glow-pulse 8s ease-in-out infinite;
         }
@@ -64,7 +64,7 @@ const BackgroundEffect: React.FC = () => {
             transparent 70%
           );
           filter: blur(120px);
-          z-index: -2;
+          z-index: -4;
           pointer-events: none;
           animation: glow-pulse-slow 12s ease-in-out infinite;
         }
@@ -83,7 +83,7 @@ const BackgroundEffect: React.FC = () => {
             transparent 40%,
             rgba(3,218,198,0.08) 100%
           );
-          z-index: -1;
+          z-index: -3;
           pointer-events: none;
           animation: shimmer-move 15s ease-in-out infinite alternate;
         }
@@ -97,7 +97,7 @@ const BackgroundEffect: React.FC = () => {
         .bg-particles-container {
           position: fixed;
           inset: 0;
-          z-index: 0;
+          z-index: -2;
           pointer-events: none;
           overflow: hidden;
         }
