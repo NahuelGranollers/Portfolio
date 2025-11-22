@@ -14,13 +14,14 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://formspree.io"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://www.googletagmanager.com", "https://formspree.io", "https://static.hotjar.com", "https://script.hotjar.com"],
+      scriptSrcAttr: ["'unsafe-inline'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://r2cdn.perplexity.ai"],
       imgSrc: ["'self'", "data:", "https:"],
       mediaSrc: ["'self'", "blob:"],
-      connectSrc: ["'self'", "https://www.googletagmanager.com", "https://formspree.io"],
-      frameSrc: ["'self'"],
+      connectSrc: ["'self'", "https://www.googletagmanager.com", "https://formspree.io", "https://*.hotjar.com", "https://*.hotjar.io", "wss://*.hotjar.com"],
+      frameSrc: ["'self'", "https://*.hotjar.com"],
     },
   },
   crossOriginEmbedderPolicy: false,
@@ -29,7 +30,7 @@ app.use(helmet({
 // Rate limiting: Prevenir ataques DDoS
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // Límite de 100 peticiones por ventana por IP
+  max: 1000, // Límite aumentado a 1000 para evitar bloqueos de assets
   message: "Demasiadas peticiones desde esta IP, por favor intenta de nuevo más tarde.",
   standardHeaders: true,
   legacyHeaders: false,
