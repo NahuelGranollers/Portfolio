@@ -37,14 +37,14 @@ const About: React.FC = () => {
             <div className="mb-6">
               <div className="space-y-3">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-violet-300 font-semibold text-lg">betevé</span>
-                  <span className="text-gray-300">—</span>
-                  <span className="text-gray-100">{t('about.beteve')} | {t('about.beteveDuration')}</span>
-                </div>
-                <div className="flex items-baseline gap-2">
                   <span className="text-violet-300 font-semibold text-lg">Amazon Studios</span>
                   <span className="text-gray-300">—</span>
                   <span className="text-gray-100">{t('about.amazon')} | {t('about.amazonDuration')}</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-violet-300 font-semibold text-lg">betevé</span>
+                  <span className="text-gray-300">—</span>
+                  <span className="text-gray-100">{t('about.beteve')} | {t('about.beteveDuration')}</span>
                 </div>
               </div>
             </div>
