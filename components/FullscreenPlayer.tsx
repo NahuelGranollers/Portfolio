@@ -91,20 +91,22 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
       <div ref={containerRef} className="relative w-full max-w-6xl">
 
         {/* Video */}
-<div className="mb-6 rounded-lg overflow-hidden shadow-2xl w-full max-w-3xl mx-auto aspect-video bg-black relative">
-  <video
-    ref={videoRef}
-    className="w-full h-full object-cover"
-    controls
-    preload="metadata"
-    autoPlay
-    loop
-    onClick={e => e.stopPropagation()}
-  >
-    <source src={video.videoUrl} type="video/webm" />
-    Tu navegador no soporta video.
-  </video>
-</div>
+        <div className="mb-6 rounded-lg overflow-hidden shadow-2xl w-full max-w-3xl mx-auto aspect-video bg-black relative">
+          <video
+            ref={videoRef}
+            className="w-full h-full object-cover"
+            controls
+            preload="metadata"
+            autoPlay
+            loop
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Intenta cargar primero MP4 para compatibilidad iOS, luego WebM */}
+            <source src={video.videoUrl.replace(/\.webm$/, '.mp4')} type="video/mp4" />
+            <source src={video.videoUrl} type="video/webm" />
+            Tu navegador no soporta video.
+          </video>
+        </div>
 
         {/* Glass Panel con detalles */}
         <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-6 shadow-xl">
