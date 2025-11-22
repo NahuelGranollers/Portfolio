@@ -17,8 +17,8 @@ export const VIDEOS: Video[] = [
     id: 1,
     title: 'Poesía Visual Experimental',
     description: `Pieza audiovisual experimental que fusiona luz, imagen y movimiento. Este videopoema explora el lenguaje visual a través de tipografía cinética, texturas orgánicas y metáforas visuales, creando una narrativa sensorial que trasciende lo literal. Un trabajo personal que refleja mi interés en las formas híbridas de expresión audiovisual contemporánea.`,
-    thumbnailUrl: '/videos/haiku.webp',
-    videoUrl: '/videos/Haiku.webm',
+    thumbnailUrl: '/videos/haiku.webp',  // ← Agregada barra inicial
+    videoUrl: '/videos/haiku.webm',      // ← Agregada barra inicial
     year: '2023',
     role: 'Director Creativo & Editor',
     tools: ['Premiere Pro'],
@@ -51,7 +51,7 @@ export const VIDEOS: Video[] = [
     title: 'Grabación y Edición de Cortometraje',
     description: `Trabajo de edición y cámara realizado en exteriores para un cortometraje de ficción. Participé durante la grabación en localización real, encargándome tanto de la captación de imagen como de la edición posterior en un entorno profesional. El video mostrado recoge únicamente algunos fragmentos seleccionados del corto completo por motivos de derechos y duración.`,
     thumbnailUrl: '/videos/corto-agnes-thumb.webp',
-    videoUrl: '/videos/Corto-Agnes.webm',
+    videoUrl: '/videos/corto-agnes.webm',
     year: '2024',
     role: 'Editor y operador de cámara',
     tools: ['Premiere Pro', 'Canon EOS', 'DaVinci Resolve'],
@@ -62,7 +62,7 @@ export const VIDEOS: Video[] = [
     title: 'Codebreak - Juego Multijugador',
     description: 'Juego de lógica multijugador en tiempo real donde los jugadores deben descifrar códigos secretos.',
     thumbnailUrl: '/videos/codebreak.webp',
-    videoUrl: '/videos/Codebreak-Demo.webm',
+    videoUrl: '/videos/codebreak-demo.webm',
     year: '2025',
     role: 'Desarrollador Full Stack',
     tools: ['React', 'Node.js', 'Socket.io', 'TypeScript'],
@@ -74,7 +74,7 @@ export const VIDEOS: Video[] = [
     title: 'Pantallas en Resolume para betevé',
     description: 'Diseño integral de visuales dinámicas para el sistema Resolume de betevé, usadas en directo para anunciar invitados especiales y conciertos. Fue una propuesta creativa propia, explorando nuevas tendencias visuales (trending styles) e innovación en el flujo audiovisual del plató para televisión en vivo. Mezclé tipografías animadas, colores en tendencia y layouts adaptativos para dar un look fresco y único al programa.',
     thumbnailUrl: '/videos/resolume-beteve-thumb.webp',
-    videoUrl: '/videos/Pantallas-Invitados.webm',
+    videoUrl: '/videos/pantallas-invitados.webm',
     year: '2025',
     role: 'Motion Designer & Creativo',
     tools: ['Resolume', 'After Effects', 'Photoshop'],
@@ -86,7 +86,7 @@ export const VIDEOS: Video[] = [
     title: 'Logo Animado con AE',
     description: 'Animación de logotipo creada en After Effects utilizando principios de motion design. El proyecto explora transiciones fluidas y efectos visuales modernos para dar vida a la identidad de marca.',
     thumbnailUrl: '/videos/logoae.webp',
-    videoUrl: '/videos/Logo-Ae.webm',
+    videoUrl: '/videos/LOGO-AE.webm',
     year: '2024',
     role: 'Motion Designer',
     tools: ['After Effects', 'Illustrator'],
@@ -105,12 +105,11 @@ export const PERSONAL_INFO = {
     approach: 'Mi enfoque es colaborativo y orientado a resultados. Creo en la importancia de entender la visión del cliente y traducirla en contenido audiovisual que supere expectativas.'
   },
   skills: [
-    'Edición Multicam',
-    'Realización Broadcast',
-    'DIT Workflows',
-    'Operador Cámara',
+    'Edición de Video',
+    'Dirección Cinematográfica',
     'Premiere Pro',
-    'DaVinci Resolve'
+    'Diseño de UI/UX',
+    'Storytelling Visual'
   ],
   social: {
     email: 'nahuelgranollers@gmail.com',
@@ -121,28 +120,23 @@ export const PERSONAL_INFO = {
 export const SERVICES = [
   {
     title: 'Edición de Video',
-    description: 'Premiere Pro, DaVinci Resolve, After Effects. Montaje profesional multicámara y narrativa visual.',
+    description: 'Montaje profesional de material audiovisual para marcas, eventos y contenido digital.',
     icon: '✂️'
   },
   {
-    title: 'Dirección',
-    description: 'Canon EOS, BlackMagic, ARRI. Dirección creativa, storyboarding y producción de contenido narrativo.',
+    title: 'Dirección Cinematográfica',
+    description: 'Dirección y producción de cortometrajes, fashion films y contenido narrativo.',
     icon: '🎬'
   },
   {
-    title: 'Realización',
-    description: 'vMix, OBS, Switchers profesionales. Dirección técnica en directo y streaming multicámara.',
+    title: 'Realización Broadcast',
+    description: 'Dirección técnica y operación de sistemas de realización en directo para televisión, streaming y grandes eventos. Especialista en coordinación de señales, switchers, mezcladores y flujos multicámara profesionales.',
     icon: '📡'
   },
   {
-    title: 'Operador Cámara',
-    description: 'Sony, Panasonic, Canon, RED. Operación multicámara profesional y manejo de ópticas cine.',
+    title: 'Operador de Cámara',
+    description: 'Operación de cámaras en plató y exteriores, incluyendo captación de imagen multiángulo, manejo de ópticas profesionales y seguimiento de guion visual en producción multicámara.',
     icon: '🎥'
-  },
-  {
-    title: 'DigiTech',
-    description: 'Capture One, Lightroom, DIT workflows. Gestión técnica digital en set y backup seguro.',
-    icon: '💻'
   }
 ];
 

@@ -4,7 +4,6 @@ export const isMobile = () =>
 
 // components/VideoCard.tsx
 import { useEffect, useRef, useState, type FC } from 'react';
-import { useTranslation } from 'react-i18next';
 import type { Video } from '../types';
 import useInView from '../hooks/useInView';
 import { isMobile } from '../helpers/isMobile';
@@ -15,7 +14,6 @@ type Props = {
 };
 
 const VideoCard: FC<Props> = ({ video, onSelect }) => {
-  const { t } = useTranslation();
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.3 });
   const [prefetched, setPrefetched] = useState(false);
   const prefetchLinkRef = useRef<HTMLLinkElement | null>(null);
@@ -62,14 +60,10 @@ const VideoCard: FC<Props> = ({ video, onSelect }) => {
       prefetchLinkRef.current = link;
       setPrefetched(true);
     }
-    // Delay para asegurar que el video estÃ¡ listo
-    setTimeout(() => {
-      if (videoPreviewRef.current && inView) {
-        videoPreviewRef.current.currentTime = 0;
-        videoPreviewRef.current.load(); // Forzar carga
-        videoPreviewRef.current.play().catch(() => {});
-      }
-    }, 50);
+    if (videoPreviewRef.current && inView) {
+      videoPreviewRef.current.currentTime = 0;
+      videoPreviewRef.current.play().catch(() => {});
+    }
   };
 
   const handleMouseLeave = () => {
@@ -139,7 +133,7 @@ const VideoCard: FC<Props> = ({ video, onSelect }) => {
         {video.category && (
           <div className="absolute top-4 left-4 z-10">
             <span className="px-3 py-1 bg-brand-primary/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
-              {t(`categories.${video.category}`, video.category)}
+              {video.category}
             </span>
           </div>
         )}
@@ -154,13 +148,13 @@ const VideoCard: FC<Props> = ({ video, onSelect }) => {
 
         {video.innovative && (
           <span className="absolute bottom-4 left-4 px-3 py-1 bg-red-500/80 text-white text-xs font-semibold rounded-full shadow-lg backdrop-blur-xl z-10">
-            {t('video.innovation')}
+            Innovación
           </span>
         )}
 
         {video.externalLink && (
           <div className="absolute bottom-4 right-4 z-20">
-            <span className="px-3 py-1 bg-brand-secondary/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">{t('video.tryIt')}</span>
+            <span className="px-3 py-1 bg-brand-secondary/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">¡Pruébalo!</span>
           </div>
         )}
       </button>
