@@ -42,46 +42,14 @@ function App(): React.ReactElement {
       <Suspense fallback={<LoadingFallback />}>
         <Navigation />
         <main>
-          <Hero />
-          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-          <About />
-          <Services />
-          <Contact />
+          {/* Components temporarily disabled for debugging */}
         </main>
         <Footer />
-        
-        {fullscreenVideo && (
-          <FullscreenPlayer
-            video={fullscreenVideo}
-            onClose={handleCloseFullscreen}
-          />
-        )}
       </Suspense>
     </div>
   );
   /*
-  return (
-    <ErrorBoundary>
-      <Suspense fallback={<LoadingFallback />}>
-        <Navigation />
-        <main>
-          <Hero />
-          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-          <About />
-          <Services />
-          <Contact />
-        </main>
-        <Footer />
-        
-        {fullscreenVideo && (
-          <FullscreenPlayer
-            video={fullscreenVideo}
-            onClose={handleCloseFullscreen}
-          />
-        )}
-      </Suspense>
-    </ErrorBoundary>
-  );
+  // Commented out block removed
   */
 }
 

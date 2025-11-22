@@ -51,7 +51,8 @@ export default defineConfig(({ command, mode }) => ({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
-    }
+    },
+    dedupe: ['react', 'react-dom', 'framer-motion'],
   },
   build: {
     minify: false, // Disable minification to debug the error
