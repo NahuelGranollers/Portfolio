@@ -113,9 +113,8 @@ const Contact: React.FC = () => {
           {/* Información de contacto */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, type: 'spring', stiffness: 400, damping: 30 }}
           >
             <h2 className="text-4xl font-bold mb-4">{t('contact.title')}</h2>
             <p className="text-gray-400 mb-8">{t('contact.subtitle')}</p>
@@ -159,9 +158,8 @@ const Contact: React.FC = () => {
             onSubmit={handleSubmit} 
             className="space-y-4"
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 400, damping: 30 }}
           >
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">{t('contact.form.name')}</label>

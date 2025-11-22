@@ -124,17 +124,16 @@ const Services: React.FC = () => {
         <motion.h2 
           className="text-4xl font-bold mb-4 text-center"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, type: 'spring', stiffness: 400, damping: 30 }}
         >
           {t('services.title') || ''}
         </motion.h2>
         <motion.p 
           className="text-gray-400 text-center mb-12 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, type: 'spring', stiffness: 400, damping: 30 }}
         >
           {t('services.subtitle') || ''}
         </motion.p>
@@ -146,16 +145,15 @@ const Services: React.FC = () => {
               key={index}
               className="bg-brand-bg border border-brand-border rounded-lg p-6 hover:border-brand-primary hover:shadow-lg hover:shadow-brand-primary/10 transition-all duration-200 group cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, type: 'spring', stiffness: 1200, damping: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.07, type: 'spring', stiffness: 400, damping: 30 }}
               whileHover={{ y: -8, scale: 1.045, boxShadow: '0 8px 32px rgba(187,134,252,0.18)' }}
               onClick={() => handleServiceClick(service)}
             >
               <motion.div 
                 className="text-4xl mb-3 text-center"
                 whileHover={{ scale: 1.13 }}
-                transition={{ type: 'spring', stiffness: 1200, damping: 18 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 30 }}
               >
                 {service.icon}
               </motion.div>

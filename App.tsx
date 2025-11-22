@@ -26,6 +26,24 @@ registerSW({
 });
 
 function App(): React.ReactElement {
+    React.useEffect(() => {
+      // Forzar scroll-to-top tras el montaje (con retraso para asegurar restauración)
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 10);
+
+      // Forzar scroll-to-top en pageshow (incluye recarga y navegación bfcache)
+      const handlePageShow = (event) => {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 10);
+      };
+      window.addEventListener('pageshow', handlePageShow);
+
+      return () => {
+        window.removeEventListener('pageshow', handlePageShow);
+      };
+    }, []);
   const [fullscreenVideo, setFullscreenVideo] = useState<Video | null>(null);
 
   const handleSelectVideo = useCallback((video: Video) => {
