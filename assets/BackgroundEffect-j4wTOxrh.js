@@ -1,4 +1,4 @@
-import{a as o,j as a}from"./vendor_react-LWfT8_C2.js";import"./vendor-D-FxXD3j.js";const l=()=>{const e=typeof window<"u"&&window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;return o.useEffect(()=>{if(e)return;document.querySelectorAll(".bg-particle").forEach(t=>{const r=t;r.style.setProperty("--dx",`${Math.random()*100-50}px`),r.style.setProperty("--dy",`${Math.random()*100-50}px`)})},[e]),a.jsxs(a.Fragment,{children:[a.jsx("style",{children:`
+import{a as o,j as a}from"./vendor_react-DKE70u0m.js";import"./vendor-vZY7UPzV.js";const l=()=>{const e=typeof window<"u"&&window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;return o.useEffect(()=>{if(e)return;document.querySelectorAll(".bg-particle").forEach(t=>{const r=t;r.style.setProperty("--dx",`${Math.random()*100-50}px`),r.style.setProperty("--dy",`${Math.random()*100-50}px`)})},[e]),a.jsxs(a.Fragment,{children:[a.jsx("style",{children:`
         .bg-gradient-layer {
           position: fixed;
           inset: 0;
