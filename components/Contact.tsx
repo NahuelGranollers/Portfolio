@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion } from '../utils/motionMock';
 import { PERSONAL_INFO } from '../constants';
 import type { ContactFormData } from '../types';
 import analytics from '../utils/analytics';

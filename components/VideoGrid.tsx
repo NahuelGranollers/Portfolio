@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion } from '../utils/motionMock';
 import type { Video } from '../types';
 import VideoThumbnail from './VideoThumbnail';
 import analytics from '../utils/analytics';

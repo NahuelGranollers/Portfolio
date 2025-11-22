@@ -31,12 +31,12 @@ function App(): React.ReactElement {
 
   return (
     <ErrorBoundary>
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ParticlesCursor />
       </Suspense>
       <Suspense fallback={null}>
         <BackgroundEffect />
-      </Suspense>
+      </Suspense> */}
       <Navigation />
       <main>
         <Hero />

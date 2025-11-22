@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
+import { motion } from '../utils/motionMock';
 import { PERSONAL_INFO } from '../constants';
 
 const About: React.FC = () => {
