@@ -28,6 +28,21 @@ const Contact: React.FC = () => {
     }
   }, [submitStatus]);
 
+  useEffect(() => {
+    // Leer asunto y mensaje predefinidos de localStorage si existen
+    const presetSubject = localStorage.getItem('contactPresetSubject');
+    const presetMessage = localStorage.getItem('contactPresetMessage');
+    if (presetSubject || presetMessage) {
+      setFormData((prev) => ({
+        ...prev,
+        subject: presetSubject || '',
+        message: presetMessage || ''
+      }));
+      localStorage.removeItem('contactPresetSubject');
+      localStorage.removeItem('contactPresetMessage');
+    }
+  }, [submitStatus]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -68,16 +83,16 @@ const Contact: React.FC = () => {
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', subject: '', message: '' });
-        analytics.formSubmit('contact', 'success');
+        analytics.formSubmit('contact', true);
       } else {
         setSubmitStatus('error');
         setErrorMessage(t('contact.form.error'));
-        analytics.formSubmit('contact', 'error');
+        analytics.formSubmit('contact', false);
       }
     } catch (error) {
       setSubmitStatus('error');
       setErrorMessage(t('contact.form.errorConnection'));
-      analytics.formSubmit('contact', 'error');
+      analytics.formSubmit('contact', false);
     }
 
     setIsSubmitting(false);

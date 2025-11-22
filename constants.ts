@@ -97,26 +97,31 @@ export const PERSONAL_INFO = {
 
 export const SERVICES = [
   {
+    id: 'videoEditing',
     title: 'Edición de Video',
     description: 'Premiere Pro, DaVinci Resolve, After Effects. Montaje profesional multicámara y narrativa visual.',
     icon: '✂️'
   },
   {
+    id: 'directing',
     title: 'Dirección',
     description: 'Canon EOS, BlackMagic, ARRI. Dirección creativa, storyboarding y producción de contenido narrativo.',
     icon: '🎬'
   },
   {
+    id: 'broadcast',
     title: 'Realización',
     description: 'vMix, OBS, Switchers profesionales. Dirección técnica en directo y streaming multicámara.',
     icon: '📡'
   },
   {
+    id: 'camera',
     title: 'Operador Cámara',
     description: 'Sony, Panasonic, Canon, RED. Operación multicámara profesional y manejo de ópticas cine.',
     icon: '🎥'
   },
   {
+    id: 'digitech',
     title: 'DigiTech',
     description: 'Capture One, Lightroom, DIT workflows. Gestión técnica digital en set y backup seguro.',
     icon: '💻'
