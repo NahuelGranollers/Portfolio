@@ -35,18 +35,18 @@ const Hero: React.FC = () => {
         </p>
 
         {/* Botones CTA */}
-        <div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+        <div className="flex flex-row flex-nowrap gap-2 sm:gap-4 justify-center items-center px-2 overflow-x-auto">
           <button
             onClick={scrollToProjects}
             aria-label="Ir a la sección de proyectos"
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20 hover:scale-105 active:scale-95"
+            className="min-w-[120px] max-w-[180px] px-4 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-base bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20 hover:scale-105 active:scale-95 whitespace-nowrap"
           >
             {t('hero.viewProjects')}
           </button>
           <button
             onClick={scrollToContact}
             aria-label="Ir a la sección de contacto"
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all hover:scale-105 active:scale-95"
+            className="min-w-[120px] max-w-[180px] px-4 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-base bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all hover:scale-105 active:scale-95 whitespace-nowrap"
           >
             {t('hero.letsTalk')}
           </button>
