@@ -3,22 +3,24 @@ import React, { useState, lazy, Suspense } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';
 import ErrorBoundary from './components/ErrorBoundary';
-import Navigation from './components/Navigation';
-import Hero from './components/Hero';
-import VideoGrid from './components/VideoGrid';
+import { registerSW } from 'virtual:pwa-register';
+
+// Lazy load ALL components to prevent import-time errors from blocking App rendering
+const Navigation = lazy(() => import('./components/Navigation'));
+const Hero = lazy(() => import('./components/Hero'));
+const VideoGrid = lazy(() => import('./components/VideoGrid'));
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 const FullscreenPlayer = lazy(() => import('./components/FullscreenPlayer'));
 const BackgroundEffect = lazy(() => import('./components/BackgroundEffect'));
 const ParticlesCursor = lazy(() => import('./components/ParticlesCursor'));
-import About from './components/About';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import { registerSW } from 'virtual:pwa-register';
 
 registerSW();
 
 function App(): React.ReactElement {
-  console.log('[APP] Rendering full App');
+  console.log('[APP] Rendering App with Lazy Components');
   const [fullscreenVideo, setFullscreenVideo] = useState<Video | null>(null);
 
   const handleSelectVideo = (video: Video) => {
@@ -29,27 +31,25 @@ function App(): React.ReactElement {
     setFullscreenVideo(null);
   };
 
+  const LoadingFallback = () => (
+    <div className="min-h-screen flex items-center justify-center bg-black text-white">
+      <div className="animate-pulse">Loading...</div>
+    </div>
+  );
+
   return (
     <ErrorBoundary>
-      {/* Temporarily disabled effects to isolate crash
-      <Suspense fallback={null}>
-        <ParticlesCursor />
-      </Suspense>
-      <Suspense fallback={null}>
-        <BackgroundEffect />
-      </Suspense>
-      */}
-      <Navigation />
-      <main>
-        <Hero />
-        <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-        <About />
-        <Services />
-        <Contact />
-      </main>
-      <Footer />
-      
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoadingFallback />}>
+        <Navigation />
+        <main>
+          <Hero />
+          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+          <About />
+          <Services />
+          <Contact />
+        </main>
+        <Footer />
+        
         {fullscreenVideo && (
           <FullscreenPlayer
             video={fullscreenVideo}
