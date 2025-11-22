@@ -25,6 +25,9 @@ jobs:
         
       - name: Add .nojekyll
         run: touch dist/.nojekyll
+        
+      - name: Copy CNAME to dist
+        run: cp public/CNAME dist/CNAME
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
