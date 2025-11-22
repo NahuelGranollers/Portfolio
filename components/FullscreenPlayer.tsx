@@ -101,8 +101,8 @@ const FullscreenPlayer: React.FC<FullscreenPlayerProps> = ({ video, onClose }) =
             loop
             onClick={e => e.stopPropagation()}
           >
-            {/* Intenta cargar primero MP4 para compatibilidad iOS, luego WebM */}
-            <source src={video.videoUrl.replace(/\.webm$/, '.mp4')} type="video/mp4" />
+            {/* Usa ambas fuentes, asegurando compatibilidad y rutas correctas */}
+            <source src={video.videoUrl.endsWith('.webm') ? video.videoUrl.replace('.webm', '.mp4') : video.videoUrl.replace('.webm', '.mp4') } type="video/mp4" />
             <source src={video.videoUrl} type="video/webm" />
             Tu navegador no soporta video.
           </video>
