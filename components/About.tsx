@@ -39,7 +39,7 @@ const About: React.FC = () => {
                 <div className="flex items-baseline gap-2">
                   <span className="text-violet-300 font-semibold text-lg">Amazon Studios</span>
                   <span className="text-gray-300">—</span>
-                  <span className="text-gray-100 break-words block sm:inline">DIT | Presente</span>
+                  <span className="text-gray-100 break-words block sm:inline">{t('about.amazon')} | {t('about.amazonDuration')}</span>
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-violet-300 font-semibold text-lg">betevé</span>
