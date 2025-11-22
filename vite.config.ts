@@ -54,6 +54,8 @@ export default defineConfig(({ command, mode }) => ({
     }
   },
   build: {
+    minify: false, // Disable minification to debug the error
+    sourcemap: true, // Enable sourcemaps
     // rollupOptions: {
     //   output: {
     //     manualChunks(id) {
