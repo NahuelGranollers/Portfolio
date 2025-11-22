@@ -29,19 +29,26 @@ const Contact: React.FC = () => {
   }, [submitStatus]);
 
   useEffect(() => {
-    // Leer asunto y mensaje predefinidos de localStorage si existen
-    const presetSubject = localStorage.getItem('contactPresetSubject');
-    const presetMessage = localStorage.getItem('contactPresetMessage');
-    if (presetSubject || presetMessage) {
-      setFormData((prev) => ({
-        ...prev,
-        subject: presetSubject || '',
-        message: presetMessage || ''
-      }));
-      localStorage.removeItem('contactPresetSubject');
-      localStorage.removeItem('contactPresetMessage');
-    }
-  }, [submitStatus]);
+    const updateFromPreset = () => {
+      const presetSubject = localStorage.getItem('contactPresetSubject');
+      const presetMessage = localStorage.getItem('contactPresetMessage');
+      if (presetSubject || presetMessage) {
+        setFormData((prev) => ({
+          ...prev,
+          subject: presetSubject || '',
+          message: presetMessage || ''
+        }));
+        localStorage.removeItem('contactPresetSubject');
+        localStorage.removeItem('contactPresetMessage');
+      }
+    };
+    // Ejecutar al montar y al recibir el evento
+    updateFromPreset();
+    window.addEventListener('contactPresetUpdate', updateFromPreset);
+    return () => {
+      window.removeEventListener('contactPresetUpdate', updateFromPreset);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({

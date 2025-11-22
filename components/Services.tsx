@@ -79,6 +79,8 @@ const Services: React.FC = () => {
     const preset = presets[lang]?.[service.id] || { subject: '', message: '' };
     localStorage.setItem('contactPresetSubject', preset.subject);
     localStorage.setItem('contactPresetMessage', preset.message);
+    // Emitir evento personalizado para que Contact actualice los campos
+    window.dispatchEvent(new Event('contactPresetUpdate'));
     // Scroll suave a Contact
     const contactSection = document.getElementById('contacto');
     if (contactSection) {
