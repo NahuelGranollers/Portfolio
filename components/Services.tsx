@@ -74,6 +74,36 @@ const Services: React.FC = () => {
           subject: 'Inquiry about Digitech',
           message: 'Hi, I want to know more about the Digitech service.'
         }
+      },
+      ca: {
+        motion: {
+          subject: 'Consulta sobre Motion Graphics',
+          message: 'Hola, vull saber més sobre el servei de Motion Graphics.'
+        },
+        mapping: {
+          subject: 'Consulta sobre Mapping',
+          message: 'Hola, vull saber més sobre el servei de Mapping.'
+        },
+        videoEditing: {
+          subject: 'Consulta sobre Edició de Vídeo',
+          message: 'Hola, m’interessa el servei d’Edició de Vídeo.'
+        },
+        directing: {
+          subject: 'Consulta sobre Direcció',
+          message: 'Hola, m’interessa el servei de Direcció.'
+        },
+        broadcast: {
+          subject: 'Consulta sobre Realització',
+          message: 'Hola, m’interessa el servei de Realització.'
+        },
+        camera: {
+          subject: 'Consulta sobre Càmera',
+          message: 'Hola, m’interessa el servei de Càmera.'
+        },
+        digitech: {
+          subject: 'Consulta sobre DigiTech',
+          message: 'Hola, m’interessa el servei de DigiTech.'
+        }
       }
     };
     const preset = presets[lang]?.[service.id] || { subject: '', message: '' };
