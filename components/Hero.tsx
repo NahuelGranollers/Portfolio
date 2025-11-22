@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import analytics from '../utils/analytics';
 
 const Hero: React.FC = () => {
@@ -22,65 +21,39 @@ const Hero: React.FC = () => {
     }
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
   return (
     <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center z-10">
-        <motion.h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4"
-          animate={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 1, y: 0 }} 
-        >
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)]">
           {t('hero.name') || 'Nahuel Granollers'}
-        </motion.h1>
+        </h1>
         
-        <motion.p 
-          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 sm:mb-6"
-          animate={{ opacity: 1, y: 0 }}
-          initial={{ opacity: 1, y: 0 }}
-        >
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-4 sm:mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
           {t('hero.title') || 'Director Audiovisual'}
-        </motion.p>
+        </p>
         
-        <motion.p 
-          className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
           {t('hero.tagline') || ''}
-        </motion.p>
+        </p>
 
         {/* Botones CTA */}
-        <motion.div 
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.button
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+          <button
             onClick={scrollToProjects}
             aria-label="Ir a la sección de proyectos"
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20 hover:scale-105 active:scale-95"
           >
             {t('hero.viewProjects')}
-          </motion.button>
+          </button>
           
-          <motion.button
+          <button
             onClick={scrollToContact}
             aria-label="Ir a la sección de contacto"
-            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all hover:scale-105 active:scale-95"
           >
             {t('hero.letsTalk')}
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}

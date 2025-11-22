@@ -3,15 +3,15 @@ import { Video } from './types';
 export const VIDEOS: Video[] = [
   
   {
-	  id: 8, // El siguiente número después del último video que tengas
+	  id: 8,
 	  title: 'Campaña Publicitaria IA',
 	  description: 'Spot realizado con inteligencia artificial para la campaña de publicidad de la Escuela Creativa. El video utiliza generación de imágenes y edición avanzada para transmitir el valor de la innovación educativa.',
-	  thumbnailUrl: '/videos/escuela-ia-thumb.webp',    // Pon aquí la ruta a tu thumbnail
-	  videoUrl: '/videos/escuela-ia.webm',              // Pon aquí la ruta al video .webm
+	  thumbnailUrl: '/videos/escuela-ia-thumb.webp',
+	  videoUrl: '/videos/escuela-ia.webm',
 	  year: '2025',
 	  role: 'Director IA & Editor',
 	  tools: ['Veo3', 'Premiere Pro', 'Stable Diffusion'],
-	  category: 'Publicidad',
+	  category: 'Audiovisual',
 	},
   {
     id: 1,
@@ -22,7 +22,7 @@ export const VIDEOS: Video[] = [
     year: '2023',
     role: 'Director Creativo & Editor',
     tools: ['Premiere Pro'],
-    category: 'Arte Experimental'
+    category: 'Audiovisual'
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const VIDEOS: Video[] = [
     year: '2023',
     role: 'Director & Editor',
     tools: ['Premiere Pro', 'DaVinci Resolve', 'After Effects'],
-    category: 'Cinematografía'
+    category: 'Audiovisual'
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export const VIDEOS: Video[] = [
     year: '2025',
     role: 'Editor',
     tools: ['Premiere Pro', 'Audition'],
-    category: 'Edición'
+    category: 'Audiovisual'
   },
   {
     id: 4,
@@ -55,7 +55,7 @@ export const VIDEOS: Video[] = [
     year: '2024',
     role: 'Editor y operador de cámara',
     tools: ['Premiere Pro', 'Canon EOS', 'DaVinci Resolve'],
-    category: 'Cinematografía'
+    category: 'Audiovisual'
   },
   {
     id: 5,
@@ -66,7 +66,7 @@ export const VIDEOS: Video[] = [
     year: '2025',
     role: 'Desarrollador Full Stack',
     tools: ['React', 'Node.js', 'Socket.io', 'TypeScript'],
-    category: 'Desarrollo Web',
+    category: 'Desarrollo',
     externalLink: 'https://codebreak.onrender.com'
   },
   {
@@ -78,7 +78,7 @@ export const VIDEOS: Video[] = [
     year: '2025',
     role: 'Motion Designer & Creativo',
     tools: ['Resolume', 'After Effects', 'Photoshop'],
-    category: 'Live Visuals',
+    category: 'Live Production',
     innovative: true
   },
   {
@@ -90,7 +90,7 @@ export const VIDEOS: Video[] = [
     year: '2024',
     role: 'Motion Designer',
     tools: ['After Effects', 'Illustrator'],
-    category: 'Motion Graphics'
+    category: 'Motion Design'
   },
 ];
 

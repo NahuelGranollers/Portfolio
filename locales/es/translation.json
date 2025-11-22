@@ -28,9 +28,10 @@
     "intro": "Técnico de realización <strong>freelance</strong> especializado en <strong>televisión en directo</strong>, <strong>estudios de grabación</strong> y <strong>post-producción broadcast</strong>.",
     "experience": "Amplia experiencia en <strong>realización multicam</strong> para televisión, <strong>flujos técnicos DIT</strong> en estudios profesionales y <strong>edición broadcast</strong>. Especializado en entornos de producción televisiva exigentes.",
     "approach": "Disponible para <strong>televisiones</strong>, <strong>productoras</strong> y <strong>estudios de video</strong>. Adaptación inmediata a sistemas técnicos complejos y flujos de trabajo profesionales con enfoque en <strong>precisión</strong> y <strong>eficiencia</strong>.",
-    "experienceTitle": "Experiencia",
     "beteve": "Técnico de Realización",
+    "beteveDuration": "1 año",
     "amazon": "DigiTech",
+    "amazonDuration": "1 mes",
     "skills": "Competencias Profesionales"
   },
   "services": {
@@ -92,13 +93,10 @@
     "close": "Cerrar"
   },
   "categories": {
-    "Publicidad": "Publicidad",
-    "Arte Experimental": "Arte Experimental",
-    "Cinematografía": "Cinematografía",
-    "Edición": "Edición",
-    "Desarrollo Web": "Desarrollo Web",
-    "Live Visuals": "Live Visuals",
-    "Motion Graphics": "Motion Graphics"
+    "Audiovisual": "Audiovisual",
+    "Motion Design": "Motion Design",
+    "Desarrollo": "Desarrollo",
+    "Live Production": "Live Production"
   },
   "skills": {
     "Edición Multicam": "Edición Multicam",

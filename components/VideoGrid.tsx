@@ -90,8 +90,8 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4">{t('projects.title') || ''}</h2>
-          <p className="text-gray-400">{t('projects.subtitle') || ''}</p>
+          <h2 className="text-4xl font-bold mb-4 text-white">{t('projects.title') || ''}</h2>
+          <p className="text-gray-200">{t('projects.subtitle') || ''}</p>
         </motion.div>
 
         {/* Filtros de categoría */}

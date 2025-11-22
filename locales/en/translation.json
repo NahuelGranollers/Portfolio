@@ -28,9 +28,10 @@
     "intro": "<strong>Freelance</strong> broadcast technician specialized in <strong>live television</strong>, <strong>recording studios</strong> and <strong>broadcast post-production</strong>.",
     "experience": "Extensive experience in <strong>multicam television production</strong>, <strong>DIT technical workflows</strong> in professional studios and <strong>broadcast editing</strong>. Specialized in demanding television production environments.",
     "approach": "Available for <strong>television networks</strong>, <strong>production companies</strong> and <strong>video studios</strong>. Immediate adaptation to complex technical systems and professional workflows with focus on <strong>precision</strong> and <strong>efficiency</strong>.",
-    "experienceTitle": "Experience",
     "beteve": "Broadcast Technician",
+    "beteveDuration": "1 year",
     "amazon": "DigiTech",
+    "amazonDuration": "1 month",
     "skills": "Professional Competencies"
   },
   "services": {
@@ -92,13 +93,10 @@
     "close": "Close"
   },
   "categories": {
-    "Publicidad": "Advertising",
-    "Arte Experimental": "Experimental Art",
-    "Cinematografía": "Cinematography",
-    "Edición": "Editing",
-    "Desarrollo Web": "Web Development",
-    "Live Visuals": "Live Visuals",
-    "Motion Graphics": "Motion Graphics"
+    "Audiovisual": "Audiovisual",
+    "Motion Design": "Motion Design",
+    "Desarrollo": "Development",
+    "Live Production": "Live Production"
   },
   "skills": {
     "Edición Multicam": "Multicam Editing",

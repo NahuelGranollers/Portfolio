@@ -29,18 +29,9 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
   const handleMouseEnter = () => {
     setIsHovered(true);
     if (videoPreviewRef.current) {
-      // Forzar carga del video
-      videoPreviewRef.current.load();
-      // Esperar a que tenga suficiente data
-      const playWhenReady = () => {
-        if (videoPreviewRef.current && videoPreviewRef.current.readyState >= 2) {
-          videoPreviewRef.current.currentTime = 0;
-          videoPreviewRef.current.play().catch(() => {});
-        } else if (videoPreviewRef.current) {
-          setTimeout(playWhenReady, 100);
-        }
-      };
-      playWhenReady();
+      // Reproducir inmediatamente sin esperar
+      videoPreviewRef.current.currentTime = 0;
+      videoPreviewRef.current.play().catch(() => {});
     }
   };
 
@@ -52,20 +43,12 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
     }
   };
 
-  // ✅ Touch handlers para móvil
+  // Touch handlers para móvil
   const handleTouchStart = () => {
     setIsHovered(true);
     if (videoPreviewRef.current) {
-      videoPreviewRef.current.load();
-      const playWhenReady = () => {
-        if (videoPreviewRef.current && videoPreviewRef.current.readyState >= 2) {
-          videoPreviewRef.current.currentTime = 0;
-          videoPreviewRef.current.play().catch(() => {});
-        } else if (videoPreviewRef.current) {
-          setTimeout(playWhenReady, 100);
-        }
-      };
-      playWhenReady();
+      videoPreviewRef.current.currentTime = 0;
+      videoPreviewRef.current.play().catch(() => {});
     }
   };
 
@@ -114,14 +97,14 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
         className={`w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
       />
 
-      {/* Preview Video - Cargar siempre pero en lazy */}
+      {/* Preview Video - Precargar metadata para reproducción instantánea */}
       <video
         ref={videoPreviewRef}
         src={video.videoUrl}
         muted
         loop
         playsInline
-        preload="none"
+        preload="metadata"
         aria-hidden="true"
         className={`absolute inset-0 w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
       />
@@ -142,18 +125,18 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
 
       {/* Info */}
       <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2 group-hover:text-brand-primary transition">
+        <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-brand-primary transition">
           {t(`videos.${video.id}.title`, video.title)}
         </h3>
         
         {video.description && (
-          <p className="text-sm text-gray-400 mb-2 line-clamp-2">
+          <p className="text-sm text-gray-200 mb-2 line-clamp-2">
             {t(`videos.${video.id}.description`, video.description)}
           </p>
         )}
 
         {video.role && (
-          <p className="text-xs text-brand-primary font-medium mb-2">
+          <p className="text-xs text-violet-300 font-medium mb-2">
             {t(`videos.${video.id}.role`, video.role)}
           </p>
         )}

@@ -28,9 +28,10 @@
     "intro": "Tècnic de realització <strong>freelance</strong> especialitzat en <strong>televisió en directe</strong>, <strong>estudis de gravació</strong> i <strong>post-producció broadcast</strong>.",
     "experience": "Àmplia experiència en <strong>realització multicàmera</strong> per a televisió, <strong>fluxos tècnics DIT</strong> en estudis professionals i <strong>edició broadcast</strong>. Especialitzat en entorns de producció televisiva exigents.",
     "approach": "Disponible per a <strong>televisions</strong>, <strong>productores</strong> i <strong>estudis de vídeo</strong>. Adaptació immediata a sistemes tècnics complexos i fluxos de treball professionals amb enfocament en <strong>precisió</strong> i <strong>eficiència</strong>.",
-    "experienceTitle": "Experiència",
     "beteve": "Tècnic de Realització",
+    "beteveDuration": "1 any",
     "amazon": "DigiTech",
+    "amazonDuration": "1 mes",
     "skills": "Competències Professionals"
   },
   "services": {
@@ -92,13 +93,10 @@
     "close": "Tancar"
   },
   "categories": {
-    "Publicidad": "Publicitat",
-    "Arte Experimental": "Art Experimental",
-    "Cinematografía": "Cinematografia",
-    "Edición": "Edició",
-    "Desarrollo Web": "Desenvolupament Web",
-    "Live Visuals": "Visuals en Directe",
-    "Motion Graphics": "Motion Graphics"
+    "Audiovisual": "Audiovisual",
+    "Motion Design": "Motion Design",
+    "Desarrollo": "Desenvolupament",
+    "Live Production": "Producció en Viu"
   },
   "skills": {
     "Edición Multicam": "Edició Multicam",
