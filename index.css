@@ -9,8 +9,19 @@
   }
 
   body {
-    @apply min-h-screen bg-[#0a0a0f] text-gray-200 antialiased;
+    @apply min-h-screen bg-[#0f0f1a] text-gray-50 antialiased;
     font-family: 'Inter', 'system-ui', 'sans-serif';
+  }
+
+  /* Base font sizes responsive */
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
   }
 
   body::before {

@@ -29,10 +29,10 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center z-10">
         <motion.h1 
-          className="text-5xl md:text-7xl font-bold mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4"
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 1, y: 0 }} 
         >
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
         </motion.h1>
         
         <motion.p 
-          className="text-xl md:text-2xl text-gray-400 mb-6"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 sm:mb-6"
           animate={{ opacity: 1, y: 0 }}
           initial={{ opacity: 1, y: 0 }}
         >
@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
         </motion.p>
         
         <motion.p 
-          className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto"
+          className="text-base sm:text-lg text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
@@ -57,14 +57,14 @@ const Hero: React.FC = () => {
 
         {/* Botones CTA */}
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <motion.button
             onClick={scrollToProjects}
             aria-label="Ir a la sección de proyectos"
-            className="px-8 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20"
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
           <motion.button
             onClick={scrollToContact}
             aria-label="Ir a la sección de contacto"
-            className="px-8 py-3 bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all"
+            className="w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
