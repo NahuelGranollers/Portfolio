@@ -2,18 +2,17 @@ import './index.css';
 import React, { useState, lazy, Suspense } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';
-import ErrorBoundary from './components/ErrorBoundary';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import VideoGrid from './components/VideoGrid';
 const FullscreenPlayer = lazy(() => import('./components/FullscreenPlayer'));
-const BackgroundEffect = lazy(() => import('./components/BackgroundEffect'));
-const ParticlesCursor = lazy(() => import('./components/ParticlesCursor'));
 import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import BackgroundEffect from './components/BackgroundEffect';
 import { registerSW } from 'virtual:pwa-register';
+import ParticlesCursor from './components/ParticlesCursor';
 
 registerSW();
 
@@ -30,13 +29,9 @@ function App(): React.ReactElement {
   };
 
   return (
-    <ErrorBoundary>
-      <Suspense fallback={null}>
-        <ParticlesCursor />
-      </Suspense>
-      <Suspense fallback={null}>
-        <BackgroundEffect />
-      </Suspense>
+    <>
+	<ParticlesCursor />
+      <BackgroundEffect />
       <Navigation />
       <main>
         <Hero />
@@ -60,7 +55,7 @@ function App(): React.ReactElement {
           />
         )}
       </Suspense>
-    </ErrorBoundary>
+    </>
   );
 }
 
