@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { PERSONAL_INFO } from '../constants';
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -11,7 +13,7 @@ const Footer: React.FC = () => {
           
           {/* Copyright */}
           <p className="text-gray-400 text-sm text-center md:text-left">
-            © {currentYear} {PERSONAL_INFO?.name || 'Portfolio'}. All rights reserved.
+            © {currentYear} {PERSONAL_INFO?.name || 'Portfolio'}. {t('footer.rights')}.
           </p>
           
           {/* Social Links */}

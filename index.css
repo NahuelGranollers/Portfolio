@@ -29,6 +29,17 @@
     50% {opacity: 0.6; transform: scale(1.02);}
     100% {opacity: 0.3; transform: scale(1);}
   }
+
+  @keyframes scan {
+    0% {background-position: 0 0;}
+    100% {background-position: 0 100%;}
+  }
+}
+
+@layer utilities {
+  .animate-scan {
+    animation: scan 8s linear infinite;
+  }
 }
 
 /* Scrollbar styles */

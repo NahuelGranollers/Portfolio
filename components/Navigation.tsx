@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from './LanguageSwitcher';
+import analytics from '../utils/analytics';
 
 const Navigation: React.FC = () => {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,6 +24,11 @@ const Navigation: React.FC = () => {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
       isScrolled ? 'bg-brand-bg/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
@@ -28,38 +37,40 @@ const Navigation: React.FC = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <button
-            onClick={() => scrollToSection('hero')}
+            onClick={scrollToTop}
+            aria-label="Scroll to top"
             className="text-2xl font-bold text-brand-primary hover:text-brand-primary-dark transition-colors"
           >
             NG
           </button>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             <button
-              onClick={() => scrollToSection('proyectos')}
+              onClick={() => { scrollToSection('proyectos'); analytics.sectionView('projects'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              Proyectos
+              {t('nav.projects')}
             </button>
             <button
-              onClick={() => scrollToSection('sobre-mi')}
+              onClick={() => { scrollToSection('sobre-mi'); analytics.sectionView('about'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              Sobre Mí
+              {t('nav.about')}
             </button>
             <button
-              onClick={() => scrollToSection('servicios')}
+              onClick={() => { scrollToSection('servicios'); analytics.sectionView('services'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              Servicios
+              {t('nav.services')}
             </button>
             <button
-              onClick={() => scrollToSection('contacto')}
+              onClick={() => { scrollToSection('contacto'); analytics.sectionView('contact'); }}
               className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark transition-colors"
             >
-              Contacto
+              {t('nav.contact')}
             </button>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,29 +96,30 @@ const Navigation: React.FC = () => {
           <div className="md:hidden py-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               <button
-                onClick={() => scrollToSection('proyectos')}
+                onClick={() => { scrollToSection('proyectos'); analytics.sectionView('projects'); }}
                 className="text-brand-text hover:text-brand-primary transition-colors text-left"
               >
-                Proyectos
+                {t('nav.projects')}
               </button>
               <button
-                onClick={() => scrollToSection('sobre-mi')}
+                onClick={() => { scrollToSection('sobre-mi'); analytics.sectionView('about'); }}
                 className="text-brand-text hover:text-brand-primary transition-colors text-left"
               >
-                Sobre Mí
+                {t('nav.about')}
               </button>
               <button
-                onClick={() => scrollToSection('servicios')}
+                onClick={() => { scrollToSection('servicios'); analytics.sectionView('services'); }}
                 className="text-brand-text hover:text-brand-primary transition-colors text-left"
               >
-                Servicios
+                {t('nav.services')}
               </button>
               <button
-                onClick={() => scrollToSection('contacto')}
+                onClick={() => { scrollToSection('contacto'); analytics.sectionView('contact'); }}
                 className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark transition-colors text-left"
               >
-                Contacto
+                {t('nav.contact')}
               </button>
+              <LanguageSwitcher />
             </div>
           </div>
         )}
