@@ -1,9 +1,9 @@
 import './index.css';
-import './i18n/config'; // Initialize i18n
+// import './i18n/config'; // Initialize i18n
 
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+// import App from './App';
 import { registerSW } from 'virtual:pwa-register';
 
 // DIAGNOSTICS
@@ -36,11 +36,18 @@ const SimpleApp = () => (
   </div>
 );
 
+const MinimalApp = () => (
+  <div style={{ background: '#111', color: 'white', minHeight: '100vh', padding: '20px' }}>
+    <h1>Minimal App Mode</h1>
+    <p>If you see this, the core React environment is healthy.</p>
+  </div>
+);
+
 try {
   console.log('Attempting to render App...');
   root.render(
     <Suspense fallback={<div style={{ color: 'white', textAlign: 'center', marginTop: '20%' }}>Loading Suspense...</div>}>
-      <App />
+      <MinimalApp />
     </Suspense>
   );
   console.log('Render called successfully');
