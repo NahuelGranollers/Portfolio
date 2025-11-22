@@ -47,28 +47,7 @@ const GlassExpandButton: React.FC<{ expanded: boolean, onClick: () => void, t: a
 const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const initialCount = 6; // Número de proyectos visibles inicialmente
-
-  // Extraer categorías únicas
-  const categories = useMemo(() => {
-    const uniqueCategories = Array.from(
-      new Set(videos.map(v => v.category).filter(Boolean))
-    );
-    return ['all', ...uniqueCategories];
-  }, [videos]);
-
-  // Filtrar videos por categoría
-  const filteredVideos = useMemo(() => {
-    if (selectedCategory === 'all') return videos;
-    return videos.filter(v => v.category === selectedCategory);
-  }, [videos, selectedCategory]);
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setShowAll(false);
-    analytics.filterChange('category', category);
-  };
 
   if (videos.length === 0) {
     return (
@@ -94,39 +73,9 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
           <p className="text-gray-200">{t('projects.subtitle') || ''}</p>
         </motion.div>
 
-        {/* Filtros de categoría */}
-        <motion.div 
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {categories.map((category, index) => (
-            <motion.button
-              key={category}
-              onClick={() => handleCategoryChange(category)}
-              aria-label={t('projects.filterBy', { category: category === 'all' ? t('projects.all') : category })}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-brand-primary text-white shadow-lg shadow-brand-primary/30'
-                  : 'bg-brand-surface text-gray-400 hover:bg-brand-surface/80 hover:text-brand-primary border border-brand-border'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-            >
-              {category === 'all' ? (t('projects.all') || '') : (t(`categories.${category}`, category) || '')}
-            </motion.button>
-          ))}
-        </motion.div>
-
-        {/* Grid de videos filtrados */}
+        {/* Grid de videos sin filtros */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(showAll ? filteredVideos : filteredVideos.slice(0, initialCount)).map((video) => (
+          {(showAll ? videos : videos.slice(0, initialCount)).map((video) => (
             <VideoThumbnail 
               key={video.id} 
               video={video} 
@@ -135,20 +84,8 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
           ))}
         </div>
 
-        {/* Mensaje si no hay resultados */}
-        {filteredVideos.length === 0 && (
-          <motion.div 
-            className="text-center py-12 text-gray-400"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-lg">{t('projects.noResults')}</p>
-          </motion.div>
-        )}
-
         {/* Botón expandir/contraer */}
-        {filteredVideos.length > initialCount && (
+        {videos.length > initialCount && (
           <GlassExpandButton 
             expanded={showAll} 
             onClick={() => setShowAll(!showAll)}

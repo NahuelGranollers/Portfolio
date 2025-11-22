@@ -69,29 +69,6 @@ export const VIDEOS: Video[] = [
     category: 'Desarrollo',
     externalLink: 'https://codebreak.onrender.com'
   },
-  {
-    id: 6,
-    title: 'Pantallas en Resolume para betevé',
-    description: 'Diseño integral de visuales dinámicas para el sistema Resolume de betevé, usadas en directo para anunciar invitados especiales y conciertos. Fue una propuesta creativa propia, explorando nuevas tendencias visuales (trending styles) e innovación en el flujo audiovisual del plató para televisión en vivo. Mezclé tipografías animadas, colores en tendencia y layouts adaptativos para dar un look fresco y único al programa.',
-    thumbnailUrl: '/videos/resolume-beteve-thumb.webp',
-    videoUrl: '/videos/pantallas-invitados.webm',
-    year: '2025',
-    role: 'Motion Designer & Creativo',
-    tools: ['Resolume', 'After Effects', 'Photoshop'],
-    category: 'Live Production',
-    innovative: true
-  },
-  {
-    id: 7,
-    title: 'Logo Animado con AE',
-    description: 'Animación de logotipo creada en After Effects utilizando principios de motion design. El proyecto explora transiciones fluidas y efectos visuales modernos para dar vida a la identidad de marca.',
-    thumbnailUrl: '/videos/logoae.webp',
-    videoUrl: '/videos/logo-ae.webm',
-    year: '2024',
-    role: 'Motion Designer',
-    tools: ['After Effects', 'Illustrator'],
-    category: 'Motion Design'
-  },
 ];
 
 // Información personal para las secciones About y Contact
