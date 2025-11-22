@@ -25,14 +25,14 @@
   },
   "about": {
     "title": "About Me",
-    "intro": "<strong>Freelance</strong> broadcast technician specialized in <strong>live television</strong>, <strong>recording studios</strong> and <strong>broadcast post-production</strong>.",
-    "experience": "Extensive experience in <strong>multicam television production</strong>, <strong>DIT technical workflows</strong> in professional studios and <strong>broadcast editing</strong>. Specialized in demanding television production environments.",
-    "approach": "Available for <strong>television networks</strong>, <strong>production companies</strong> and <strong>video studios</strong>. Immediate adaptation to complex technical systems and professional workflows with focus on <strong>precision</strong> and <strong>efficiency</strong>.",
-    "beteve": "Broadcast Technician",
+    "intro": "<strong>Freelance</strong> live broadcast technician specialized in <strong>live television</strong>, <strong>recording studios</strong> and <strong>broadcast post-production</strong>.",
+    "experience": "Extensive experience in <strong>multicam television production</strong>, <strong>DIT (Digital Imaging Technician) workflows</strong> in professional studios and <strong>broadcast editing</strong>. Specialized in demanding television production environments.",
+    "approach": "Available for <strong>television networks</strong>, <strong>production companies</strong> and <strong>video studios</strong>. Immediate adaptation to complex technical systems and professional workflows with a focus on <strong>precision</strong> and <strong>efficiency</strong>.",
+    "beteve": "Live Broadcast Technician",
     "beteveDuration": "1 year",
-    "amazon": "DigiTech",
-    "amazonDuration": "Currently working",
-    "skills": "Professional Competencies"
+    "amazon": "Digital Imaging Technician (DIT)",
+    "amazonDuration": "Currently employed",
+    "skills": "Key Skills"
   },
   "services": {
     "title": "Services",
@@ -42,11 +42,11 @@
       "description": "Premiere Pro, DaVinci Resolve, After Effects. Professional multicam editing and visual storytelling."
     },
     "directing": {
-      "title": "Directing",
-      "description": "Canon EOS, BlackMagic — Creative directing, storyboarding and narrative content production."
+      "title": "Creative Direction",
+      "description": "Canon EOS, BlackMagic — Creative direction, storyboarding and narrative content production."
     },
     "broadcast": {
-      "title": "Broadcast",
+      "title": "Live Production",
       "description": "vMix, OBS, Switchers — Live technical direction and multicam streaming."
     },
     "camera": {
@@ -54,7 +54,7 @@
       "description": "Sony, Panasonic, Canon, RED — Professional multicam operation and cinema lens handling."
     },
     "digitech": {
-      "title": "DigiTech",
+      "title": "Digital Imaging Technician (DIT)",
       "description": "Capture One, Lightroom, DIT workflows. On-set digital technical management and secure backup."
     }
   },
