@@ -27,15 +27,15 @@ const Hero: React.FC = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)]">
           {t('hero.name') || 'Nahuel Granollers'}
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl text-gray-100 mb-4 sm:mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
+        <p className="text-sm sm:text-xl md:text-2xl text-gray-100 mb-4 sm:mb-6 drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
           {t('hero.title') || 'Director Audiovisual & Técnico de Realización'}
         </p>
-        <p className="text-base sm:text-lg text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+        <p className="text-xs sm:text-lg text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
           {t('hero.tagline') || 'Creando historias visuales que conectan y emocionan'}
         </p>
 
         {/* Botones CTA */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+        <div className="flex flex-row gap-3 sm:gap-4 justify-center items-center px-4">
           <button
             onClick={scrollToProjects}
             aria-label="Ir a la sección de proyectos"
