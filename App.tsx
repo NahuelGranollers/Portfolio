@@ -1,5 +1,5 @@
 import './index.css';
-import React, { useState, lazy, Suspense, useCallback, memo } from 'react';
+import React, { useState, lazy, Suspense, useCallback } from 'react';
 import type { Video } from './types';
 import { VIDEOS } from './constants';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -14,7 +14,16 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 import { registerSW } from 'virtual:pwa-register';
 
-registerSW();
+registerSW({
+  onNeedRefresh() {
+    // Optionally show a UI to refresh
+    console.log('PWA update available');
+  },
+  onRegisteredSW(swUrl, registration) {
+    // Optionally log or handle registration
+    console.log('Service Worker registered:', swUrl);
+  },
+});
 
 function App(): React.ReactElement {
   const [fullscreenVideo, setFullscreenVideo] = useState<Video | null>(null);
@@ -35,7 +44,11 @@ function App(): React.ReactElement {
         <main>
           <Hero />
           <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-          <Suspense fallback={<div className="min-h-screen" />}>
+          <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-primary" aria-label="Cargando sección..." />
+            </div>
+          }>
             <About />
             <Services />
             <Contact />
@@ -45,10 +58,10 @@ function App(): React.ReactElement {
           <Footer />
         </Suspense>
       </div>
-      
+
       <Suspense fallback={
-        <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-brand-primary"></div>
+        <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50" aria-label="Cargando video en pantalla completa...">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-brand-primary" />
         </div>
       }>
         {fullscreenVideo && (
