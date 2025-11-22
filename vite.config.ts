@@ -7,7 +7,7 @@ export default defineConfig(({ command, mode }) => ({
   // IMPORTANT: Change this based on your deployment:
   // - Use '/' if you have a custom domain (nahuelgranollers.com)
   // - Use '/Portfolio/' if using GitHub Pages URL (username.github.io/Portfolio)
-  base: '/Portfolio/',
+  base: '/',
   plugins: [
     react(),
     VitePWA({
