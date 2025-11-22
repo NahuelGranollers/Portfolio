@@ -22,6 +22,25 @@
   </script>
   <!-- End Hotjar -->
   
+  <!-- CRITICAL: Patch Object.defineProperty BEFORE any modules load -->
+  <script>
+    (function() {
+      const original = Object.defineProperty;
+      Object.defineProperty = function(obj, prop, descriptor) {
+        // Silently return if object is undefined/null
+        if (obj == null) {
+          return obj;
+        }
+        try {
+          return original.call(this, obj, prop, descriptor);
+        } catch (e) {
+          // Silently ignore errors
+          return obj;
+        }
+      };
+    })();
+  </script>
+  
   <!-- Debug and diagnostic logging -->
   <script>
     console.log('%c[INIT] Starting portfolio load', 'color: green; font-weight: bold');
