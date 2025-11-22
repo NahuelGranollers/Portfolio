@@ -3,7 +3,7 @@ import React from 'react';
 // Mock component factory for motion.div, motion.h1, etc.
 export const motion = new Proxy({}, {
   get: (target, prop) => {
-    return ({ initial, animate, exit, transition, variants, whileHover, whileTap, viewport, ...rest }: any) => {
+    return ({ initial, animate, exit, transition, variants, whileHover, whileTap, whileInView, viewport, ...rest }: any) => {
       const Component = prop as any;
       return <Component {...rest} />;
     }

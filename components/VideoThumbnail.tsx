@@ -95,7 +95,7 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
   return (
     <div 
       ref={containerRef}
-      className="group relative bg-brand-surface rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-brand-primary/20 transition-all duration-500 hover:scale-[1.02]"
+      className="group relative bg-brand-surface rounded-lg overflow-hidden cursor-pointer hover:shadow-2xl hover:shadow-brand-primary/20 transition-all duration-500 hover:scale-[1.02] z-10"
       role="button"
       tabIndex={0}
       onClick={handleClick}
@@ -107,24 +107,30 @@ const VideoThumbnail: React.FC<VideoThumbnailProps> = ({ video, onSelectVideo })
       aria-label={`Ver proyecto: ${video.title}`}
     >
       {/* ✅ loading="lazy" y alt text */}
-      <img 
-        src={video.thumbnailUrl} 
-        alt={video.title}
-        loading="lazy"
-        className={`w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
-      />
+      <div className="relative w-full h-64 bg-gray-900">
+        <img 
+          src={video.thumbnailUrl} 
+          alt={video.title}
+          loading="lazy"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+          onError={(e) => {
+            // Fallback si falla la imagen
+            e.currentTarget.style.display = 'none';
+          }}
+        />
 
-      {/* Preview Video - Cargar siempre pero en lazy */}
-      <video
-        ref={videoPreviewRef}
-        src={video.videoUrl}
-        muted
-        loop
-        playsInline
-        preload="none"
-        aria-hidden="true"
-        className={`absolute inset-0 w-full h-64 object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
-      />
+        {/* Preview Video - Cargar siempre pero en lazy */}
+        <video
+          ref={videoPreviewRef}
+          src={video.videoUrl}
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        />
+      </div>
 
       {/* Category Badge */}
       {video.category && (
