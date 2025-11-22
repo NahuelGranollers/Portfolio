@@ -35,12 +35,17 @@ const About: React.FC = () => {
           
           <div className="order-1 md:order-2 space-y-6">
             <div className="mb-6">
-              <div className="space-y-3">
+              <div className="space-y-3 overflow-x-auto">
                 <div className="flex items-baseline gap-2">
                   <span className="text-violet-300 font-semibold text-lg whitespace-nowrap">Amazon Studios</span>
                   <span className="text-gray-300 whitespace-nowrap">—</span>
                   <span className="text-gray-100 whitespace-nowrap">{t('about.amazon')} | {t('about.amazonDuration')}</span>
-                </div>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-violet-300 font-semibold text-lg">Amazon Studios</span>
+                    <span className="text-gray-300">—</span>
+                    <span className="text-gray-100">{t('about.amazon')} | {t('about.amazonDuration')}</span>
+                  </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-violet-300 font-semibold text-lg">betevé</span>
                   <span className="text-gray-300">—</span>
@@ -50,9 +55,9 @@ const About: React.FC = () => {
             </div>
             
             <div className="prose prose-invert max-w-none space-y-4">
-              <p className="text-base text-gray-100 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('about.intro') }} />
-              <p className="text-base text-gray-100 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('about.experience') }} />
-              <p className="text-base text-gray-100 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('about.approach') }} />
+              <p className="text-base text-gray-100 leading-relaxed break-words" dangerouslySetInnerHTML={{ __html: t('about.intro') }} />
+              <p className="text-base text-gray-100 leading-relaxed break-words" dangerouslySetInnerHTML={{ __html: t('about.experience') }} />
+              <p className="text-base text-gray-100 leading-relaxed break-words" dangerouslySetInnerHTML={{ __html: t('about.approach') }} />
             </div>
             
             <div className="pt-6">
