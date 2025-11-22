@@ -27,16 +27,16 @@ registerSW({
 
 function App(): React.ReactElement {
     React.useEffect(() => {
-      // Forzar scroll-to-top tras el montaje (con retraso para asegurar restauración)
+      // Forzar scroll-to-top tras el montaje (con mayor retraso para móviles)
       setTimeout(() => {
         window.scrollTo(0, 0);
-      }, 10);
+      }, 120);
 
       // Forzar scroll-to-top en pageshow (incluye recarga y navegación bfcache)
-      const handlePageShow = (event) => {
+      const handlePageShow = () => {
         setTimeout(() => {
           window.scrollTo(0, 0);
-        }, 10);
+        }, 120);
       };
       window.addEventListener('pageshow', handlePageShow);
 
