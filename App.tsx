@@ -36,16 +36,18 @@ function App(): React.ReactElement {
       </div>
       <ParticlesCursor />
       <BackgroundEffect />
-      <Navigation />
-      <main>
-        <Hero />
-        {/* VideoGrid tiene id="proyectos", Contact tiene id="contacto" */}
-        <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
-        <About />
-        <Services />
-        <Contact />
-      </main>
-      <Footer />
+      <div className="relative z-10">
+        <Navigation />
+        <main>
+          <Hero />
+          {/* VideoGrid tiene id="proyectos", Contact tiene id="contacto" */}
+          <VideoGrid videos={VIDEOS} onSelectVideo={handleSelectVideo} />
+          <About />
+          <Services />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
       
       <Suspense fallback={
         <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">

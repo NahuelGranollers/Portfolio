@@ -246,7 +246,7 @@ const ParticlesCursor = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -1, // DETRÁS de TODO (incluso del contenido)
+        zIndex: 1, // Encima del fondo, debajo del contenido (si el contenido tiene z-index > 1)
         pointerEvents: 'none',
       }}
     />
