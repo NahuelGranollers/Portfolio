@@ -22,29 +22,65 @@
   </script>
   <!-- End Hotjar -->
   
-  <!-- Patch for Framer Motion compatibility -->
+  <!-- Patch for Framer Motion compatibility - CRITICAL: Must run BEFORE any modules -->
   <script>
-    // Patch Object.defineProperty to handle undefined objects gracefully
+    // AGGRESSIVE patch: Override Object.defineProperty globally
     (function() {
-      const original = Object.defineProperty;
+      const originalDefineProperty = Object.defineProperty;
+      const originalDefineProperties = Object.defineProperties;
+      
       Object.defineProperty = function(obj, prop, descriptor) {
-        if (obj == null) return obj;
+        // Guard against null/undefined objects
+        if (obj == null || obj === undefined) {
+          console.warn('[PATCH] Prevented defineProperty on null/undefined for prop:', prop);
+          return obj;
+        }
         try {
-          return original.call(this, obj, prop, descriptor);
+          return originalDefineProperty.call(this, obj, prop, descriptor);
         } catch (e) {
+          console.warn('[PATCH] defineProperty failed for', prop, ':', e.message);
           return obj;
         }
       };
+      
+      Object.defineProperties = function(obj, props) {
+        if (obj == null || obj === undefined) {
+          console.warn('[PATCH] Prevented defineProperties on null/undefined');
+          return obj;
+        }
+        try {
+          return originalDefineProperties.call(this, obj, props);
+        } catch (e) {
+          console.warn('[PATCH] defineProperties failed:', e.message);
+          return obj;
+        }
+      };
+      
+      // Suppress ALL uncaught errors during module initialization
+      window.addEventListener('error', function(e) {
+        if (e.message && (
+          e.message.includes('Cannot set properties of undefined') ||
+          e.message.includes('Cannot read properties of undefined') ||
+          e.message.includes('Cannot read properties of null')
+        )) {
+          console.warn('[PATCH] Suppressed error:', e.message);
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          return false;
+        }
+      }, true);
+      
+      // Also catch unhandledrejection
+      window.addEventListener('unhandledrejection', function(e) {
+        if (e.reason && e.reason.message && 
+            e.reason.message.includes('Cannot set properties of undefined')) {
+          console.warn('[PATCH] Suppressed promise rejection:', e.reason.message);
+          e.preventDefault();
+        }
+      });
+      
+      console.log('[PATCH] Framer Motion compatibility patches applied');
     })();
-    
-    // Suppress Framer Motion initialization errors
-    window.addEventListener('error', function(e) {
-      if (e.message && e.message.includes('Cannot set properties of undefined')) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      }
-    }, true);
   </script>
   
   <meta charset="UTF-8" />
