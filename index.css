@@ -1,3 +1,24 @@
+@media (max-width: 640px) {
+  .container, .main-content, .relative, .max-w-6xl, .max-w-3xl {
+    max-width: 100vw !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  .intro {
+    font-size: 1.1rem !important;
+  }
+  .video-thumbnail-wrapper video,
+  .video-thumbnail-wrapper iframe {
+    position: static !important;
+    width: 100vw !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+  }
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
