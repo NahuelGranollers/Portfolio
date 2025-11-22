@@ -90,8 +90,8 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4">{t('projects.title')}</h2>
-          <p className="text-gray-400">{t('projects.subtitle')}</p>
+          <h2 className="text-4xl font-bold mb-4">{t('projects.title') || ''}</h2>
+          <p className="text-gray-400">{t('projects.subtitle') || ''}</p>
         </motion.div>
 
         {/* Filtros de categoría */}
@@ -119,7 +119,7 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, onSelectVideo }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
             >
-              {category === 'all' ? t('projects.all') : t(`categories.${category}`, category)}
+              {category === 'all' ? (t('projects.all') || '') : (t(`categories.${category}`, category) || '')}
             </motion.button>
           ))}
         </motion.div>

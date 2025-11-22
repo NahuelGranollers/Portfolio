@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
           className="text-5xl md:text-7xl font-bold mb-4"
           {...fadeInUp}
         >
-          {t('hero.name')}
+          {t('hero.name') || ''}
         </motion.h1>
         
         <motion.p 
@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          {t('hero.title')}
+          {t('hero.title') || ''}
         </motion.p>
         
         <motion.p 
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           {...fadeInUp}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {t('hero.tagline')}
+          {t('hero.tagline') || ''}
         </motion.p>
 
         {/* Botones CTA */}

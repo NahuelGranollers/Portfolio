@@ -17,7 +17,7 @@ const Services: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          {t('services.title')}
+          {t('services.title') || ''}
         </motion.h2>
         <motion.p 
           className="text-gray-400 text-center mb-12 max-w-2xl mx-auto"
@@ -26,7 +26,7 @@ const Services: React.FC = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          {t('services.subtitle')}
+          {t('services.subtitle') || ''}
         </motion.p>
         
         {/* Grid responsivo de 5 columnas */}
