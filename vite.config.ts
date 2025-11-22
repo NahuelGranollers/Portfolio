@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import path from 'path';
 
-export default defineConfig({
-  base: '/',
+export default defineConfig(({ command, mode }) => ({
+  // IMPORTANT: Change this based on your deployment:
+  // - Use '/' if you have a custom domain (nahuelgranollers.com)
+  // - Use '/Portfolio/' if using GitHub Pages URL (username.github.io/Portfolio)
+  base: '/Portfolio/',
   plugins: [
     react(),
     VitePWA({
@@ -66,4 +69,4 @@ export default defineConfig({
     }
   },
   publicDir: 'public'
-});
+}));
