@@ -48,6 +48,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
+      'react': path.resolve(__dirname, 'node_modules/react'),
+      'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     }
   },
   build: {
@@ -55,10 +57,15 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            // if (id.includes('react') || id.includes('react-dom')) {
-            //   return 'vendor_react';
-            // }
-            if (id.includes('lodash')) return 'vendor_lodash';
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'vendor_react';
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor_motion';
+            }
+            if (id.includes('three')) {
+              return 'vendor_three';
+            }
             return 'vendor';
           }
         }
