@@ -40,8 +40,8 @@ app.use(limiter);
 // Servir los archivos estáticos de la carpeta "dist"
 app.use(express.static(path.join(__dirname, "dist")));
 
-// Ruta catch‑all (compatible con Express 5 y path-to-regexp v8)
-app.get("*", (req, res) => {
+// Ruta catch‑all (compatible con Express 5 usando RegExp)
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
