@@ -1,4 +1,4 @@
-import{r as o,j as e}from"./vendor_react-Cr0Yh2fz.js";import"./vendor-DSFFTp3v.js";const l=()=>{const a=typeof window<"u"&&window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;return o.useEffect(()=>{if(a)return;document.querySelectorAll(".bg-particle").forEach(t=>{const r=t;r.style.setProperty("--dx",`${Math.random()*100-50}px`),r.style.setProperty("--dy",`${Math.random()*100-50}px`)})},[a]),e.jsxs(e.Fragment,{children:[e.jsx("style",{children:`
+import{a as o,j as a}from"./vendor_react-9rDQW8xP.js";import"./vendor-DzQF-Yry.js";const l=()=>{const e=typeof window<"u"&&window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;return o.useEffect(()=>{if(e)return;document.querySelectorAll(".bg-particle").forEach(t=>{const r=t;r.style.setProperty("--dx",`${Math.random()*100-50}px`),r.style.setProperty("--dy",`${Math.random()*100-50}px`)})},[e]),a.jsxs(a.Fragment,{children:[a.jsx("style",{children:`
         .bg-gradient-layer {
           position: fixed;
           inset: 0;
@@ -146,7 +146,7 @@ import{r as o,j as e}from"./vendor_react-Cr0Yh2fz.js";import"./vendor-DSFFTp3v.j
           100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
         }
 
-        ${a?`
+        ${e?`
           .bg-glow-top,
           .bg-glow-bottom,
           .bg-shimmer-overlay,
@@ -154,4 +154,4 @@ import{r as o,j as e}from"./vendor_react-Cr0Yh2fz.js";import"./vendor-DSFFTp3v.j
             animation: none !important;
           }
         `:""}
-      `}),e.jsx("div",{className:"bg-gradient-layer","aria-hidden":"true"}),e.jsx("div",{className:"bg-glow-top","aria-hidden":"true"}),e.jsx("div",{className:"bg-glow-bottom","aria-hidden":"true"}),e.jsx("div",{className:"bg-shimmer-overlay","aria-hidden":"true"}),e.jsx("div",{className:"bg-particles-container","aria-hidden":"true",children:[...Array(6)].map((i,t)=>e.jsx("div",{className:"bg-particle"},t))})]})};export{l as default};
+      `}),a.jsx("div",{className:"bg-gradient-layer","aria-hidden":"true"}),a.jsx("div",{className:"bg-glow-top","aria-hidden":"true"}),a.jsx("div",{className:"bg-glow-bottom","aria-hidden":"true"}),a.jsx("div",{className:"bg-shimmer-overlay","aria-hidden":"true"}),a.jsx("div",{className:"bg-particles-container","aria-hidden":"true",children:[...Array(6)].map((i,t)=>a.jsx("div",{className:"bg-particle"},t))})]})};export{l as default};
