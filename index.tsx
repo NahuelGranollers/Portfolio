@@ -10,9 +10,23 @@ console.log('Initializing App...');
 
 registerSW();
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  console.error('Root element not found');
+  throw new Error('Root element not found');
+}
+
+const root = ReactDOM.createRoot(rootElement);
+
+// Renderizado simple para prueba de humo
+const SimpleApp = () => (
+  <div style={{ color: 'red', fontSize: '40px', padding: '50px', zIndex: 99999, position: 'relative' }}>
+    REACT IS WORKING
+  </div>
+);
 
 try {
+  // Intenta renderizar la App completa
   root.render(
     <Suspense fallback={<div style={{ color: 'white', textAlign: 'center', marginTop: '20%' }}>Loading...</div>}>
       <App />
@@ -21,4 +35,6 @@ try {
   console.log('Render called');
 } catch (e) {
   console.error('Render failed:', e);
+  // Fallback de emergencia
+  root.render(<SimpleApp />);
 }
