@@ -80,7 +80,7 @@ const Services: React.FC = () => {
     localStorage.setItem('contactPresetSubject', preset.subject);
     localStorage.setItem('contactPresetMessage', preset.message);
     // Scroll suave a Contact
-    const contactSection = document.getElementById('contact');
+    const contactSection = document.getElementById('contacto');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
