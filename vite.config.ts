@@ -46,10 +46,10 @@ export default defineConfig({
     // 'process.env.GEMINI_API_KEY': JSON.stringify('TU_GEMINI_API_KEY')
   },
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, '.'),
-      'framer-motion': path.resolve(__dirname, 'src/mocks/framer-motion.tsx'),
-    },
+    alias: [
+      { find: '@', replacement: path.resolve(__dirname, '.') },
+      { find: 'framer-motion', replacement: path.resolve(__dirname, 'src/mocks/framer-motion.tsx') }
+    ],
     dedupe: ['react', 'react-dom'],
   },
   build: {
