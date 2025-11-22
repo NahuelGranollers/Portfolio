@@ -50,25 +50,25 @@ const Navigation: React.FC = () => {
               onClick={() => { scrollToSection('proyectos'); analytics.sectionView('projects'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              {t('nav.projects')}
+              {t('nav.projects') || 'Proyectos'}
             </button>
             <button
               onClick={() => { scrollToSection('sobre-mi'); analytics.sectionView('about'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              {t('nav.about')}
+              {t('nav.about') || 'Sobre mí'}
             </button>
             <button
               onClick={() => { scrollToSection('servicios'); analytics.sectionView('services'); }}
               className="text-brand-text hover:text-brand-primary transition-colors"
             >
-              {t('nav.services')}
+              {t('nav.services') || 'Servicios'}
             </button>
             <button
               onClick={() => { scrollToSection('contacto'); analytics.sectionView('contact'); }}
               className="px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary-dark transition-colors"
             >
-              {t('nav.contact')}
+              {t('nav.contact') || 'Contacto'}
             </button>
             <LanguageSwitcher />
           </div>

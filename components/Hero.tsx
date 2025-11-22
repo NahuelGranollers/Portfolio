@@ -33,17 +33,18 @@ const Hero: React.FC = () => {
       <div className="max-w-4xl mx-auto text-center z-10">
         <motion.h1 
           className="text-5xl md:text-7xl font-bold mb-4"
-          {...fadeInUp}
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: 0 }} 
         >
-          {t('hero.name') || ''}
+          {t('hero.name') || 'Nahuel Granollers'}
         </motion.h1>
         
         <motion.p 
           className="text-xl md:text-2xl text-gray-400 mb-6"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1, y: 0 }}
         >
-          {t('hero.title') || ''}
+          {t('hero.title') || 'Director Audiovisual'}
         </motion.p>
         
         <motion.p 

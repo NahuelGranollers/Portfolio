@@ -31,6 +31,9 @@ function App(): React.ReactElement {
 
   return (
     <ErrorBoundary>
+      <div style={{ position: 'fixed', top: '10px', left: '10px', zIndex: 9999, color: '#00ff00', background: 'rgba(0,0,0,0.8)', padding: '5px', borderRadius: '4px', fontSize: '12px', pointerEvents: 'none' }}>
+        System Status: Active
+      </div>
       <ParticlesCursor />
       <BackgroundEffect />
       <Navigation />
