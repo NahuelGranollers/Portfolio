@@ -31,55 +31,44 @@ const Hero: React.FC = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center z-10">
-        <motion.h1 
+        <h1 
           className="text-5xl md:text-7xl font-bold mb-4"
-          {...fadeInUp}
         >
           {t('hero.name')}
-        </motion.h1>
+        </h1>
         
-        <motion.p 
+        <p 
           className="text-xl md:text-2xl text-gray-400 mb-6"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.1 }}
         >
           {t('hero.title')}
-        </motion.p>
+        </p>
         
-        <motion.p 
+        <p 
           className="text-lg text-gray-500 mb-8 max-w-2xl mx-auto"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.2 }}
         >
           {t('hero.tagline')}
-        </motion.p>
+        </p>
 
         {/* Botones CTA */}
-        <motion.div 
+        <div 
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <motion.button
+          <button
             onClick={scrollToProjects}
             aria-label="Ir a la sección de proyectos"
             className="px-8 py-3 bg-brand-primary text-white rounded-lg font-semibold hover:bg-brand-primary-dark transition-all shadow-lg shadow-brand-primary/20"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             {t('hero.viewProjects')}
-          </motion.button>
+          </button>
           
-          <motion.button
+          <button
             onClick={scrollToContact}
             aria-label="Ir a la sección de contacto"
             className="px-8 py-3 bg-transparent border-2 border-brand-primary text-brand-primary rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             {t('hero.letsTalk')}
-          </motion.button>
-        </motion.div>
+          </button>
+        </div>
       </div>
 
       {/* Scroll Indicator */}
