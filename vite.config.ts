@@ -78,7 +78,7 @@ export default defineConfig({
           },
           {
             urlPattern: /\.(?:webm|mp4)$/i,
-            handler: 'StaleWhileRevalidate',
+            handler: 'CacheFirst',
             options: {
               cacheName: 'videos-cache',
               expiration: {
